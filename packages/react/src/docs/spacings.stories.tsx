@@ -13,7 +13,7 @@ export const Default: Story = {
   render: () => {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        {Object.entries(tokens.themes.default.theme.spacings).map(
+        {Object.entries(tokens.themes.default.globals.spacings).map(
           ([key, value]) => {
             return (
               <div
