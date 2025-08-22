@@ -20,6 +20,7 @@ export const cssGenerator: Generator = async (tokens, opts) => {
   const { default: defaultTheme, ...otherThemes } = tokens.themes;
 
   const flatTokens = flatify(defaultTheme, Config.sass.varSeparator);
+
   const cssVars = Object.keys(flatTokens).reduce((acc, token) => {
     return (
       acc +
@@ -71,62 +72,74 @@ function generateColorClasses(tokens: Tokens) {
  * @param tokens
  */
 function generateBgClasses(tokens: Tokens) {
-  return [
-    ...Object.keys(tokens.themes.default.globals.colors).map(
-      (key) =>
-        `.bg-${key} { background-color: var(--${Config.sass.varPrefix}globals--colors--${key}); }`,
-    ),
-    ...Object.keys(tokens.themes.default.contextuals.background).flatMap(
-      (type) => {
-        const values =
-          tokens.themes.default.contextuals.background[
-            type as keyof typeof tokens.themes.default.contextuals.background
-          ];
-        // For each subkey (e.g., primary, secondary, etc.), generate a class
-        return Object.keys(values).map(
-          (subkey) =>
-            `.bg-${type}-${subkey} { background-color: var(--${Config.sass.varPrefix}contextuals--background--${type}--${subkey}); }`,
-        );
-      },
-    ),
-  ];
+  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
+
+  return Object.keys(flatTokens)
+    .filter((key) => {
+      // Only include keys that are related to colors (globals.colors or contextuals.background)
+      return (
+        key.startsWith("globals--colors--") ||
+        key.startsWith("contextuals--background--")
+      );
+    })
+    .map((key) => {
+      // Convert the flat key to CSS class name
+      let className = key;
+
+      // Handle globals.colors
+      if (key.startsWith("globals--colors--")) {
+        className = key.replace("globals--colors--", "");
+      }
+      // Handle contextuals.background
+      else if (key.startsWith("contextuals--background--")) {
+        className = key.replace("contextuals--background--", "");
+      }
+
+      // Convert separators to hyphens for CSS class names
+      className = className.replace(
+        new RegExp(Config.sass.varSeparator, "g"),
+        "-",
+      );
+
+      const a = `.bg-${className} { background-color: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`;
+      // console.log(a);
+      return a;
+    });
 }
 
 function generateBorderClasses(tokens: Tokens) {
-  return Object.keys(tokens.themes.default.contextuals.border).flatMap(
-    (type) => {
-      const values =
-        tokens.themes.default.contextuals.border[
-          type as keyof typeof tokens.themes.default.contextuals.border
-        ];
-      // For each subkey (e.g., primary, secondary, etc.), generate a class
-      return Object.keys(values).flatMap((subkey) => [
-        `.border-clr-${type}-${subkey} { border-color: var(--${Config.sass.varPrefix}contextuals--background--${type}--${subkey}); }`,
-        `.border-thin-${type}-${subkey} { border: 1px solid var(--${Config.sass.varPrefix}contextuals--background--${type}--${subkey}); }`,
-      ]);
-    },
-  );
+  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
+
+  return Object.keys(flatTokens)
+    .filter((key) => {
+      // Only include keys that are related to borders (contextuals.border)
+      return key.startsWith("contextuals--border--");
+    })
+    .flatMap((key) => {
+      // Convert the flat key to CSS class name
+      const className = key.replace("contextuals--border--", "");
+
+      return [
+        `.border-clr-${className} { border-color: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
+        `.border-thin-${className} { border: 1px solid var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
+      ];
+    });
 }
 
 function generateContentClasses(tokens: Tokens) {
-  return Object.keys(tokens.themes.default.contextuals.content).flatMap(
-    (type) => {
-      if (type === "logo1" || type === "logo2") {
-        return [
-          `.clr-content-${type} { color: var(--${Config.sass.varPrefix}contextuals--content--${type}); }`,
-        ];
-      }
+  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
 
-      const values =
-        tokens.themes.default.contextuals.content[
-          type as keyof typeof tokens.themes.default.contextuals.content
-        ];
-      // For each subkey (e.g., primary, secondary, etc.), generate a class
-      return Object.keys(values).flatMap((subkey) => [
-        `.clr-content-${type}-${subkey} { color: var(--${Config.sass.varPrefix}contextuals--content--${type}--${subkey}); }`,
-      ]);
-    },
-  );
+  return Object.keys(flatTokens)
+    .filter((key) => {
+      // Only include keys that are related to content (contextuals.content)
+      return key.startsWith("contextuals--content--");
+    })
+    .map((key) => {
+      // Convert the flat key to CSS class name
+      const className = key.replace("contextuals--content--", "");
+
+      return `.clr-content-${className} { color: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`;
+    });
 }
 
 /**
@@ -136,10 +149,19 @@ function generateContentClasses(tokens: Tokens) {
  * @param tokens
  */
 function generateClrClasses(tokens: Tokens) {
-  return Object.keys(tokens.themes.default.globals.colors).map(
-    (key) =>
-      `.clr-${key} { color: var(--${Config.sass.varPrefix}globals--colors--${key}); }`,
-  );
+  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
+
+  return Object.keys(flatTokens)
+    .filter((key) => {
+      // Only include keys that are related to colors (globals.colors)
+      return key.startsWith("globals--colors--");
+    })
+    .map((key) => {
+      // Convert the flat key to CSS class name
+      const className = key.replace("globals--colors--", "");
+
+      return `.clr-${className} { color: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`;
+    });
 }
 
 function generateFontClasses(tokens: Tokens) {
@@ -157,10 +179,19 @@ function generateFontClasses(tokens: Tokens) {
  * @param tokens
  */
 function generateFwClasses(tokens: Tokens) {
-  return Object.keys(tokens.themes.default.globals.font.weights).map(
-    (key) =>
-      `.fw-${key} { font-weight: var(--${Config.sass.varPrefix}globals--font--weights--${key}); }`,
-  );
+  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
+
+  return Object.keys(flatTokens)
+    .filter((key) => {
+      // Only include keys that are related to font weights (globals.font.weights)
+      return key.startsWith("globals--font--weights--");
+    })
+    .map((key) => {
+      // Convert the flat key to CSS class name
+      const className = key.replace("globals--font--weights--", "");
+
+      return `.fw-${className} { font-weight: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`;
+    });
 }
 
 /**
@@ -170,13 +201,22 @@ function generateFwClasses(tokens: Tokens) {
  * @param tokens
  */
 function generateFsClasses(tokens: Tokens) {
-  return Object.keys(tokens.themes.default.globals.font.sizes).map(
-    (key) =>
-      `.fs-${key} { 
-        font-size: var(--${Config.sass.varPrefix}globals--font--sizes--${key}); 
-        letter-spacing: var(--${Config.sass.varPrefix}globals--font--letterspacings--${key}); 
-      }`,
-  );
+  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
+
+  return Object.keys(flatTokens)
+    .filter((key) => {
+      // Only include keys that are related to font sizes (globals.font.sizes)
+      return key.startsWith("globals--font--sizes--");
+    })
+    .map((key) => {
+      // Convert the flat key to CSS class name
+      const className = key.replace("globals--font--sizes--", "");
+
+      return `.fs-${className} { 
+        font-size: var(--${Config.sass.varPrefix}${key.toLowerCase()}); 
+        letter-spacing: var(--${Config.sass.varPrefix}${key.replace("sizes", "letterspacings").toLowerCase()}); 
+      }`;
+    });
 }
 
 /**
@@ -186,10 +226,19 @@ function generateFsClasses(tokens: Tokens) {
  * @param tokens
  */
 function generateFClasses(tokens: Tokens) {
-  return Object.keys(tokens.themes.default.globals.font.families).map(
-    (key) =>
-      `.f-${key} { font-family: var(--${Config.sass.varPrefix}globals--font--families--${key}); }`,
-  );
+  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
+
+  return Object.keys(flatTokens)
+    .filter((key) => {
+      // Only include keys that are related to font families (globals.font.families)
+      return key.startsWith("globals--font--families--");
+    })
+    .map((key) => {
+      // Convert the flat key to CSS class name
+      const className = key.replace("globals--font--families--", "");
+
+      return `.f-${className} { font-family: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`;
+    });
 }
 
 function generateSpacingClasses(tokens: Tokens) {
@@ -203,14 +252,25 @@ function generateSpacingClasses(tokens: Tokens) {
  * @param tokens
  */
 function generateMarginClasses(tokens: Tokens) {
-  return Object.keys(tokens.themes.default.globals.spacings).map(
-    (key) =>
-      `.m-${key} { margin: var(--${Config.sass.varPrefix}globals--spacings--${key}); }` +
-      `.mb-${key} { margin-bottom: var(--${Config.sass.varPrefix}globals--spacings--${key}); }` +
-      `.mt-${key} { margin-top: var(--${Config.sass.varPrefix}globals--spacings--${key}); }` +
-      `.ml-${key} { margin-left: var(--${Config.sass.varPrefix}globals--spacings--${key}); }` +
-      `.mr-${key} { margin-right: var(--${Config.sass.varPrefix}globals--spacings--${key}); }`,
-  );
+  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
+
+  return Object.keys(flatTokens)
+    .filter((key) => {
+      // Only include keys that are related to spacings (globals.spacings)
+      return key.startsWith("globals--spacings--");
+    })
+    .map((key) => {
+      // Convert the flat key to CSS class name
+      const className = key.replace("globals--spacings--", "");
+
+      return [
+        `.m-${className} { margin: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
+        `.mb-${className} { margin-bottom: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
+        `.mt-${className} { margin-top: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
+        `.ml-${className} { margin-left: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
+        `.mr-${className} { margin-right: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
+      ].join("");
+    });
 }
 
 /**
@@ -220,12 +280,23 @@ function generateMarginClasses(tokens: Tokens) {
  * @param tokens
  */
 function generatePaddingClasses(tokens: Tokens) {
-  return Object.keys(tokens.themes.default.globals.spacings).map(
-    (key) =>
-      `.p-${key} { padding: var(--${Config.sass.varPrefix}globals--spacings--${key}); }` +
-      `.pb-${key} { padding-bottom: var(--${Config.sass.varPrefix}globals--spacings--${key}); }` +
-      `.pt-${key} { padding-top: var(--${Config.sass.varPrefix}globals--spacings--${key}); }` +
-      `.pl-${key} { padding-left: var(--${Config.sass.varPrefix}globals--spacings--${key}); }` +
-      `.pr-${key} { padding-right: var(--${Config.sass.varPrefix}globals--spacings--${key}); }`,
-  );
+  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
+
+  return Object.keys(flatTokens)
+    .filter((key) => {
+      // Only include keys that are related to spacings (globals.spacings)
+      return key.startsWith("globals--spacings--");
+    })
+    .map((key) => {
+      // Convert the flat key to CSS class name
+      const className = key.replace("globals--spacings--", "");
+
+      return [
+        `.p-${className} { padding: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
+        `.pb-${className} { padding-bottom: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
+        `.pt-${className} { padding-top: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
+        `.pl-${className} { padding-left: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
+        `.pr-${className} { padding-right: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
+      ].join("");
+    });
 }

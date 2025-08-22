@@ -2,7 +2,7 @@
 @use "../cunningham-tokens" as *;
 
 @function breakpoint($name, $tokens: $themes) {
-  @return map.get($tokens, 'default', 'theme', 'breakpoints', $name);
+  @return map.get($tokens, 'default', 'globals', 'breakpoints', $name);
 }
 
 @mixin container($name, $tokens: $themes) {
