@@ -11,6 +11,7 @@ export type FieldProps = {
   fullWidth?: boolean | undefined;
   compact?: boolean | undefined;
   className?: string | undefined;
+  disabled?: boolean | undefined;
 };
 
 type Props = FieldProps & PropsWithChildren;
@@ -24,12 +25,14 @@ export const Field = ({
   fullWidth,
   compact,
   className,
+  disabled,
 }: Props) => {
   return (
     <div
       className={classNames("c__field", "c__field--" + state, className, {
         "c__field--full-width": fullWidth,
         "c__field--compact": compact && !fullWidth,
+        "c__field--disabled": disabled,
       })}
     >
       {children}
