@@ -71,7 +71,7 @@ export const Toast = (props: ToastProps) => {
         {props.primaryLabel && (
           <div className="c__toast__content__buttons">
             <Button
-              color="primary-text"
+              color="primary"
               onClick={props.primaryOnClick}
               {...props.primaryProps}
             >
