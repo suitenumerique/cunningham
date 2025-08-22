@@ -106,7 +106,8 @@ export const Pagination = ({
     <div className="c__pagination">
       <div className="c__pagination__list">
         <Button
-          color="tertiary-text"
+          variant="neutral"
+          color="tertiary"
           aria-label={t("components.pagination.previous_aria")}
           onClick={onPreviousClick}
           disabled={!canPrevious}
@@ -116,10 +117,13 @@ export const Pagination = ({
         {pageList.map((_page, index) => (
           <Fragment key={_page}>
             {/* Prepend a cell with "..." when the page number we're rendering does not follow the previous one */}
-            {_page > (pageList[index - 1] || 0) + 1 && <span>...</span>}
+            {_page > (pageList[index - 1] || 0) + 1 && (
+              <span className="c__pagination__list__ellipsis">...</span>
+            )}
             {_page === page ? (
               <Button
-                color="tertiary-text"
+                variant="neutral"
+                color="bordered"
                 active={true}
                 aria-label={t("components.pagination.current_page_aria", {
                   page: _page,
@@ -130,7 +134,8 @@ export const Pagination = ({
               </Button>
             ) : (
               <Button
-                color="tertiary-text"
+                variant="neutral"
+                color="tertiary"
                 aria-label={t("components.pagination.goto_page_aria", {
                   page: _page,
                 })}
@@ -143,7 +148,8 @@ export const Pagination = ({
           </Fragment>
         ))}
         <Button
-          color="tertiary-text"
+          variant="neutral"
+          color="tertiary"
           aria-label={t("components.pagination.next_aria")}
           onClick={onNextClick}
           disabled={!canNext}

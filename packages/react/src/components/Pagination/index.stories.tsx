@@ -47,7 +47,7 @@ export const List = () => {
     <div>
       <div>
         {items.map((item) => (
-          <div className="p-t bg-secondary-300 mb-t" key={item}>
+          <div className="p-t bg-semantic--neutral--tertiary mb-t" key={item}>
             {item}
           </div>
         ))}
