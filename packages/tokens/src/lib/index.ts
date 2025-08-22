@@ -2,7 +2,10 @@ import { tokens } from "./cunningham-tokens";
 
 export type Configuration = typeof tokens;
 export type DefaultTokens = (typeof tokens)["themes"]["default"];
+export type DarkTokens = (typeof tokens)["themes"]["dark"];
 export const defaultTokens = tokens.themes.default;
+export const darkTokens = tokens.themes.dark;
+export const defaultThemes = tokens.themes;
 
 /**
  * Transform such object:
