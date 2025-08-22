@@ -151,6 +151,7 @@ describe("<Switch/>", () => {
       textItems: ["my text item 1", "my text item 2"],
       rightText: "my right text",
       labelSide: "right",
+      disabled: false,
     };
 
     render(<Switch {...propsInput} />);
