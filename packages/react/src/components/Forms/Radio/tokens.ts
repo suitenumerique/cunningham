@@ -1,7 +1,8 @@
 import { DefaultTokens } from "@openfun/cunningham-tokens";
 
 export const tokens = (defaults: DefaultTokens) => ({
-  "border-color": defaults.theme.colors["greyscale-300"],
-  "accent-color": defaults.theme.colors["success-600"],
-  "background-color": defaults.theme.colors["greyscale-000"],
+  "border-color": defaults.contextuals.border.semantic.neutral.tertiary,
+  "border-color--disabled": defaults.contextuals.border.semantic.neutral.tertiary,
+  "accent-color": defaults.contextuals.content.semantic.brand.tertiary,
+  "background-color": defaults.contextuals.background.surface.primary,
 });
