@@ -14,7 +14,7 @@ describe("<Tooltip />", () => {
   it("appear on button hover and then disappear", async () => {
     render(
       <Tooltip content="Hi there" closeDelay={0}>
-        <Button size="nano" color="tertiary-text">
+        <Button size="nano" color="tertiary">
           ⬅️
         </Button>
       </Tooltip>,
@@ -33,7 +33,7 @@ describe("<Tooltip />", () => {
   it("appear on button focus and then disappear", async () => {
     render(
       <Tooltip content="Hi there" closeDelay={0}>
-        <Button size="nano" color="tertiary-text">
+        <Button size="nano" color="tertiary">
           ⬅️
         </Button>
       </Tooltip>,
@@ -51,7 +51,7 @@ describe("<Tooltip />", () => {
   it("sets entering and exiting class", async () => {
     render(
       <Tooltip content="Hi there" closeDelay={0}>
-        <Button size="nano" color="tertiary-text">
+        <Button size="nano" color="tertiary">
           ⬅️
         </Button>
       </Tooltip>,
@@ -102,7 +102,7 @@ describe("<Tooltip />", () => {
         }
         closeDelay={0}
       >
-        <Button size="nano" color="tertiary-text">
+        <Button size="nano" color="tertiary">
           ⬅️
         </Button>
       </Tooltip>,
@@ -128,7 +128,7 @@ describe("<Tooltip />", () => {
         closeDelay={0}
         className="my-custom-class"
       >
-        <Button size="nano" color="tertiary-text">
+        <Button size="nano" color="tertiary">
           ⬅️
         </Button>
       </Tooltip>,

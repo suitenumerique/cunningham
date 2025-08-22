@@ -5,6 +5,8 @@
   font-size: var(--c--components--tooltip--font-size);
   forced-color-adjust: none;
   outline: none;
+  box-shadow: 0 1px 5.4px 0 rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--c--components--tooltip--border-color);
   padding: var(--c--components--tooltip--padding);
   max-width: var(--c--components--tooltip--max-width);
   display: flex;
