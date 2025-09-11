@@ -10,7 +10,7 @@ $sm: map.get($themes, "default", "theme", "breakpoints", "sm");
 
 // Reset
 h1 {
-  font-family: var(--c--theme--font--families--accent);
+  font-family: var(--c--globals--font--families--accent);
   font-size: clamp(2.5rem, 7vw, 4rem);
   margin: 0;
 }
@@ -20,7 +20,7 @@ p {
 }
 
 a {
-  color: var(--c--theme--colors--greyscale-800);
+  color: var(--c--contextuals--background--surface--primary);
   text-decoration: underline;
 }
 
@@ -33,7 +33,7 @@ html, body, #root {
 }
 
 html {
-  background: linear-gradient(153deg, var(--c--theme--colors--greyscale-100) 0%, var(--c--theme--colors--greyscale-000) 100%);
+  background: linear-gradient(153deg, var(--c--contextuals--background--surface--tertiary) 0%, var(--c--contextuals--background--surface--primary) 100%);
   background-attachment: fixed;
 }
 
@@ -58,10 +58,10 @@ html {
 }
 
 .card {
-  background-color: var(--c--theme--colors--greyscale-000);
+  background-color: var(--c--contextuals--background--surface--secondary);
   padding: 2rem;
   border-radius: var(--c--components--card--border-radius, 4px);
-  border: var(--c--components--card--border-width, 1px) var(--c--theme--colors--greyscale-300) solid;
+  border: var(--c--components--card--border-width, 1px) var(--c--contextuals--border--semantic--neutral--tertiary) solid;
   box-shadow: var(--c--components--card--box-shadow, rgba(149, 157, 165, 0.2) 0px 8px 24px);
 }
 
@@ -122,7 +122,7 @@ html[data-theme="cunningham"][data-variant="light"] body {
 }
 
 html[data-theme="uikit"] {
-  background: linear-gradient(153deg, var(--c--theme--colors--greyscale-025) 0%, var(--c--theme--colors--greyscale-000) 100%);
+  background: linear-gradient(153deg, var(--c--theme--colors--gray-025) 0%, var(--c--theme--colors--gray-000) 100%);
   background-blend-mode: darken;
 }
 
@@ -197,7 +197,7 @@ html[data-theme="blueney"] {
 }
 
 .links {
-  border-top: thin solid var(--c--theme--colors--greyscale-300);
+  border-top: thin solid var(--c--contextuals--border--semantic--neutral--tertiary);
   display: flex;
   justify-content: space-between;
   gap: 0.5rem;

@@ -57,11 +57,11 @@ export const Home = ({ modal }: { modal: PageProps }) => {
   return (
     <main className="page__home">
       <header className="page__home__title">
-        <h1 className="clr-gray-900">
+        <h1 className="clr-content-semantic--neutral--primary">
           {/* eslint-disable-next-line react/no-unescaped-entities */}
           🍿Cunningham's <span className="clr-brand-400">Cast</span>
         </h1>
-        <p className="clr-gray-600 fs-m fw-regular">
+        <p className="clr-content-semantic--neutral--tertiary fs-sm fw-regular">
           Happy Days is an American television sitcom that aired first-run from
           January 15, 1974, to September 24, 1984, on ABC-TV
           <br /> with a total of 255 half-hour episodes spanning over eleven
@@ -70,6 +70,7 @@ export const Home = ({ modal }: { modal: PageProps }) => {
           Created by Garry Marshall, the series presented an idealized vision of
           life in the mid-1950s to mid-1960s Midwestern United States.
         </p>
+        
         <Button
           color="primary"
           icon={<span className="material-icons">movie</span>}
@@ -126,7 +127,8 @@ export const Home = ({ modal }: { modal: PageProps }) => {
                 id: "actions",
                 renderCell: (params) => (
                   <Button
-                    color="tertiary-text"
+                    color="tertiary"
+                    variant="neutral"
                     size="small"
                     onClick={async () => {
                       const decision = await modals.deleteConfirmationModal();
@@ -164,7 +166,8 @@ export const Home = ({ modal }: { modal: PageProps }) => {
           <li>
             <Button
               size="small"
-              color="tertiary-text"
+              color="tertiary"
+              variant="neutral"
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.france-universite-numerique.fr/en/"
@@ -177,7 +180,8 @@ export const Home = ({ modal }: { modal: PageProps }) => {
           <li>
             <Button
               size="small"
-              color="tertiary-text"
+              color="tertiary"
+              variant="neutral"
               target="_blank"
               rel="noopener noreferrer"
               href="https://discord.gg/TXPSCMeDzd"
@@ -188,7 +192,8 @@ export const Home = ({ modal }: { modal: PageProps }) => {
           <li>
             <Button
               size="small"
-              color="tertiary-text"
+              color="tertiary"
+              variant="neutral"
               target="_blank"
               rel="noopener noreferrer"
               href="https://github.com/openfun/cunningham"
@@ -199,7 +204,8 @@ export const Home = ({ modal }: { modal: PageProps }) => {
           <li>
             <Button
               size="small"
-              color="tertiary-text"
+              color="tertiary"
+              variant="neutral"
               target="_blank"
               rel="noopener noreferrer"
               href="https://openfun.github.io/cunningham/storybook"
@@ -210,7 +216,8 @@ export const Home = ({ modal }: { modal: PageProps }) => {
           <li>
             <Button
               size="small"
-              color="tertiary-text"
+              color="tertiary"
+              variant="neutral"
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.figma.com/file/JbPT1R6YUFW4oH8jHvH960/DS-Cunningham---PUBLIC?type=design"

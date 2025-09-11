@@ -11,9 +11,6 @@ import Onboarding from "./Onboarding";
 
 enum Theme {
   CUNNINGHAM = "cunningham",
-  REDFLUX = "redflux",
-  BLUENEY = "blueney",
-  UIKIT = "uikit"
 }
 
 enum Variant {
@@ -26,18 +23,7 @@ const THEMES: Record<Theme, Record<Variant, string | undefined>> = {
     light: "default",
     dark: "dark",
   },
-  [Theme.REDFLUX]: {
-    light: undefined,
-    dark: "redflux_dark",
-  },
-  [Theme.BLUENEY]: {
-    light: undefined,
-    dark: "blueney_dark",
-  },
-  [Theme.UIKIT]: {
-    light: "uikit_light",
-    dark: "uikit_dark",
-  },
+ 
 };
 
 export type PageProps = ReturnType<typeof useModal>;
