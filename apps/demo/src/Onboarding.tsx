@@ -29,7 +29,7 @@ const Onboarding = () => {
           </Button>
           <Button
             href="https://openfun.github.io/cunningham/storybook"
-            color="tertiary-text"
+            color="tertiary"
             size="small"
             icon={<span className="material-icons">open_in_new</span>}
             fullWidth={true}
