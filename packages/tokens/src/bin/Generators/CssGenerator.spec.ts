@@ -51,10 +51,10 @@ describe("CssGenerator", () => {
 	--c--components--button--font-family: Times New Roman,Helvetica Neue,Segoe UI;
 }
 .cunningham-theme--dark{
-	--c--theme--colors--primary: black;
+	--c--globals--colors--primary: black;
 }
 .cunningham-theme--custom{
-	--c--theme--colors--primary: green;
+	--c--globals--colors--primary: green;
 }
 "
 `);
@@ -101,10 +101,10 @@ describe("CssGenerator", () => {
 	--c--components--button--font-family: Times New Roman,Helvetica Neue,Segoe UI;
 }
 .cunningham-theme--dark{
-	--c--theme--colors--primary: black;
+	--c--globals--colors--primary: black;
 }
 .cunningham-theme--custom{
-	--c--theme--colors--primary: green;
+	--c--globals--colors--primary: green;
 } .clr-primary { color: var(--c--globals--colors--primary); }
 .clr-secondary { color: var(--c--globals--colors--secondary); }
 .clr-ternary-900 { color: var(--c--globals--colors--ternary-900); }
@@ -113,42 +113,18 @@ describe("CssGenerator", () => {
 .bg-secondary { background-color: var(--c--globals--colors--secondary); }
 .bg-ternary-900 { background-color: var(--c--globals--colors--ternary-900); }
 .bg-ogre-odor-is-orange-indeed { background-color: var(--c--globals--colors--ogre-odor-is-orange-indeed); }
-.bg-primary-0 { background-color: var(--c--contextuals--background--primary--0); }
-.bg-primary-1 { background-color: var(--c--contextuals--background--primary--1); }
-.bg-primary-2 { background-color: var(--c--contextuals--background--primary--2); }
-.bg-primary-3 { background-color: var(--c--contextuals--background--primary--3); }
-.bg-primary-4 { background-color: var(--c--contextuals--background--primary--4); }
-.bg-primary-5 { background-color: var(--c--contextuals--background--primary--5); }
-.bg-primary-6 { background-color: var(--c--contextuals--background--primary--6); }
+.bg-primary { background-color: var(--c--contextuals--background--primary); }
 .fw-medium { font-weight: var(--c--globals--font--weights--medium); }
 .fs-m { 
-        font-size: var(--c--globals--font--sizes--m); 
-        letter-spacing: var(--c--globals--font--letterspacings--m); 
-      }
+    font-size: var(--c--globals--font--sizes--m); 
+    letter-spacing: var(--c--globals--font--letterspacings--m); 
+    }
 .f-base { font-family: var(--c--globals--font--families--base); }
 .m-s { margin: var(--c--globals--spacings--s); }.mb-s { margin-bottom: var(--c--globals--spacings--s); }.mt-s { margin-top: var(--c--globals--spacings--s); }.ml-s { margin-left: var(--c--globals--spacings--s); }.mr-s { margin-right: var(--c--globals--spacings--s); }
-.p-s { padding: var(--c--globals--spacings--s); }.pb-s { padding-bottom: var(--c--globals--spacings--s); }.pt-s { padding-top: var(--c--globals--spacings--s); }.pl-s { padding-left: var(--c--globals--spacings--s); }.pr-s { padding-right: var(--c--globals--spacings--s); }
-.border-clr-primary-0 { border-color: var(--c--contextuals--background--primary--0); }
-.border-thin-primary-0 { border: 1px solid var(--c--contextuals--background--primary--0); }
-.border-clr-primary-1 { border-color: var(--c--contextuals--background--primary--1); }
-.border-thin-primary-1 { border: 1px solid var(--c--contextuals--background--primary--1); }
-.border-clr-primary-2 { border-color: var(--c--contextuals--background--primary--2); }
-.border-thin-primary-2 { border: 1px solid var(--c--contextuals--background--primary--2); }
-.border-clr-primary-3 { border-color: var(--c--contextuals--background--primary--3); }
-.border-thin-primary-3 { border: 1px solid var(--c--contextuals--background--primary--3); }
-.border-clr-primary-4 { border-color: var(--c--contextuals--background--primary--4); }
-.border-thin-primary-4 { border: 1px solid var(--c--contextuals--background--primary--4); }
-.border-clr-primary-5 { border-color: var(--c--contextuals--background--primary--5); }
-.border-thin-primary-5 { border: 1px solid var(--c--contextuals--background--primary--5); }
-.border-clr-primary-6 { border-color: var(--c--contextuals--background--primary--6); }
-.border-thin-primary-6 { border: 1px solid var(--c--contextuals--background--primary--6); }
-.clr-content-primary-0 { color: var(--c--contextuals--content--primary--0); }
-.clr-content-primary-1 { color: var(--c--contextuals--content--primary--1); }
-.clr-content-primary-2 { color: var(--c--contextuals--content--primary--2); }
-.clr-content-primary-3 { color: var(--c--contextuals--content--primary--3); }
-.clr-content-primary-4 { color: var(--c--contextuals--content--primary--4); }
-.clr-content-primary-5 { color: var(--c--contextuals--content--primary--5); }
-.clr-content-primary-6 { color: var(--c--contextuals--content--primary--6); }
+.p-s { margin: var(--c--globals--spacings--s); }.pb-s { margin-bottom: var(--c--globals--spacings--s); }.pt-s { margin-top: var(--c--globals--spacings--s); }.pl-s { margin-left: var(--c--globals--spacings--s); }.pr-s { margin-right: var(--c--globals--spacings--s); }
+.border-clr-primary { border-color: var(--c--contextuals--border--primary); }
+.border-thin-primary { border: 1px solid var(--c--contextuals--border--primary); }
+.clr-content-primary { color: var(--c--contextuals--content--primary); }
 "
 `);
   });
