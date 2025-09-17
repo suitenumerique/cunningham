@@ -13,7 +13,7 @@ export const tokens = (defaults: DefaultTokens) => {
     "medium-icon-font-size": "1.5rem",
     "small-font-size": defaults.globals.font.sizes.sm,
     "small-icon-font-size": defaults.globals.font.sizes.md,
-    "nano-font-size": defaults.globals.font.sizes.sm,
+    "nano-font-size": defaults.globals.font.sizes.xs,
     "nano-icon-font-size": defaults.globals.font.sizes.md,
     "font-weight": defaults.globals.font.weights.regular,
     "font-family": defaults.globals.font.families.base,

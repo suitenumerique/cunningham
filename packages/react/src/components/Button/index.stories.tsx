@@ -33,28 +33,22 @@ const AllButtons = ({ variant = "brand" }: AllButtonsProps) => {
           justifyContent: "start",
         }}
       >
-        <h4 className={`clr-content-semantic--${variant}--primary`}>Primary</h4>
+        <h4 className={`clr-content-semantic-${variant}-primary`}>Primary</h4>
         <Button {...Primary.args} variant={variant} />
         <Button {...PrimaryDisabled.args} variant={variant} />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <h4 className={`clr-content-semantic--${variant}--primary`}>
-          Secondary
-        </h4>
+        <h4 className={`clr-content-semantic-${variant}-primary`}>Secondary</h4>
         <Button {...Secondary.args} variant={variant} />
         <Button {...SecondaryDisabled.args} variant={variant} />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <h4 className={`clr-content-semantic--${variant}--primary`}>
-          Tertiary
-        </h4>
+        <h4 className={`clr-content-semantic-${variant}-primary`}>Tertiary</h4>
         <Button {...BrandTertiary.args} variant={variant} />
         <Button {...TertiaryDisabled.args} variant={variant} />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <h4 className={`clr-content-semantic--${variant}--primary`}>
-          Bordered
-        </h4>
+        <h4 className={`clr-content-semantic-${variant}-primary`}>Bordered</h4>
         <Button {...Bordered.args} variant={variant} />
         <Button {...BrandBorderedDisabled.args} variant={variant} />
       </div>

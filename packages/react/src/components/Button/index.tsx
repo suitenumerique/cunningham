@@ -44,7 +44,7 @@ export const Button = ({
   const classes = [
     "c__button",
     "c__button--" + variant,
-    "c__button--" + variant + "--" + color,
+    ["c__button--", variant, "--", color].join(""),
     "c__button--" + size,
     className,
   ];
