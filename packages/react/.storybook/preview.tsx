@@ -14,7 +14,6 @@ import React from "react";
 
 export const DocsWithTheme = (props, context) => {
   const theme = getThemeFromGlobals(props.context.store.userGlobals.globals);
-  console.log(theme);
   return (
     <CunninghamProvider theme={theme}>
       <DocsContainer {...props} theme={themes[theme]} />
