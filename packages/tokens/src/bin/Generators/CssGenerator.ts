@@ -5,7 +5,46 @@ import { Generator, resolveRefs } from "Generators/index";
 import { put } from "Utils/Files";
 import { Tokens } from "TokensGenerator";
 
+/**
+ * Interface for objects containing path and value information
+ */
+interface PathValueObject {
+  path: string[];
+  value: any;
+}
+
 export const THEME_CLASSNAME_PREFIX = "cunningham-theme--";
+
+/**
+ * Creates an array of objects containing path arrays and leaf values from a nested object
+ * @param obj - The object to traverse
+ * @param currentPath - Current path being built (used internally for recursion)
+ * @returns Array of objects with 'path' (array of keys) and 'value' (leaf value) properties
+ */
+export function createPathValueArray(
+  obj: any,
+  currentPath: string[] = [],
+): PathValueObject[] {
+  const result: PathValueObject[] = [];
+
+  Object.entries(obj).forEach(([key, value]) => {
+    const newPath = [...currentPath, key];
+
+    // Check if the value is an object and not null/undefined
+    if (value !== null && typeof value === "object" && !Array.isArray(value)) {
+      // Recursively process nested objects
+      result.push(...createPathValueArray(value, newPath));
+    } else {
+      // This is a leaf value
+      result.push({
+        path: newPath,
+        value,
+      });
+    }
+  });
+
+  return result;
+}
 
 export const cssGenerator: Generator = async (tokens, opts) => {
   // Replace refs by CSS variables.
@@ -72,74 +111,42 @@ function generateColorClasses(tokens: Tokens) {
  * @param tokens
  */
 function generateBgClasses(tokens: Tokens) {
-  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
-
-  return Object.keys(flatTokens)
-    .filter((key) => {
-      // Only include keys that are related to colors (globals.colors or contextuals.background)
-      return (
-        key.startsWith("globals--colors--") ||
-        key.startsWith("contextuals--background--")
-      );
-    })
-    .map((key) => {
-      // Convert the flat key to CSS class name
-      let className = key;
-
-      // Handle globals.colors
-      if (key.startsWith("globals--colors--")) {
-        className = key.replace("globals--colors--", "");
-      }
-      // Handle contextuals.background
-      else if (key.startsWith("contextuals--background--")) {
-        className = key.replace("contextuals--background--", "");
-      }
-
-      // Convert separators to hyphens for CSS class names
-      className = className.replace(
-        new RegExp(Config.sass.varSeparator, "g"),
-        "-",
-      );
-
-      const a = `.bg-${className} { background-color: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`;
-      // console.log(a);
-      return a;
-    });
+  const bgContextual = createPathValueArray(
+    tokens.themes.default.contextuals.background,
+  );
+  const bgContextualClasses = bgContextual.map((key) => {
+    return `.bg-${key.path.join("-")} { background-color: var(--${Config.sass.varPrefix}contextuals--background--${key.path.join("--")}); }`;
+  });
+  const bgGlobal = createPathValueArray(tokens.themes.default.globals.colors);
+  const bgGlobalClasses = bgGlobal.map((key) => {
+    return `.bg-${key.path.join("-")} { background-color: var(--${Config.sass.varPrefix}globals--colors--${key.path.join("--")}); }`;
+  });
+  return [...bgGlobalClasses, ...bgContextualClasses];
 }
 
 function generateBorderClasses(tokens: Tokens) {
-  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
-
-  return Object.keys(flatTokens)
-    .filter((key) => {
-      // Only include keys that are related to borders (contextuals.border)
-      return key.startsWith("contextuals--border--");
-    })
-    .flatMap((key) => {
-      // Convert the flat key to CSS class name
-      const className = key.replace("contextuals--border--", "");
-
+  const bgContextual = createPathValueArray(
+    tokens.themes.default.contextuals.border,
+  );
+  const bgContextualClasses = bgContextual
+    .map((key) => {
       return [
-        `.border-clr-${className} { border-color: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
-        `.border-thin-${className} { border: 1px solid var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
+        `.border-clr-${key.path.join("-")} { border-color: var(--${Config.sass.varPrefix}contextuals--border--${key.path.join("--")}); }`,
+        `.border-thin-${key.path.join("-")} { border: 1px solid var(--${Config.sass.varPrefix}contextuals--border--${key.path.join("--")}); }`,
       ];
-    });
+    })
+    .flat();
+
+  return bgContextualClasses;
 }
 
 function generateContentClasses(tokens: Tokens) {
-  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
-
-  return Object.keys(flatTokens)
-    .filter((key) => {
-      // Only include keys that are related to content (contextuals.content)
-      return key.startsWith("contextuals--content--");
-    })
-    .map((key) => {
-      // Convert the flat key to CSS class name
-      const className = key.replace("contextuals--content--", "");
-
-      return `.clr-content-${className} { color: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`;
-    });
+  const bgContextual = createPathValueArray(
+    tokens.themes.default.contextuals.content,
+  );
+  return bgContextual.map((key) => {
+    return `.clr-content-${key.path.join("-")} { color: var(--${Config.sass.varPrefix}contextuals--content--${key.path.join("--")}); }`;
+  });
 }
 
 /**
@@ -149,19 +156,13 @@ function generateContentClasses(tokens: Tokens) {
  * @param tokens
  */
 function generateClrClasses(tokens: Tokens) {
-  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
+  const bgContextual = createPathValueArray(
+    tokens.themes.default.globals.colors,
+  );
 
-  return Object.keys(flatTokens)
-    .filter((key) => {
-      // Only include keys that are related to colors (globals.colors)
-      return key.startsWith("globals--colors--");
-    })
-    .map((key) => {
-      // Convert the flat key to CSS class name
-      const className = key.replace("globals--colors--", "");
-
-      return `.clr-${className} { color: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`;
-    });
+  return bgContextual.map((key) => {
+    return `.clr-${key.path.join("-")} { color: var(--${Config.sass.varPrefix}globals--colors--${key.path.join("--")}); }`;
+  });
 }
 
 function generateFontClasses(tokens: Tokens) {
@@ -179,19 +180,12 @@ function generateFontClasses(tokens: Tokens) {
  * @param tokens
  */
 function generateFwClasses(tokens: Tokens) {
-  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
-
-  return Object.keys(flatTokens)
-    .filter((key) => {
-      // Only include keys that are related to font weights (globals.font.weights)
-      return key.startsWith("globals--font--weights--");
-    })
-    .map((key) => {
-      // Convert the flat key to CSS class name
-      const className = key.replace("globals--font--weights--", "");
-
-      return `.fw-${className} { font-weight: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`;
-    });
+  const tokensWeights = createPathValueArray(
+    tokens.themes.default.globals.font.weights,
+  );
+  return tokensWeights.map((key) => {
+    return `.fw-${key.path.join("-")} { font-weight: var(--${Config.sass.varPrefix}globals--font--weights--${key.path.join("--")}); }`;
+  });
 }
 
 /**
@@ -201,22 +195,15 @@ function generateFwClasses(tokens: Tokens) {
  * @param tokens
  */
 function generateFsClasses(tokens: Tokens) {
-  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
-
-  return Object.keys(flatTokens)
-    .filter((key) => {
-      // Only include keys that are related to font sizes (globals.font.sizes)
-      return key.startsWith("globals--font--sizes--");
-    })
-    .map((key) => {
-      // Convert the flat key to CSS class name
-      const className = key.replace("globals--font--sizes--", "");
-
-      return `.fs-${className} { 
-        font-size: var(--${Config.sass.varPrefix}${key.toLowerCase()}); 
-        letter-spacing: var(--${Config.sass.varPrefix}${key.replace("sizes", "letterspacings").toLowerCase()}); 
-      }`;
-    });
+  const tokensSizes = createPathValueArray(
+    tokens.themes.default.globals.font.sizes,
+  );
+  return tokensSizes.map((key) => {
+    return `.fs-${key.path.join("-")} { 
+    font-size: var(--${Config.sass.varPrefix}globals--font--sizes--${key.path.join("--")}); 
+    letter-spacing: var(--${Config.sass.varPrefix}globals--font--letterspacings--${key.path.join("--")}); 
+    }`;
+  });
 }
 
 /**
@@ -226,19 +213,13 @@ function generateFsClasses(tokens: Tokens) {
  * @param tokens
  */
 function generateFClasses(tokens: Tokens) {
-  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
+  const tokensFamilies = createPathValueArray(
+    tokens.themes.default.globals.font.families,
+  );
 
-  return Object.keys(flatTokens)
-    .filter((key) => {
-      // Only include keys that are related to font families (globals.font.families)
-      return key.startsWith("globals--font--families--");
-    })
-    .map((key) => {
-      // Convert the flat key to CSS class name
-      const className = key.replace("globals--font--families--", "");
-
-      return `.f-${className} { font-family: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`;
-    });
+  return tokensFamilies.map((key) => {
+    return `.f-${key.path.join("-")} { font-family: var(--${Config.sass.varPrefix}globals--font--families--${key.path.join("--")}); }`;
+  });
 }
 
 function generateSpacingClasses(tokens: Tokens) {
@@ -252,25 +233,18 @@ function generateSpacingClasses(tokens: Tokens) {
  * @param tokens
  */
 function generateMarginClasses(tokens: Tokens) {
-  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
-
-  return Object.keys(flatTokens)
-    .filter((key) => {
-      // Only include keys that are related to spacings (globals.spacings)
-      return key.startsWith("globals--spacings--");
-    })
-    .map((key) => {
-      // Convert the flat key to CSS class name
-      const className = key.replace("globals--spacings--", "");
-
-      return [
-        `.m-${className} { margin: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
-        `.mb-${className} { margin-bottom: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
-        `.mt-${className} { margin-top: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
-        `.ml-${className} { margin-left: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
-        `.mr-${className} { margin-right: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
-      ].join("");
-    });
+  const tokensSpacings = createPathValueArray(
+    tokens.themes.default.globals.spacings,
+  );
+  return tokensSpacings.map((key) => {
+    return [
+      `.m-${key.path.join("-")} { margin: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+      `.mb-${key.path.join("-")} { margin-bottom: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+      `.mt-${key.path.join("-")} { margin-top: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+      `.ml-${key.path.join("-")} { margin-left: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+      `.mr-${key.path.join("-")} { margin-right: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+    ].join("");
+  });
 }
 
 /**
@@ -280,23 +254,16 @@ function generateMarginClasses(tokens: Tokens) {
  * @param tokens
  */
 function generatePaddingClasses(tokens: Tokens) {
-  const flatTokens = flatify(tokens.themes.default, Config.sass.varSeparator);
-
-  return Object.keys(flatTokens)
-    .filter((key) => {
-      // Only include keys that are related to spacings (globals.spacings)
-      return key.startsWith("globals--spacings--");
-    })
-    .map((key) => {
-      // Convert the flat key to CSS class name
-      const className = key.replace("globals--spacings--", "");
-
-      return [
-        `.p-${className} { padding: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
-        `.pb-${className} { padding-bottom: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
-        `.pt-${className} { padding-top: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
-        `.pl-${className} { padding-left: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
-        `.pr-${className} { padding-right: var(--${Config.sass.varPrefix}${key.toLowerCase()}); }`,
-      ].join("");
-    });
+  const tokensSpacings = createPathValueArray(
+    tokens.themes.default.globals.spacings,
+  );
+  return tokensSpacings.map((key) => {
+    return [
+      `.p-${key.path.join("-")} { margin: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+      `.pb-${key.path.join("-")} { margin-bottom: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+      `.pt-${key.path.join("-")} { margin-top: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+      `.pl-${key.path.join("-")} { margin-left: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+      `.pr-${key.path.join("-")} { margin-right: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+    ].join("");
+  });
 }
