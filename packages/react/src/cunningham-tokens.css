@@ -759,7 +759,7 @@
 	--c--components--button--medium-icon-font-size: 1.5rem;
 	--c--components--button--small-font-size: var(--c--globals--font--sizes--sm);
 	--c--components--button--small-icon-font-size: var(--c--globals--font--sizes--md);
-	--c--components--button--nano-font-size: var(--c--globals--font--sizes--sm);
+	--c--components--button--nano-font-size: var(--c--globals--font--sizes--xs);
 	--c--components--button--nano-icon-font-size: var(--c--globals--font--sizes--md);
 	--c--components--button--font-weight: var(--c--globals--font--weights--regular);
 	--c--components--button--font-family: var(--c--globals--font--families--base);
