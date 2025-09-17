@@ -193,15 +193,6 @@ export const FormExampleRight = {
             state="error"
             disabled={true}
           />
-          <Switch
-            label="VPN"
-            defaultChecked={true}
-            fullWidth={true}
-            labelSide="right"
-            text="You must paDDy for this feature"
-            state="error"
-            disabled={true}
-          />
         </div>
       </form>
     );

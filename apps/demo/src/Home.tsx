@@ -7,12 +7,56 @@ import {
   useToastProvider,
   VariantType,
   useModals,
+  defaultTokens,
 } from "@openfun/cunningham-react";
 import { PageProps } from "./App";
 import { database } from "./Character";
 
+
+interface PathValueObject {
+  path: string[];
+  value: any;
+}
+/**
+ * Creates an array of objects containing path arrays and leaf values from a nested object
+ * @param obj - The object to traverse
+ * @param currentPath - Current path being built (used internally for recursion)
+ * @returns Array of objects with 'path' (array of keys) and 'value' (leaf value) properties
+ */
+export function createPathValueArray(
+  obj: any,
+  currentPath: string[] = [],
+): PathValueObject[] {
+  const result: PathValueObject[] = [];
+
+  Object.entries(obj).forEach(([key, value]) => {
+    const newPath = [...currentPath, key];
+
+    // Check if the value is an object and not null/undefined
+    if (value !== null && typeof value === "object" && !Array.isArray(value)) {
+      // Recursively process nested objects
+      result.push(...createPathValueArray(value, newPath));
+    } else {
+      // This is a leaf value
+      result.push({
+        path: newPath,
+        value,
+      });
+    }
+  });
+
+  return result;
+}
+
 export const Home = ({ modal }: { modal: PageProps }) => {
   const { toast } = useToastProvider();
+  const bg = createPathValueArray(defaultTokens.contextuals.background);
+  const a =  bg.map((key) => {    
+    return `.bg-${key.path.join("-")} { background-color: var(--c--contextuals--background--${key.path.join("--")}); }`;
+  });
+  
+  console.log(a)
+  // console.log(createPathValueArray(bg))
   const modals = useModals();
   const [rowSelection, setRowSelection] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -57,11 +101,11 @@ export const Home = ({ modal }: { modal: PageProps }) => {
   return (
     <main className="page__home">
       <header className="page__home__title">
-        <h1 className="clr-content-semantic--neutral--primary">
+        <h1 className="clr-content-semantic-neutral-primary">
           {/* eslint-disable-next-line react/no-unescaped-entities */}
           🍿Cunningham's <span className="clr-brand-400">Cast</span>
         </h1>
-        <p className="clr-content-semantic--neutral--tertiary fs-sm fw-regular">
+        <p className="clr-content-semantic-neutral-tertiary fs-sm fw-regular">
           Happy Days is an American television sitcom that aired first-run from
           January 15, 1974, to September 24, 1984, on ABC-TV
           <br /> with a total of 255 half-hour episodes spanning over eleven

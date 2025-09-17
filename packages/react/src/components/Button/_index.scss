@@ -1,5 +1,5 @@
 @mixin button-variant($context) {
-
+  white-space: nowrap;
   &:hover,
     &:focus-visible {  
       border-radius: var(--c--components--button--border-radius--focus);

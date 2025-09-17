@@ -11,35 +11,43 @@ type Story = StoryObj<{}>;
 
 export const Default: Story = {
   render: () => {
+    // Trier les espacements par valeur croissante avant de les afficher
+    // Sort spacings by value before rendering
+    const sortedSpacings = Object.entries(
+      tokens.themes.default.globals.spacings,
+    ).sort((a, b) => {
+      // On retire les éventuelles unités pour comparer numériquement
+      const parse = (v: any) =>
+        parseFloat(typeof v === "string" ? v : String(v));
+      return parse(a[1]) - parse(b[1]);
+    });
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        {Object.entries(tokens.themes.default.globals.spacings).map(
-          ([key, value]) => {
-            return (
+        {sortedSpacings.map(([key, value]) => {
+          return (
+            <div
+              key={key}
+              style={{ display: "flex", alignItems: "center", gap: "10px" }}
+            >
               <div
-                key={key}
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                className="fw-bold clr-content-neutral-primary"
+                style={{ width: "50px" }}
               >
-                <div
-                  className="fw-bold clr-secondary-text"
-                  style={{ width: "30px" }}
-                >
-                  -{key}
-                </div>
-                <div
-                  className="fw-medium fs-m clr-secondary-text"
-                  style={{ width: "100px" }}
-                >
-                  {value}
-                </div>
-                <div
-                  className={"bg-error-tertiary pl-" + key}
-                  style={{ height: "48px", width: 0 }}
-                />
+                -{key}
               </div>
-            );
-          }
-        )}
+              <div
+                className="fw-medium fs-m clr-content-neutral-primary"
+                style={{ width: "100px" }}
+              >
+                {value}
+              </div>
+              <div
+                className={"bg-semantic-error-tertiary pl-" + key}
+                style={{ height: "48px", width: 0 }}
+              />
+            </div>
+          );
+        })}
       </div>
     );
   },

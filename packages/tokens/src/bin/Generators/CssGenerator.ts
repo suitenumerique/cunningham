@@ -259,11 +259,11 @@ function generatePaddingClasses(tokens: Tokens) {
   );
   return tokensSpacings.map((key) => {
     return [
-      `.p-${key.path.join("-")} { margin: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
-      `.pb-${key.path.join("-")} { margin-bottom: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
-      `.pt-${key.path.join("-")} { margin-top: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
-      `.pl-${key.path.join("-")} { margin-left: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
-      `.pr-${key.path.join("-")} { margin-right: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+      `.p-${key.path.join("-")} { padding: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+      `.pb-${key.path.join("-")} { padding-bottom: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+      `.pt-${key.path.join("-")} { padding-top: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+      `.pl-${key.path.join("-")} { padding-left: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
+      `.pr-${key.path.join("-")} { padding-right: var(--${Config.sass.varPrefix}globals--spacings--${key.path.join("--")}); }`,
     ].join("");
   });
 }
