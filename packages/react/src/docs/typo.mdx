@@ -33,8 +33,8 @@ You can customize the values of the font size design tokens with the configurati
   export default {
     themes: {
       default: {
-        theme: {
-          typo: {
+        globals: {
+          font: {
             sizes: {
               m: '0.5rem', // You can customize the size of the existing medium text ( 'fs-m' class )
               xxl: '3rem' // You can also add custom sizes yourself ( 'fs-xxl' class will be generated )
@@ -74,8 +74,8 @@ You can customize the values of the font weight design tokens with the configura
   export default {
     themes: {
       default: {
-        theme: {
-          typo: {
+        globals: {
+          fonts: {
             weights: {
               regular: 500, // You can customize the size of the existing regular text ( 'fw-regular' class )
               chunky: 900 // You can also add custom weights yourself ( 'fw-chunky' class will be generated )
@@ -102,7 +102,7 @@ class on every dom element.
   dark
   format={false}
   code={`
-  <div className="clr-greyscale-800 f-accent">Accent text</div>
+  <div className="clr-gray-800 f-accent">Accent text</div>
   `}
 />
 
@@ -119,8 +119,8 @@ You can customize the values of the font family design tokens with the configura
   export default {
     themes: {
       default: {
-        theme: {
-          typo: {
+        globals: {
+          font: {
             families: {
               base: 'Inter', // You can customize the font family of the existing base variation ( 'f-base' class )
               legend: 'Arial' // You can also add custom font families yourself ( 'f-legend' class will be generated )
