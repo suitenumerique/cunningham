@@ -72,7 +72,7 @@ export const BackgroundColors: Story = {
                   className={"bg-" + color + "-" + tint}
                 />
                 <pre className="clr-gray-800 fs-s mt-st">
-                  bg-{color}-{tint}
+                  bg-semantic-{color}-{tint}
                 </pre>
               </div>
             ))}
@@ -85,10 +85,10 @@ export const BackgroundColors: Story = {
 
 export const ContextualBackgrounds: Story = {
   render: () => {
-    const { background } = tokens.themes.default.contextuals;
+    const { semantic } = tokens.themes.default.contextuals.background;
 
     // Extract all background values from the contextuals
-    const backgroundEntries = Object.entries(background).flatMap(
+    const backgroundEntries = Object.entries(semantic).flatMap(
       ([category, values]) => {
         if (typeof values === "object" && values !== null) {
           return Object.entries(values).map(([key, value]) => ({
@@ -176,7 +176,7 @@ export const ContextualBackgrounds: Story = {
                       marginTop: "0.25rem",
                     }}
                   >
-                    .bg-{fullKey}
+                    .bg-semantic-{fullKey}
                   </div>
                 </div>
               ))}
@@ -225,13 +225,13 @@ export const Example: Story = {
   render: () => {
     return (
       <>
-        <div className="bg-brand-tertiary content-brand-primary fw-medium p-t">
+        <div className="bg-semantic-brand-tertiary clr-content-semantic-brand-primary fw-medium p-t">
           I am a text on top of a primary-500 background 👋
         </div>
-        <div className="content-neutral-primary bg-neutral-tertiary fw-medium p-t">
+        <div className="clr-content-semantic-neutral-primary bg-semantic-neutral-tertiary fw-medium p-t">
           I am a text on top of a secondary-500 background 👋
         </div>
-        <div className="bg-error-tertiary content-error-primary fw-medium p-t">
+        <div className="bg-semantic-error-tertiary clr-content-semantic-error-primary fw-medium p-t">
           I am a text on top of a danger-500 background 👋
         </div>
       </>

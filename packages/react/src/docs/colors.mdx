@@ -17,7 +17,7 @@ Cunningham comes with an existing toolkit to deal with colors, and it's easy. ðŸ
   dark
   format={false}
   code={`
-  <div className="bg-brand-primary"/>
+  <div className="bg-semantic-brand-primary"/>
   `}
 />
 
@@ -32,7 +32,7 @@ You can use custom utility classes to set the background color of an element. Th
   dark
   format={false}
   code={`
-<div className="bg-brand-500"></div>
+<div className="bg-semantic-brand-primary"></div>
   `}
 />
 
@@ -51,7 +51,7 @@ You can use custom utility classes to set the color attribute of an element. The
   dark
   format={false}
   code={`
-  <div className="clr-primary-500">Nice primary-500 colored text</div>
+  <div className="clr-content-semantic-brand-primary">Nice primary-500 colored text</div>
   `}
 />
 
@@ -77,10 +77,9 @@ You can customize the values of the color design tokens with the configuration f
   export default {
     themes: {
       default: {
-        theme: {
+        globals: {
           colors: {
-            'primary-500': 'purple', // You can customize the existing primary-500 color. ( bg-primary-500, clr-primary-500 classes ),
-            'primary-text': 'cream',
+            'brand-500': 'purple', // You can customize the existing brand color.
             'amazing-500': 'pink', // You can add a new color. ( bg-amazing-500, clr-amazing-500 classes will be generated )
         },
       },

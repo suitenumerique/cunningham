@@ -14,7 +14,7 @@ Design tokens are the fundamental variables defining the precise behavior and re
 
 For example it could be:
 
-- The primary color of a text element
+- The brand color
 - The standard spacing between two elements
 - The border radius of a button
 - ...
@@ -36,9 +36,9 @@ import { DefaultTokens } from "@openfun/cunningham-react";
 const config: DefaultTokens = {
   themes: {
     default: {
-      theme: {
+      globals: {
         colors: {
-          "primary-500": "purple",
+          "brand-500": "purple",
         },
       },
     },
@@ -58,9 +58,9 @@ Or if you prefer Javascript, create a file named `cunningham.cjs` at the root of
 module.exports = {
   themes: {
     default: {
-      theme: {
+      globals: {
         colors: {
-          "primary-500": "purple",
+          "brand-500": "purple",
         },
       },
     },
@@ -103,7 +103,7 @@ import { DefaultTokens } from "@openfun/cunningham-react";
 const config: DefaultTokens = {
   themes: {
     default: {
-      theme: {
+      globals: {
         ...
       },
       components: {
@@ -143,7 +143,7 @@ import { defaultTokens, DefaultTokens } from "@openfun/cunningham-react";
 const config: DefaultTokens = {
   themes: {
     default: {
-      theme: {
+      globals: {
         ...
       },
       components: {
@@ -161,7 +161,7 @@ export default config;
 
 > Be careful, `DefaultTokens` with a capital `D` is the type of the default tokens, while `defaultTokens` with a lowercase `d` is the object containing the default tokens.
 
-You can also use more global design tokens from `defaultTokens.theme`, like that:
+You can also use more global design tokens from `defaultTokens.globals` and `defaultTokens.contextuals`, like that:
 
 <Source dark={true} code={`
 // cunningham.ts
@@ -170,12 +170,14 @@ import { defaultTokens, DefaultTokens } from "@openfun/cunningham-react";
 const config: DefaultTokens = {
   themes: {
     default: {
-      theme: {
+      globals: {
         ...
       },
       components: {
         button: {
-          "medium-font-size": defaultTokens.theme.font.sizes.s,
+          "medium-font-size": defaultTokens.globals.font.sizes.s,
+          "color": defaultTokens.contextuals.content.semantic.brand.primary,
+          "background-color": defaultTokens.contextuals.background.semantic.neutral.primary,
         },
       },
     },
