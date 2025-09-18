@@ -57,11 +57,11 @@ export const StackedModals = {
             Open Modals
           </Button>
           <Modal
-            leftActions={<Button color="tertiary">Tertiary</Button>}
+            leftActions={<Button variant="tertiary">Tertiary</Button>}
             rightActions={
               <>
-                <Button color="secondary">Secondary</Button>
-                <Button color="primary">Primary</Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button variant="primary">Primary</Button>
               </>
             }
             size={ModalSize.LARGE}
@@ -70,11 +70,11 @@ export const StackedModals = {
             {longLorem.text}
           </Modal>
           <Modal
-            leftActions={<Button color="tertiary">Tertiary</Button>}
+            leftActions={<Button variant="tertiary">Tertiary</Button>}
             rightActions={
               <>
-                <Button color="secondary">Secondary</Button>
-                <Button color="primary">Primary</Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button variant="primary">Primary</Button>
               </>
             }
             size={ModalSize.MEDIUM}
@@ -83,11 +83,11 @@ export const StackedModals = {
             {longLorem.text}
           </Modal>
           <Modal
-            leftActions={<Button color="tertiary">Tertiary</Button>}
+            leftActions={<Button variant="tertiary">Tertiary</Button>}
             rightActions={
               <>
-                <Button color="secondary">Secondary</Button>
-                <Button color="primary">Primary</Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button variant="primary">Primary</Button>
               </>
             }
             size={ModalSize.SMALL}

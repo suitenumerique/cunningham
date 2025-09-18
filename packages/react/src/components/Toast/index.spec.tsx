@@ -97,7 +97,7 @@ describe("<Toast />", () => {
         <Button
           onClick={() =>
             toast("Toast content", VariantType.NEUTRAL, {
-              actions: <Button color="tertiary">Tertiary</Button>,
+              actions: <Button variant="tertiary">Tertiary</Button>,
             })
           }
         >

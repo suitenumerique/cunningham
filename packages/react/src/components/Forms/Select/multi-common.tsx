@@ -117,8 +117,8 @@ export const SelectMultiAux = ({ children, ...props }: SelectMultiAuxProps) => {
                     props.selectedItems.length > 0 && (
                       <>
                         <Button
-                          color="tertiary"
-                          variant="neutral"
+                          variant="tertiary"
+                          color="neutral"
                           size="nano"
                           aria-label={t(
                             "components.forms.select.clear_all_button_aria_label"
@@ -135,8 +135,8 @@ export const SelectMultiAux = ({ children, ...props }: SelectMultiAuxProps) => {
                       </>
                     )}
                   <Button
-                    color="tertiary"
-                    variant="neutral"
+                    variant="tertiary"
+                    color="neutral"
                     size="nano"
                     className="c__select__inner__actions__open"
                     icon={

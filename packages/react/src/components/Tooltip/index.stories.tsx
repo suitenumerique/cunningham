@@ -26,8 +26,8 @@ export const Default = {
       <Button
         size="small"
         icon={<span className="material-icons">info</span>}
-        color="tertiary"
-        variant="neutral"
+        variant="tertiary"
+        color="neutral"
       />
     ),
     content:
@@ -40,22 +40,22 @@ export const Placements = {
     return (
       <div>
         <Tooltip placement="left" content="Hi there">
-          <Button size="nano" color="tertiary" variant="neutral">
+          <Button size="nano" variant="tertiary" color="neutral">
             ⬅️
           </Button>
         </Tooltip>
         <Tooltip placement="bottom" content="Hi there">
-          <Button size="nano" color="tertiary" variant="neutral">
+          <Button size="nano" variant="tertiary" color="neutral">
             ⬇️
           </Button>
         </Tooltip>
         <Tooltip placement="top" content="Hi there">
-          <Button size="nano" color="tertiary" variant="neutral">
+          <Button size="nano" variant="tertiary" color="neutral">
             ⬆️
           </Button>
         </Tooltip>
         <Tooltip placement="right" content="Hi there">
-          <Button size="nano" color="tertiary" variant="neutral">
+          <Button size="nano" variant="tertiary" color="neutral">
             ➡️
           </Button>
         </Tooltip>
@@ -131,8 +131,8 @@ export const WithHtml = {
       <Button
         size="small"
         icon={<span className="material-icons">info</span>}
-        color="tertiary"
-        variant="neutral"
+        variant="tertiary"
+        color="neutral"
       />
     ),
     placement: "right",

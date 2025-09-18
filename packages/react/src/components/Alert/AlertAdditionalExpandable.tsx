@@ -16,8 +16,8 @@ export const AlertAdditionalExpandable = (props: AlertProps) => {
 
   const iconButton = (
     <Button
-      variant={props.type}
-      color="tertiary"
+      color={props.type}
+      variant="tertiary"
       size="nano"
       aria-label={
         expanded
