@@ -13,7 +13,7 @@ export type ButtonElement = HTMLButtonElement & HTMLAnchorElement;
 export type ButtonProps = Omit<DomProps, "color"> &
   RefAttributes<ButtonElement> & {
     size?: "medium" | "small" | "nano";
-    variant?:
+    color?:
       | "brand"
       | "neutral"
       | "info"
@@ -21,7 +21,7 @@ export type ButtonProps = Omit<DomProps, "color"> &
       | "warning"
       | "error"
       | "success";
-    color?: "primary" | "secondary" | "tertiary" | "bordered";
+    variant?: "primary" | "secondary" | "tertiary" | "bordered";
     icon?: ReactNode;
     iconPosition?: "left" | "right";
     active?: boolean;
@@ -30,10 +30,10 @@ export type ButtonProps = Omit<DomProps, "color"> &
 
 export const Button = ({
   children,
-  color = "primary",
+  variant = "primary",
   size = "medium",
   iconPosition = "left",
-  variant = "brand",
+  color = "brand",
   icon,
   active,
   className,
@@ -43,8 +43,8 @@ export const Button = ({
 }: ButtonProps) => {
   const classes = [
     "c__button",
-    "c__button--" + variant,
-    ["c__button--", variant, "--", color].join(""),
+    "c__button--" + color,
+    ["c__button--", color, "--", variant].join(""),
     "c__button--" + size,
     className,
   ];
@@ -60,7 +60,7 @@ export const Button = ({
   if (fullWidth) {
     classes.push("c__button--full-width");
   }
-  if (["primary-text", "tertiary-text"].includes(color)) {
+  if (["primary-text", "tertiary-text"].includes(variant)) {
     classes.push("c__button--text");
   }
   if (props.href && props.disabled) {
@@ -79,6 +79,6 @@ export const Button = ({
       {!!icon && iconPosition === "left" && iconElement}
       {children}
       {!!icon && iconPosition === "right" && iconElement}
-    </>,
+    </>
   );
 };

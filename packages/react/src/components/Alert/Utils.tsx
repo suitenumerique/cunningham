@@ -14,7 +14,7 @@ export const AlertWrapper = (props: AlertProps) => {
         props.className,
         {
           "c__alert--hide": props.hide,
-        },
+        }
       )}
     >
       {props.children}
@@ -42,8 +42,8 @@ export const AlertClose = (props: AlertProps) => {
   return (
     props.canClose && (
       <Button
-        variant={props.type}
-        color="tertiary"
+        color={props.type}
+        variant="tertiary"
         size="small"
         icon={<span className="material-icons">close</span>}
         aria-label={t("components.alert.close_aria_label")}
@@ -60,8 +60,8 @@ export const AlertButtons = (props: AlertProps) => {
     <>
       {props.tertiaryLabel && (
         <Button
-          color="tertiary"
-          variant={props.type}
+          variant="tertiary"
+          color={props.type}
           onClick={props.tertiaryOnClick}
           {...props.tertiaryProps}
         >
@@ -70,8 +70,8 @@ export const AlertButtons = (props: AlertProps) => {
       )}
       {props.primaryLabel && (
         <Button
-          variant={props.type}
-          color="secondary"
+          color={props.type}
+          variant="secondary"
           onClick={props.primaryOnClick}
           {...props.primaryProps}
         >

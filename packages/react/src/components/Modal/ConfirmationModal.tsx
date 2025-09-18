@@ -20,7 +20,7 @@ export const ConfirmationModal = ({
       actions={
         <>
           <Button
-            color="secondary"
+            variant="secondary"
             fullWidth={true}
             onClick={() => onDecide(null)}
           >

@@ -43,7 +43,7 @@ export const EmptyCustomWithButton = () => {
       emptyPlaceholderLabel="This table is empty, create the first object"
       emptyCta={
         <Button
-          color="secondary"
+          variant="secondary"
           icon={<span className="material-icons">add</span>}
         >
           Create object
@@ -114,7 +114,7 @@ export const ClientSideWithoutPagination = () => {
           id: "actions",
           renderCell: () => (
             <Button
-              color="tertiary"
+              variant="tertiary"
               size="small"
               icon={<span className="material-icons">delete</span>}
             />
@@ -198,14 +198,14 @@ export const FullServerSide = () => {
     setTimeout(() => {
       // Set the pagination length.
       pagination.setPagesCount(
-        Math.ceil(sortedDatabase.length / pagination.pageSize),
+        Math.ceil(sortedDatabase.length / pagination.pageSize)
       );
       // Select the rows to display on the current page.
       setRows(
         sortedDatabase.slice(
           (pagination.page - 1) * pagination.pageSize,
-          pagination.page * pagination.pageSize,
-        ),
+          pagination.page * pagination.pageSize
+        )
       );
       setIsLoading(false);
     }, 1000);
@@ -254,8 +254,8 @@ export const FullServerSide = () => {
           id: "actions",
           renderCell: () => (
             <Button
-              variant="neutral"
-              color="tertiary"
+              color="neutral"
+              variant="tertiary"
               size="small"
               icon={<span className="material-icons">delete</span>}
             />
@@ -286,7 +286,7 @@ export const DataListOnly = () => {
           id: "actions",
           renderCell: () => {
             return (
-              <Button size="small" color="secondary">
+              <Button size="small" variant="secondary">
                 Do it
               </Button>
             );
@@ -328,7 +328,7 @@ export const WithColumnWidth = () => {
           size: 50,
           renderCell: () => (
             <Button
-              color="tertiary"
+              variant="tertiary"
               size="small"
               icon={<span className="material-icons">delete</span>}
             />

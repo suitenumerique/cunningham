@@ -22,8 +22,8 @@ export const InputPassword = (props: Omit<InputProps, "rightIcon">) => {
               {showPassword ? "visibility_off" : "visibility"}
             </span>
           }
-          color="tertiary"
-          variant="neutral"
+          variant="tertiary"
+          color="neutral"
           size="small"
           aria-label={t(
             `components.forms.input.password.${showPassword ? "hide" : "show"}_password`

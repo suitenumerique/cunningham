@@ -256,8 +256,8 @@ const CalendarAux = ({
         <div className="c__calendar__wrapper__header">
           <div className="c__calendar__wrapper__header__actions">
             <Button
-              variant="neutral"
-              color="tertiary"
+              color="neutral"
+              variant="tertiary"
               size="small"
               icon={<span className="material-icons">navigate_before</span>}
               {...{
@@ -272,8 +272,8 @@ const CalendarAux = ({
             />
             <Button
               className="c__calendar__wrapper__header__actions__dropdown"
-              variant="neutral"
-              color="tertiary"
+              color="neutral"
+              variant="tertiary"
               size="small"
               iconPosition="right"
               icon={<span className="material-icons">arrow_drop_down</span>}
@@ -285,8 +285,8 @@ const CalendarAux = ({
               )}
             </Button>
             <Button
-              variant="neutral"
-              color="tertiary"
+              color="neutral"
+              variant="tertiary"
               size="small"
               icon={<span className="material-icons">navigate_next</span>}
               type="button"
@@ -302,8 +302,8 @@ const CalendarAux = ({
           </div>
           <div className="c__calendar__wrapper__header__actions">
             <Button
-              variant="neutral"
-              color="tertiary"
+              color="neutral"
+              variant="tertiary"
               size="small"
               icon={<span className="material-icons">navigate_before</span>}
               onClick={() => state.focusPreviousSection(true)}
@@ -318,8 +318,8 @@ const CalendarAux = ({
             />
             <Button
               className="c__calendar__wrapper__header__actions__dropdown"
-              variant="neutral"
-              color="tertiary"
+              color="neutral"
+              variant="tertiary"
               size="small"
               iconPosition="right"
               icon={<span className="material-icons">arrow_drop_down</span>}
@@ -331,8 +331,8 @@ const CalendarAux = ({
               )}
             </Button>
             <Button
-              variant="neutral"
-              color="tertiary"
+              color="neutral"
+              variant="tertiary"
               size="small"
               icon={<span className="material-icons">navigate_next</span>}
               onClick={() => state.focusNextSection(true)}

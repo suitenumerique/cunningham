@@ -14,10 +14,10 @@ describe("<Tooltip />", () => {
   it("appear on button hover and then disappear", async () => {
     render(
       <Tooltip content="Hi there" closeDelay={0}>
-        <Button size="nano" color="tertiary">
+        <Button size="nano" variant="tertiary">
           ⬅️
         </Button>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const button = screen.getByRole("button");
@@ -33,10 +33,10 @@ describe("<Tooltip />", () => {
   it("appear on button focus and then disappear", async () => {
     render(
       <Tooltip content="Hi there" closeDelay={0}>
-        <Button size="nano" color="tertiary">
+        <Button size="nano" variant="tertiary">
           ⬅️
         </Button>
-      </Tooltip>,
+      </Tooltip>
     );
 
     expect(screen.queryByText("Hi there")).not.toBeInTheDocument();
@@ -51,10 +51,10 @@ describe("<Tooltip />", () => {
   it("sets entering and exiting class", async () => {
     render(
       <Tooltip content="Hi there" closeDelay={0}>
-        <Button size="nano" color="tertiary">
+        <Button size="nano" variant="tertiary">
           ⬅️
         </Button>
-      </Tooltip>,
+      </Tooltip>
     );
 
     expect(screen.queryByText("Hi there")).not.toBeInTheDocument();
@@ -102,10 +102,10 @@ describe("<Tooltip />", () => {
         }
         closeDelay={0}
       >
-        <Button size="nano" color="tertiary">
+        <Button size="nano" variant="tertiary">
           ⬅️
         </Button>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const button = screen.getByRole("button");
@@ -128,10 +128,10 @@ describe("<Tooltip />", () => {
         closeDelay={0}
         className="my-custom-class"
       >
-        <Button size="nano" color="tertiary">
+        <Button size="nano" variant="tertiary">
           ⬅️
         </Button>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const button = screen.getByRole("button");
