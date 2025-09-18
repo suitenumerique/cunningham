@@ -99,8 +99,8 @@ export const ModalInner = ({ closeOnEsc = true, ...props }: ModalProps) => {
           <div className="c__modal__close">
             <Button
               icon={<span className="material-icons">close</span>}
-              color="tertiary"
-              variant="neutral"
+              variant="tertiary"
+              color="neutral"
               size="small"
               onClick={props.onClose}
             />

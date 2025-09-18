@@ -38,8 +38,8 @@ export const FileUploaderMulti = ({
               <div className="c__file-uploader__file__specs">
                 <span>{formatBytes(file.size)}</span>
                 <Button
-                  color="tertiary"
-                  variant="neutral"
+                  variant="tertiary"
+                  color="neutral"
                   size="nano"
                   aria-label={t(
                     "components.forms.file_uploader.delete_file_name",

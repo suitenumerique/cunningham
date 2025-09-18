@@ -45,7 +45,7 @@ export const Toast = (props: ToastProps) => {
 
   const removeAfterAnimation = async () => {
     await Promise.allSettled(
-      container.current!.getAnimations().map((animation) => animation.finished),
+      container.current!.getAnimations().map((animation) => animation.finished)
     );
     props.onDelete?.();
   };
@@ -71,7 +71,7 @@ export const Toast = (props: ToastProps) => {
         {props.primaryLabel && (
           <div className="c__toast__content__buttons">
             <Button
-              color="primary"
+              variant="primary"
               onClick={props.primaryOnClick}
               {...props.primaryProps}
             >

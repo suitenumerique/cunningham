@@ -78,8 +78,8 @@ export const InfoCustom: Story = {
     type: VariantType.INFO,
     actions: (
       <>
-        <Button color="primary">Primary</Button>
-        <Button color="secondary">Secondary</Button>
+        <Button variant="primary">Primary</Button>
+        <Button variant="secondary">Secondary</Button>
       </>
     ),
   },

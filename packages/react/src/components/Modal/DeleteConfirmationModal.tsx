@@ -23,7 +23,7 @@ export const DeleteConfirmationModal = ({
       actions={
         <>
           <Button
-            color="secondary"
+            variant="secondary"
             fullWidth={true}
             onClick={() => onDecide(null)}
           >
@@ -32,7 +32,7 @@ export const DeleteConfirmationModal = ({
           <Button
             fullWidth={true}
             onClick={() => onDecide("delete")}
-            variant="error"
+            color="error"
           >
             {t("components.modals.helpers.delete_confirmation.delete")}
           </Button>

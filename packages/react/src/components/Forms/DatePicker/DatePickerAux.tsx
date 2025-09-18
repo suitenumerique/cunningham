@@ -150,8 +150,8 @@ const DatePickerAux = ({
                     ? "components.forms.date_picker.toggle_button_aria_label_close"
                     : "components.forms.date_picker.toggle_button_aria_label_open"
                 )}
-                variant="neutral"
-                color="tertiary"
+                color="neutral"
+                variant="tertiary"
                 size="small"
                 className="c__date-picker__wrapper__toggle"
                 icon={
@@ -167,8 +167,8 @@ const DatePickerAux = ({
                 "c__date-picker__inner__action--hidden":
                   labelAsPlaceholder || disabled,
               })}
-              variant="neutral"
-              color="tertiary"
+              color="neutral"
+              variant="tertiary"
               size="nano"
               icon={<span className="material-icons">close</span>}
               onClick={onClear}

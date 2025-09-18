@@ -97,7 +97,7 @@ export const PrimaryButton: Story = {
   args: {
     size: ModalSize.MEDIUM,
     rightActions: (
-      <Button color="primary" fullWidth={true}>
+      <Button variant="primary" fullWidth={true}>
         Primary
       </Button>
     ),
@@ -108,7 +108,7 @@ export const SecondaryButton: Story = {
   args: {
     size: ModalSize.MEDIUM,
     rightActions: (
-      <Button color="secondary" fullWidth={true}>
+      <Button variant="secondary" fullWidth={true}>
         Secondary
       </Button>
     ),
@@ -119,12 +119,12 @@ export const TwoButtons: Story = {
   args: {
     size: ModalSize.MEDIUM,
     leftActions: (
-      <Button color="secondary" fullWidth={true}>
+      <Button variant="secondary" fullWidth={true}>
         Secondary
       </Button>
     ),
     rightActions: (
-      <Button color="primary" fullWidth={true}>
+      <Button variant="primary" fullWidth={true}>
         Primary
       </Button>
     ),
@@ -135,16 +135,16 @@ export const ThreeButtons: Story = {
   args: {
     size: ModalSize.MEDIUM,
     leftActions: (
-      <Button color="tertiary" fullWidth={true}>
+      <Button variant="tertiary" fullWidth={true}>
         Tertiary
       </Button>
     ),
     rightActions: (
       <>
-        <Button color="secondary" fullWidth={true}>
+        <Button variant="secondary" fullWidth={true}>
           Secondary
         </Button>
-        <Button color="primary" fullWidth={true}>
+        <Button variant="primary" fullWidth={true}>
           Primary
         </Button>
       </>
@@ -157,8 +157,8 @@ export const CenterButtons: Story = {
     size: ModalSize.MEDIUM,
     actions: (
       <>
-        <Button color="secondary">Secondary</Button>
-        <Button color="primary">Primary</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="primary">Primary</Button>
       </>
     ),
   },
@@ -179,7 +179,7 @@ export const ExampleApplication: Story = {
         touch.
       </>
     ),
-    rightActions: <Button color="primary">I understand</Button>,
+    rightActions: <Button variant="primary">I understand</Button>,
   },
   parameters: {
     docs: {
@@ -193,11 +193,11 @@ export const ExampleApplication: Story = {
 export const FullWithContent: Story = {
   args: {
     size: ModalSize.FULL,
-    leftActions: <Button color="tertiary">Tertiary</Button>,
+    leftActions: <Button variant="tertiary">Tertiary</Button>,
     rightActions: (
       <>
-        <Button color="secondary">Secondary</Button>
-        <Button color="primary">Primary</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="primary">Primary</Button>
       </>
     ),
     children: longLorem.text,

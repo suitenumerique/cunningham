@@ -11,10 +11,10 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 type AllButtonsProps = ButtonProps & {
-  variant: ButtonProps["variant"];
+  color: ButtonProps["color"];
 };
 
-const AllButtons = ({ variant = "brand" }: AllButtonsProps) => {
+const AllButtons = ({ color = "brand" }: AllButtonsProps) => {
   return (
     <div
       style={{
@@ -33,24 +33,24 @@ const AllButtons = ({ variant = "brand" }: AllButtonsProps) => {
           justifyContent: "start",
         }}
       >
-        <h4 className={`clr-content-semantic-${variant}-primary`}>Primary</h4>
-        <Button {...Primary.args} variant={variant} />
-        <Button {...PrimaryDisabled.args} variant={variant} />
+        <h4 className={`clr-content-semantic-${color}-primary`}>Primary</h4>
+        <Button {...Primary.args} color={color} />
+        <Button {...PrimaryDisabled.args} color={color} />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <h4 className={`clr-content-semantic-${variant}-primary`}>Secondary</h4>
-        <Button {...Secondary.args} variant={variant} />
-        <Button {...SecondaryDisabled.args} variant={variant} />
+        <h4 className={`clr-content-semantic-${color}-primary`}>Secondary</h4>
+        <Button {...Secondary.args} color={color} />
+        <Button {...SecondaryDisabled.args} color={color} />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <h4 className={`clr-content-semantic-${variant}-primary`}>Tertiary</h4>
-        <Button {...BrandTertiary.args} variant={variant} />
-        <Button {...TertiaryDisabled.args} variant={variant} />
+        <h4 className={`clr-content-semantic-${color}-primary`}>Tertiary</h4>
+        <Button {...BrandTertiary.args} color={color} />
+        <Button {...TertiaryDisabled.args} color={color} />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <h4 className={`clr-content-semantic-${variant}-primary`}>Bordered</h4>
-        <Button {...Bordered.args} variant={variant} />
-        <Button {...BrandBorderedDisabled.args} variant={variant} />
+        <h4 className={`clr-content-semantic-${color}-primary`}>Bordered</h4>
+        <Button {...Bordered.args} color={color} />
+        <Button {...BrandBorderedDisabled.args} color={color} />
       </div>
     </div>
   );
@@ -58,44 +58,44 @@ const AllButtons = ({ variant = "brand" }: AllButtonsProps) => {
 
 export const AllBrands: Story = {
   render: () => {
-    return <AllButtons variant="brand" />;
+    return <AllButtons color="brand" />;
   },
 };
 
 export const AllNeutrals: Story = {
   render: () => {
-    return <AllButtons variant="neutral" />;
+    return <AllButtons color="neutral" />;
   },
 };
 
 export const AllWarnings: Story = {
   render: () => {
-    return <AllButtons variant="warning" />;
+    return <AllButtons color="warning" />;
   },
 };
 
 export const AllErrors: Story = {
   render: () => {
-    return <AllButtons variant="error" />;
+    return <AllButtons color="error" />;
   },
 };
 
 export const AllSuccesses: Story = {
   render: () => {
-    return <AllButtons variant="success" />;
+    return <AllButtons color="success" />;
   },
 };
 
 export const AllInfos: Story = {
   render: () => {
-    return <AllButtons variant="info" />;
+    return <AllButtons color="info" />;
   },
 };
 
 const Primary: Story = {
   args: {
     children: "Primary",
-    color: "primary",
+    variant: "primary",
     icon: <span className="material-icons">bolt</span>,
   },
 };
@@ -103,7 +103,7 @@ const Primary: Story = {
 const PrimaryDisabled: Story = {
   args: {
     children: "Disabled",
-    color: "primary",
+    variant: "primary",
     disabled: true,
     icon: <span className="material-icons">bolt</span>,
   },
@@ -112,7 +112,7 @@ const PrimaryDisabled: Story = {
 const Secondary: Story = {
   args: {
     children: "Secondary",
-    color: "secondary",
+    variant: "secondary",
     icon: <span className="material-icons">bolt</span>,
   },
 };
@@ -120,7 +120,7 @@ const Secondary: Story = {
 const SecondaryDisabled: Story = {
   args: {
     children: "Disabled",
-    color: "secondary",
+    variant: "secondary",
     disabled: true,
     icon: <span className="material-icons">bolt</span>,
   },
@@ -129,7 +129,7 @@ const SecondaryDisabled: Story = {
 const BrandTertiary: Story = {
   args: {
     children: "Tertiary",
-    color: "tertiary",
+    variant: "tertiary",
     icon: <span className="material-icons">bolt</span>,
   },
 };
@@ -137,7 +137,7 @@ const BrandTertiary: Story = {
 const TertiaryDisabled: Story = {
   args: {
     children: "Disabled",
-    color: "tertiary",
+    variant: "tertiary",
     disabled: true,
     icon: <span className="material-icons">bolt</span>,
   },
@@ -146,7 +146,7 @@ const TertiaryDisabled: Story = {
 const Bordered: Story = {
   args: {
     children: "Bordered",
-    color: "bordered",
+    variant: "bordered",
     icon: <span className="material-icons">bolt</span>,
   },
 };
@@ -154,7 +154,7 @@ const Bordered: Story = {
 const BrandBorderedDisabled: Story = {
   args: {
     children: " Disabled",
-    color: "bordered",
+    variant: "bordered",
     disabled: true,
     icon: <span className="material-icons">bolt</span>,
   },
@@ -163,14 +163,14 @@ const BrandBorderedDisabled: Story = {
 export const Medium: Story = {
   args: {
     children: "Primary",
-    color: "primary",
+    variant: "primary",
   },
 };
 
 export const Small: Story = {
   args: {
     children: "Primary",
-    color: "primary",
+    variant: "primary",
     size: "small",
   },
 };
@@ -178,7 +178,7 @@ export const Small: Story = {
 export const Nano: Story = {
   args: {
     children: "Primary",
-    color: "primary",
+    variant: "primary",
     size: "nano",
   },
 };
@@ -186,7 +186,7 @@ export const Nano: Story = {
 export const FullWidth: Story = {
   args: {
     children: "Primary",
-    color: "primary",
+    variant: "primary",
     fullWidth: true,
   },
 };
@@ -194,7 +194,7 @@ export const FullWidth: Story = {
 export const FullWidthWithIcon: Story = {
   args: {
     children: "Primary",
-    color: "primary",
+    variant: "primary",
     fullWidth: true,
     icon: <span className="material-icons">bolt</span>,
   },
@@ -204,7 +204,7 @@ export const IconLeft: Story = {
   args: {
     children: "Icon",
     icon: <span className="material-icons">bolt</span>,
-    color: "primary",
+    variant: "primary",
   },
 };
 
@@ -213,7 +213,7 @@ export const IconRight: Story = {
     children: "Icon",
     iconPosition: "right",
     icon: <span className="material-icons">bolt</span>,
-    color: "primary",
+    variant: "primary",
   },
 };
 
@@ -221,7 +221,7 @@ export const IconOnly: Story = {
   args: {
     "aria-label": "Button with only an icon",
     icon: <span className="material-icons">bolt</span>,
-    color: "primary",
+    variant: "primary",
   },
 };
 
@@ -229,7 +229,7 @@ export const AsLink: Story = {
   args: {
     children: "Go to fun-mooc.fr",
     icon: <span className="material-icons">link</span>,
-    color: "primary",
+    variant: "primary",
     href: "https://www.fun-mooc.fr/",
     target: "_blank",
     rel: "noopener noreferrer",

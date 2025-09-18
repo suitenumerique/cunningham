@@ -106,8 +106,8 @@ export const Pagination = ({
     <div className="c__pagination">
       <div className="c__pagination__list">
         <Button
-          variant="neutral"
-          color="tertiary"
+          color="neutral"
+          variant="tertiary"
           aria-label={t("components.pagination.previous_aria")}
           onClick={onPreviousClick}
           disabled={!canPrevious}
@@ -122,8 +122,8 @@ export const Pagination = ({
             )}
             {_page === page ? (
               <Button
-                variant="neutral"
-                color="bordered"
+                color="neutral"
+                variant="bordered"
                 active={true}
                 aria-label={t("components.pagination.current_page_aria", {
                   page: _page,
@@ -134,8 +134,8 @@ export const Pagination = ({
               </Button>
             ) : (
               <Button
-                variant="neutral"
-                color="tertiary"
+                color="neutral"
+                variant="tertiary"
                 aria-label={t("components.pagination.goto_page_aria", {
                   page: _page,
                 })}
@@ -148,8 +148,8 @@ export const Pagination = ({
           </Fragment>
         ))}
         <Button
-          variant="neutral"
-          color="tertiary"
+          color="neutral"
+          variant="tertiary"
           aria-label={t("components.pagination.next_aria")}
           onClick={onNextClick}
           disabled={!canNext}

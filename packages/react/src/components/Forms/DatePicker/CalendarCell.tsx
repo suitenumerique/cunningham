@@ -58,8 +58,8 @@ export const CalendarCell = ({ state, date }: CalendarCellProps) => {
       >
         <Button
           size="small"
-          variant={isSelected ? "brand" : "neutral"}
-          color={
+          color={isSelected ? "brand" : "neutral"}
+          variant={
             (
               isRangeCalendar(state)
                 ? isSelectionStart || isSelectionEnd
