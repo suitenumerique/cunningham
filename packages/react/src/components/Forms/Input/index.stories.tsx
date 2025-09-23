@@ -259,7 +259,7 @@ export const ReactHookForm = () => {
       mode: "onChange",
       reValidateMode: "onChange",
       resolver: yupResolver(inputExampleSchema),
-    }
+    },
   );
 
   return (

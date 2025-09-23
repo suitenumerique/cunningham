@@ -26,7 +26,7 @@ export const InputPassword = (props: Omit<InputProps, "rightIcon">) => {
           color="neutral"
           size="small"
           aria-label={t(
-            `components.forms.input.password.${showPassword ? "hide" : "show"}_password`
+            `components.forms.input.password.${showPassword ? "hide" : "show"}_password`,
           )}
         />
       }

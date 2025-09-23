@@ -198,14 +198,14 @@ export const FullServerSide = () => {
     setTimeout(() => {
       // Set the pagination length.
       pagination.setPagesCount(
-        Math.ceil(sortedDatabase.length / pagination.pageSize)
+        Math.ceil(sortedDatabase.length / pagination.pageSize),
       );
       // Select the rows to display on the current page.
       setRows(
         sortedDatabase.slice(
           (pagination.page - 1) * pagination.pageSize,
-          pagination.page * pagination.pageSize
-        )
+          pagination.page * pagination.pageSize,
+        ),
       );
       setIsLoading(false);
     }, 1000);

@@ -49,7 +49,7 @@ const SelectedItemsChips = ({
           onClick={(e) => {
             e.stopPropagation();
             useMultipleSelectionReturn.removeSelectedItem(
-              selectedItemForRender
+              selectedItemForRender,
             );
           }}
           icon={<span className="material-icons">close</span>}

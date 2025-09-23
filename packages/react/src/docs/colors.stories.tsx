@@ -99,7 +99,7 @@ export const ContextualBackgrounds: Story = {
           }));
         }
         return [];
-      }
+      },
     );
 
     // Group by category
@@ -111,7 +111,7 @@ export const ContextualBackgrounds: Story = {
         acc[entry.category].push(entry);
         return acc;
       },
-      {} as Record<string, typeof backgroundEntries>
+      {} as Record<string, typeof backgroundEntries>,
     );
 
     return (

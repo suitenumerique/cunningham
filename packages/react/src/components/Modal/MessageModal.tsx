@@ -26,7 +26,7 @@ export const MessageModal = ({
           <span
             className={classNames(
               "material-icons",
-              `modal-message-${messageType}-icon`
+              `modal-message-${messageType}-icon`,
             )}
           >
             {iconFromType(messageType)}

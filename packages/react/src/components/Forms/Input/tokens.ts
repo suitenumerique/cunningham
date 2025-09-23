@@ -18,5 +18,6 @@ export const tokens = (defaults: DefaultTokens) => ({
   "label-color--focus": defaults.contextuals.content.semantic.brand.primary,
   "background-color": defaults.contextuals.background.surface.secondary,
   "value-color": defaults.contextuals.content.semantic.neutral.primary,
-  "value-color--disabled": defaults.contextuals.content.semantic.disabled.primary,
+  "value-color--disabled":
+    defaults.contextuals.content.semantic.disabled.primary,
 });

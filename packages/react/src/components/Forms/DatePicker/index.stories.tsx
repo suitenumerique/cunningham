@@ -140,7 +140,7 @@ export const ReactHookForm = () => {
     resolver: yupResolver(
       Yup.object().shape({
         date: Yup.string().required(),
-      })
+      }),
     ),
   });
 

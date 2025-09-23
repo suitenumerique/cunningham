@@ -14,7 +14,7 @@ export const AlertWrapper = (props: AlertProps) => {
         props.className,
         {
           "c__alert--hide": props.hide,
-        }
+        },
       )}
     >
       {props.children}

@@ -17,7 +17,7 @@ describe("<Alert/>", () => {
     render(
       <CunninghamProvider>
         <Alert type={type}>Alert component</Alert>
-      </CunninghamProvider>
+      </CunninghamProvider>,
     );
     const $icon = document.querySelector(".c__alert__icon");
     if (icon) {
@@ -32,7 +32,7 @@ describe("<Alert/>", () => {
         <Alert type={VariantType.INFO} additional="Additional information">
           Alert component
         </Alert>
-      </CunninghamProvider>
+      </CunninghamProvider>,
     );
     expect(screen.getByText("Additional information")).toBeInTheDocument();
   });
@@ -42,7 +42,7 @@ describe("<Alert/>", () => {
         <Alert type={VariantType.INFO} primaryLabel="Primary">
           Alert component
         </Alert>
-      </CunninghamProvider>
+      </CunninghamProvider>,
     );
     screen.getByRole("button", { name: "Primary" });
   });
@@ -52,7 +52,7 @@ describe("<Alert/>", () => {
         <Alert type={VariantType.INFO} tertiaryLabel="Tertiary">
           Alert component
         </Alert>
-      </CunninghamProvider>
+      </CunninghamProvider>,
     );
     screen.getByRole("button", { name: "Tertiary" });
   });
@@ -66,7 +66,7 @@ describe("<Alert/>", () => {
         >
           Alert component
         </Alert>
-      </CunninghamProvider>
+      </CunninghamProvider>,
     );
     screen.getByRole("button", { name: "Primary" });
     screen.getByRole("button", { name: "Tertiary" });
@@ -85,7 +85,7 @@ describe("<Alert/>", () => {
         >
           Alert component
         </Alert>
-      </CunninghamProvider>
+      </CunninghamProvider>,
     );
     screen.getByRole("button", { name: "Primary Custom" });
     screen.getByRole("button", { name: "Secondary Custom" });
@@ -96,7 +96,7 @@ describe("<Alert/>", () => {
         <Alert type={VariantType.INFO} canClose={true}>
           Alert component
         </Alert>
-      </CunninghamProvider>
+      </CunninghamProvider>,
     );
 
     screen.getByText("Alert component");
@@ -165,14 +165,14 @@ describe("<Alert/>", () => {
         >
           Alert component
         </Alert>
-      </CunninghamProvider>
+      </CunninghamProvider>,
     );
 
     const user = userEvent.setup();
 
     screen.getByText("Alert component");
     expect(
-      screen.queryByText("Additional information")
+      screen.queryByText("Additional information"),
     ).not.toBeInTheDocument();
 
     const $expandButton = screen.getByRole("button", { name: "Expand alert" });
@@ -184,7 +184,7 @@ describe("<Alert/>", () => {
     await user.click($shrinkButton);
 
     expect(
-      screen.queryByText("Additional information")
+      screen.queryByText("Additional information"),
     ).not.toBeInTheDocument();
   });
   it("can expand the alert controlled", async () => {
@@ -226,7 +226,7 @@ describe("<Alert/>", () => {
 
     screen.getByText("Expanded: false");
     expect(
-      screen.queryByText("Additional information")
+      screen.queryByText("Additional information"),
     ).not.toBeInTheDocument();
 
     // Expand from alert.
@@ -246,14 +246,14 @@ describe("<Alert/>", () => {
 
     screen.getByText("Expanded: false");
     expect(
-      screen.queryByText("Additional information")
+      screen.queryByText("Additional information"),
     ).not.toBeInTheDocument();
   });
 
   it("renders with className", async () => {
     render(<Alert className="my-custom-class" />);
     expect(
-      document.querySelector(".c__alert.my-custom-class")
+      document.querySelector(".c__alert.my-custom-class"),
     ).toBeInTheDocument();
   });
 });

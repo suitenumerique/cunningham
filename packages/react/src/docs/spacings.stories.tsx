@@ -14,7 +14,7 @@ export const Default: Story = {
     // Trier les espacements par valeur croissante avant de les afficher
     // Sort spacings by value before rendering
     const sortedSpacings = Object.entries(
-      tokens.themes.default.globals.spacings
+      tokens.themes.default.globals.spacings,
     ).sort((a, b) => {
       // On retire les éventuelles unités pour comparer numériquement
       const parse = (v: any) =>

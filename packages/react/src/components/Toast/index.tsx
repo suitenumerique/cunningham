@@ -45,7 +45,7 @@ export const Toast = (props: ToastProps) => {
 
   const removeAfterAnimation = async () => {
     await Promise.allSettled(
-      container.current!.getAnimations().map((animation) => animation.finished)
+      container.current!.getAnimations().map((animation) => animation.finished),
     );
     props.onDelete?.();
   };
