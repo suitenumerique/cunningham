@@ -12,7 +12,7 @@ import Onboarding from "./Onboarding";
 enum Theme {
   CUNNINGHAM = "cunningham",
   REDFLUX = "redflux",
-  BLUENEY = "blueny",
+  BLUENEY = "blueney",
 }
 
 enum Variant {
@@ -31,7 +31,7 @@ const THEMES: Record<Theme, Record<Variant, string | undefined>> = {
   },
   [Theme.BLUENEY]: {
     light: undefined,
-    dark: "blueny",
+    dark: "blueney",
   },
 };
 
@@ -45,12 +45,11 @@ const preferredScheme = window.matchMedia("(prefers-color-scheme: dark)")
 export const App = () => {
   const [locale] = useState("en-US");
   const [theme, setTheme] = useState<Theme>(
-    (sessionStorage.getItem("c-theme") as Theme | null) ??
-      preferredScheme.theme,
+    (sessionStorage.getItem("c-theme") as Theme | null) ?? preferredScheme.theme
   );
   const [variant, setVariant] = useState<Variant>(
     (sessionStorage.getItem("c-variant") as Variant | null) ??
-      preferredScheme.variant,
+      preferredScheme.variant
   );
   const activeTheme = useMemo(() => THEMES[theme][variant], [theme, variant]);
   const modal = useModal();
@@ -98,13 +97,14 @@ export const App = () => {
             setTheme(e.target.value as Theme);
             if (THEMES[e.target.value as Theme][variant] === undefined) {
               setVariant(
-                variant === Variant.LIGHT ? Variant.DARK : Variant.LIGHT,
+                variant === Variant.LIGHT ? Variant.DARK : Variant.LIGHT
               );
             }
           }}
         />
         <Button
-          color="tertiary"
+          color="brand"
+          variant="tertiary"
           icon={
             <span className="material-icons">
               {variant === Variant.DARK ? "light_mode" : "dark_mode"}
@@ -112,7 +112,7 @@ export const App = () => {
           }
           onClick={() => {
             setVariant(
-              variant === Variant.LIGHT ? Variant.DARK : Variant.LIGHT,
+              variant === Variant.LIGHT ? Variant.DARK : Variant.LIGHT
             );
           }}
           disabled={

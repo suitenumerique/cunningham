@@ -12,51 +12,8 @@ import {
 import { PageProps } from "./App";
 import { database } from "./Character";
 
-
-interface PathValueObject {
-  path: string[];
-  value: any;
-}
-/**
- * Creates an array of objects containing path arrays and leaf values from a nested object
- * @param obj - The object to traverse
- * @param currentPath - Current path being built (used internally for recursion)
- * @returns Array of objects with 'path' (array of keys) and 'value' (leaf value) properties
- */
-export function createPathValueArray(
-  obj: any,
-  currentPath: string[] = [],
-): PathValueObject[] {
-  const result: PathValueObject[] = [];
-
-  Object.entries(obj).forEach(([key, value]) => {
-    const newPath = [...currentPath, key];
-
-    // Check if the value is an object and not null/undefined
-    if (value !== null && typeof value === "object" && !Array.isArray(value)) {
-      // Recursively process nested objects
-      result.push(...createPathValueArray(value, newPath));
-    } else {
-      // This is a leaf value
-      result.push({
-        path: newPath,
-        value,
-      });
-    }
-  });
-
-  return result;
-}
-
 export const Home = ({ modal }: { modal: PageProps }) => {
   const { toast } = useToastProvider();
-  const bg = createPathValueArray(defaultTokens.contextuals.background);
-  const a =  bg.map((key) => {    
-    return `.bg-${key.path.join("-")} { background-color: var(--c--contextuals--background--${key.path.join("--")}); }`;
-  });
-  
-  console.log(a)
-  // console.log(createPathValueArray(bg))
   const modals = useModals();
   const [rowSelection, setRowSelection] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -114,9 +71,10 @@ export const Home = ({ modal }: { modal: PageProps }) => {
           Created by Garry Marshall, the series presented an idealized vision of
           life in the mid-1950s to mid-1960s Midwestern United States.
         </p>
-        
+
         <Button
-          color="primary"
+          color="brand"
+          variant="primary"
           icon={<span className="material-icons">movie</span>}
           onClick={modal.open}
         >
@@ -171,8 +129,8 @@ export const Home = ({ modal }: { modal: PageProps }) => {
                 id: "actions",
                 renderCell: (params) => (
                   <Button
-                    color="tertiary"
-                    variant="neutral"
+                    color="neutral"
+                    variant="tertiary"
                     size="small"
                     onClick={async () => {
                       const decision = await modals.deleteConfirmationModal();
@@ -210,8 +168,8 @@ export const Home = ({ modal }: { modal: PageProps }) => {
           <li>
             <Button
               size="small"
-              color="tertiary"
-              variant="neutral"
+              variant="tertiary"
+              color="neutral"
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.france-universite-numerique.fr/en/"
@@ -224,8 +182,8 @@ export const Home = ({ modal }: { modal: PageProps }) => {
           <li>
             <Button
               size="small"
-              color="tertiary"
-              variant="neutral"
+              variant="tertiary"
+              color="neutral"
               target="_blank"
               rel="noopener noreferrer"
               href="https://discord.gg/TXPSCMeDzd"
@@ -236,8 +194,8 @@ export const Home = ({ modal }: { modal: PageProps }) => {
           <li>
             <Button
               size="small"
-              color="tertiary"
-              variant="neutral"
+              variant="tertiary"
+              color="neutral"
               target="_blank"
               rel="noopener noreferrer"
               href="https://github.com/openfun/cunningham"
@@ -248,8 +206,8 @@ export const Home = ({ modal }: { modal: PageProps }) => {
           <li>
             <Button
               size="small"
-              color="tertiary"
-              variant="neutral"
+              variant="tertiary"
+              color="neutral"
               target="_blank"
               rel="noopener noreferrer"
               href="https://openfun.github.io/cunningham/storybook"
@@ -260,8 +218,8 @@ export const Home = ({ modal }: { modal: PageProps }) => {
           <li>
             <Button
               size="small"
-              color="tertiary"
-              variant="neutral"
+              variant="tertiary"
+              color="neutral"
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.figma.com/file/JbPT1R6YUFW4oH8jHvH960/DS-Cunningham---PUBLIC?type=design"

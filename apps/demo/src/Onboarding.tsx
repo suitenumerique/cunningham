@@ -20,7 +20,8 @@ const Onboarding = () => {
       rightActions={
         <div className="onboarding__footer">
           <Button
-            color="primary"
+            color="brand"
+            variant="primary"
             iconPosition="right"
             fullWidth={true}
             onClick={handleClose}
@@ -29,7 +30,8 @@ const Onboarding = () => {
           </Button>
           <Button
             href="https://openfun.github.io/cunningham/storybook"
-            color="tertiary"
+            color="brand"
+            variant="tertiary"
             size="small"
             icon={<span className="material-icons">open_in_new</span>}
             fullWidth={true}
