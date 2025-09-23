@@ -121,7 +121,7 @@ describe("CssGenerator", () => {
     }
 .f-base { font-family: var(--c--globals--font--families--base); }
 .m-s { margin: var(--c--globals--spacings--s); }.mb-s { margin-bottom: var(--c--globals--spacings--s); }.mt-s { margin-top: var(--c--globals--spacings--s); }.ml-s { margin-left: var(--c--globals--spacings--s); }.mr-s { margin-right: var(--c--globals--spacings--s); }
-.p-s { margin: var(--c--globals--spacings--s); }.pb-s { margin-bottom: var(--c--globals--spacings--s); }.pt-s { margin-top: var(--c--globals--spacings--s); }.pl-s { margin-left: var(--c--globals--spacings--s); }.pr-s { margin-right: var(--c--globals--spacings--s); }
+.p-s { padding: var(--c--globals--spacings--s); }.pb-s { padding-bottom: var(--c--globals--spacings--s); }.pt-s { padding-top: var(--c--globals--spacings--s); }.pl-s { padding-left: var(--c--globals--spacings--s); }.pr-s { padding-right: var(--c--globals--spacings--s); }
 .border-clr-primary { border-color: var(--c--contextuals--border--primary); }
 .border-thin-primary { border: 1px solid var(--c--contextuals--border--primary); }
 .clr-content-primary { color: var(--c--contextuals--content--primary); }
