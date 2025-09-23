@@ -7,7 +7,6 @@ import {
   useToastProvider,
   VariantType,
   useModals,
-  defaultTokens,
 } from "@openfun/cunningham-react";
 import { PageProps } from "./App";
 import { database } from "./Character";
@@ -43,14 +42,14 @@ export const Home = ({ modal }: { modal: PageProps }) => {
 
     // Set the pagination length.
     pagination.setPagesCount(
-      Math.ceil(sortedDatabase.length / pagination.pageSize)
+      Math.ceil(sortedDatabase.length / pagination.pageSize),
     );
     // Select the rows to display on the current page.
     setRows(
       sortedDatabase.slice(
         (pagination.page - 1) * pagination.pageSize,
-        pagination.page * pagination.pageSize
-      )
+        pagination.page * pagination.pageSize,
+      ),
     );
     setIsLoading(false);
   }, [pagination.page, sortModel, modal.isOpen, refresh]);
@@ -138,13 +137,13 @@ export const Home = ({ modal }: { modal: PageProps }) => {
                         return;
                       }
                       const index = database.findIndex(
-                        (character) => character.id === params.row.id
+                        (character) => character.id === params.row.id,
                       );
                       database.splice(index, 1);
                       setRefresh(refresh + 1);
                       toast(
                         "Character deleted successfully",
-                        VariantType.WARNING
+                        VariantType.WARNING,
                       );
                     }}
                     icon={<span className="material-icons">delete</span>}

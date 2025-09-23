@@ -55,7 +55,9 @@ export const Create = (props: PageProps) => {
     >
       <form className="page__create clr-gray-900" onSubmit={submit}>
         <div className="page__create__group">
-          <h3 className="clr-content-semantic-neutral-primary fw-bold fs-h3">General Information</h3>
+          <h3 className="clr-content-semantic-neutral-primary fw-bold fs-h3">
+            General Information
+          </h3>
           <Alert type={VariantType.INFO}>
             You are about to add a new character to the collection
           </Alert>
@@ -91,7 +93,9 @@ export const Create = (props: PageProps) => {
           <Checkbox name="is_guest" label="This character is a guest" />
         </div>
         <div className="page__create__group mt-l">
-          <h3 className="clr-content-semantic-neutral-primary fw-bold fs-h3">Bio</h3>
+          <h3 className="clr-content-semantic-neutral-primary fw-bold fs-h3">
+            Bio
+          </h3>
           <Alert type={VariantType.WARNING}>
             Please be exhaustive, every detail counts!
           </Alert>
@@ -127,7 +131,9 @@ export const Create = (props: PageProps) => {
           <Switch name="is_public" label="Make this character public" />
 
           <div>
-            <h4 className="clr-content-semantic-neutral-primary">Add pictures</h4>
+            <h4 className="clr-content-semantic-neutral-primary">
+              Add pictures
+            </h4>
 
             <div className="mt-s">
               <FileUploader
