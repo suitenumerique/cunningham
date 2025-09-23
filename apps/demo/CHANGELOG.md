@@ -1,5 +1,11 @@
 # cunningham-demo
 
+## 3.0.0
+
+### Major Changes
+
+- Implement new tokens architecture
+
 ## 2.0.0
 
 ### Major Changes
@@ -30,7 +36,8 @@
 
 - 2a5acea: The CSS utility classes are no longer automatically included when using Cunningham bin.
 
-[unreleased]: https://github.com/openfun/cunningham/compare/cunningham-demo@2.0.0...main
+[unreleased]: https://github.com/openfun/cunningham/compare/cunningham-demo@3.0.0...main
+[3.0.0]: https://github.com/openfun/cunningham/compare/cunningham-demo@2.0.0...cunningham-demo@3.0.0
 [2.0.0]: https://github.com/openfun/cunningham/compare/cunningham-demo@1.0.1...cunningham-demo@2.0.0
 [1.0.1]: https://github.com/openfun/cunningham/compare/cunningham-demo@1.0.0...cunningham-demo@1.0.1
 [1.0.0]: https://github.com/openfun/cunningham/compare/cunningham-demo@0.1.0...cunningham-demo@1.0.0
