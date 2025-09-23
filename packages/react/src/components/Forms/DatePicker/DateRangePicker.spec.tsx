@@ -576,22 +576,20 @@ describe("<DateRangePicker/>", () => {
     await user.click(monthButton);
     await user.click(screen.getByRole("option", { name: "January" }));
 
-    await user.click(
-      screen.getByRole("button", {
-        name: "Saturday, January 1, 1910",
-      }),
-    );
+    const startDateButton = await screen.findByRole("button", {
+      name: "Saturday, January 1, 1910",
+    });
+    await user.click(startDateButton);
 
     // Select the end date.
     await user.click(yearButton);
     await user.click(screen.getByRole("option", { name: "2040" }));
     await user.click(monthButton);
     await user.click(screen.getByRole("option", { name: "September" }));
-    await user.click(
-      screen.getByRole("button", {
-        name: "Sunday, September 2, 2040",
-      }),
-    );
+    const endDateButton = await screen.findByRole("button", {
+      name: "Sunday, September 2, 2040",
+    });
+    await user.click(endDateButton);
 
     // Make sure the correct dates are set.
     expectCalendarToBeClosed();
