@@ -79,6 +79,6 @@ export const Button = ({
       {!!icon && iconPosition === "left" && iconElement}
       {children}
       {!!icon && iconPosition === "right" && iconElement}
-    </>
+    </>,
   );
 };

@@ -12,9 +12,12 @@ export const tokens = (defaults: DefaultTokens) => ({
   "accent-color": defaults.contextuals.content.semantic.contextual.primary,
 
   size: "1.5rem",
-  "background-color--checked": defaults.contextuals.content.semantic.brand.tertiary,
+  "background-color--checked":
+    defaults.contextuals.content.semantic.brand.tertiary,
   "background-color--indeterminate":
     defaults.contextuals.content.semantic.brand.tertiary,
-  "background-color--disabled": defaults.contextuals.content.semantic.disabled.primary,
-  "border-color--disabled": defaults.contextuals.content.semantic.disabled.primary,
+  "background-color--disabled":
+    defaults.contextuals.content.semantic.disabled.primary,
+  "border-color--disabled":
+    defaults.contextuals.content.semantic.disabled.primary,
 });

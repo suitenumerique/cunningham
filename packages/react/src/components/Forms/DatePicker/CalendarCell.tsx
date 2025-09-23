@@ -75,9 +75,9 @@ export const CalendarCell = ({ state, date }: CalendarCellProps) => {
                 isSelected,
               "c__calendar__wrapper__grid__week-row__button--today": isToday(
                 date,
-                getLocalTimeZone()
+                getLocalTimeZone(),
               ),
-            }
+            },
           )}
           type="button"
           disabled={isDisabled}

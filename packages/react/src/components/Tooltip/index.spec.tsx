@@ -17,7 +17,7 @@ describe("<Tooltip />", () => {
         <Button size="nano" variant="tertiary">
           ⬅️
         </Button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     const button = screen.getByRole("button");
@@ -36,7 +36,7 @@ describe("<Tooltip />", () => {
         <Button size="nano" variant="tertiary">
           ⬅️
         </Button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     expect(screen.queryByText("Hi there")).not.toBeInTheDocument();
@@ -54,7 +54,7 @@ describe("<Tooltip />", () => {
         <Button size="nano" variant="tertiary">
           ⬅️
         </Button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     expect(screen.queryByText("Hi there")).not.toBeInTheDocument();
@@ -105,7 +105,7 @@ describe("<Tooltip />", () => {
         <Button size="nano" variant="tertiary">
           ⬅️
         </Button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     const button = screen.getByRole("button");
@@ -131,7 +131,7 @@ describe("<Tooltip />", () => {
         <Button size="nano" variant="tertiary">
           ⬅️
         </Button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     const button = screen.getByRole("button");

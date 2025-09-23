@@ -10,10 +10,12 @@ export const tokens = (defaults: DefaultTokens) => ({
   "border-color": defaults.contextuals.border.semantic.neutral.tertiary,
   "border-color--hover": defaults.contextuals.border.semantic.neutral.secondary,
   "border-color--focus": defaults.contextuals.border.semantic.brand.primary,
-  "border-color--disabled": defaults.contextuals.border.semantic.disabled.primary,
+  "border-color--disabled":
+    defaults.contextuals.border.semantic.disabled.primary,
   "border-style": "solid",
   "label-color--focus": defaults.contextuals.border.semantic.brand.primary,
   "background-color": defaults.contextuals.background.surface.primary,
   "value-color": defaults.contextuals.content.semantic.neutral.primary,
-  "value-color--disabled": defaults.contextuals.content.semantic.neutral.secondary,
+  "value-color--disabled":
+    defaults.contextuals.content.semantic.neutral.secondary,
 });

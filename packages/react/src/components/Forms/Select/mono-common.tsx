@@ -101,7 +101,7 @@ export const SelectMonoAux = ({
             "c__select--" + state,
             {
               "c__select--disabled": disabled,
-            }
+            },
           )}
           onBlur={() =>
             onBlur?.({ target: { value: downshiftReturn.selectedItem?.value } })
@@ -142,7 +142,7 @@ export const SelectMonoAux = ({
                         color="neutral"
                         size="nano"
                         aria-label={t(
-                          "components.forms.select.clear_button_aria_label"
+                          "components.forms.select.clear_button_aria_label",
                         )}
                         className="c__select__inner__actions__clear"
                         onClick={(e) => {

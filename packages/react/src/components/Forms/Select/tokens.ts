@@ -10,7 +10,8 @@ export const tokens = (defaults: DefaultTokens) => ({
   "border-style": "solid",
   "border-width": "1px",
   "value-color": defaults.contextuals.content.semantic.neutral.primary,
-  "value-color--disabled": defaults.contextuals.content.semantic.disabled.primary,
+  "value-color--disabled":
+    defaults.contextuals.content.semantic.disabled.primary,
   "font-size": defaults.globals.font.sizes.md,
   height: "3.5rem",
   "item-background-color--hover":
@@ -18,7 +19,8 @@ export const tokens = (defaults: DefaultTokens) => ({
   "item-background-color--selected":
     defaults.contextuals.background.semantic.brand.secondary,
   "item-color": defaults.contextuals.content.semantic.neutral.primary,
-  "item-color--disabled": defaults.contextuals.content.semantic.disabled.secondary,
+  "item-color--disabled":
+    defaults.contextuals.content.semantic.disabled.secondary,
   "item-font-size": defaults.globals.font.sizes.md,
   "background-color": defaults.contextuals.background.surface.primary,
   "menu-background-color": defaults.contextuals.background.surface.primary,

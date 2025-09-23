@@ -11,7 +11,7 @@ export const AlertAdditionalExpandable = (props: AlertProps) => {
   const [expanded, onExpand] = useControllableState(
     false,
     props.expanded,
-    props.onExpand
+    props.onExpand,
   );
 
   const iconButton = (

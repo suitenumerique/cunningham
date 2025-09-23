@@ -2,7 +2,8 @@ import { DefaultTokens } from "@openfun/cunningham-tokens";
 
 export const tokens = (defaults: DefaultTokens) => ({
   "border-color": defaults.contextuals.border.semantic.neutral.tertiary,
-  "border-color--disabled": defaults.contextuals.border.semantic.disabled.primary,
+  "border-color--disabled":
+    defaults.contextuals.border.semantic.disabled.primary,
   "border-color--focus": defaults.contextuals.border.semantic.brand.primary,
   "border-color--hover": defaults.contextuals.border.semantic.neutral.secondary,
   "border-radius": "8px",
@@ -11,7 +12,8 @@ export const tokens = (defaults: DefaultTokens) => ({
   "border-style": "solid",
   "border-width": "1px",
   "value-color": defaults.contextuals.content.semantic.neutral.tertiary,
-  "value-color--disabled": defaults.contextuals.content.semantic.disabled.primary,
+  "value-color--disabled":
+    defaults.contextuals.content.semantic.disabled.primary,
   "font-size": defaults.globals.font.sizes.lg,
   height: "3.5rem",
   "item-background-color--hover":
@@ -26,7 +28,9 @@ export const tokens = (defaults: DefaultTokens) => ({
     defaults.contextuals.background.semantic.brand.tertiary,
   "range-selection-background-color--disabled":
     defaults.contextuals.background.semantic.neutral.tertiary,
-  "grid-cell--border-color--today": defaults.contextuals.border.semantic.brand.primary,
-  "grid-cell--color--today": defaults.contextuals.content.semantic.brand.primary,
+  "grid-cell--border-color--today":
+    defaults.contextuals.border.semantic.brand.primary,
+  "grid-cell--color--today":
+    defaults.contextuals.content.semantic.brand.primary,
   "label-color--focus": defaults.contextuals.border.semantic.brand.secondary,
 });

@@ -509,7 +509,7 @@ export const ReactHookForm = () => {
       .test({
         test: (cityList) =>
           cityList.every((city) =>
-            [CitiesOptionEnum.PARIS, CitiesOptionEnum.TOKYO].includes(city)
+            [CitiesOptionEnum.PARIS, CitiesOptionEnum.TOKYO].includes(city),
           ),
         message: "Wrong answer!",
       }),
