@@ -27,7 +27,9 @@ export const Default = {
   render: Template,
   args: {
     label: "Your label here",
-    children: <span className="clr-gray-800">Hello world</span>,
+    children: (
+      <span className="clr-content-semantic-neutral-primary">Hello world</span>
+    ),
   },
 };
 
@@ -44,6 +46,8 @@ export const NoLabel = {
   args: {
     label: "Your label here",
     hideLabel: true,
-    children: <span className="clr-gray-800">Hello world</span>,
+    children: (
+      <span className="clr-content-semantic-neutral-primary">Hello world</span>
+    ),
   },
 };

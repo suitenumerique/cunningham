@@ -1,14 +1,12 @@
-import { Canvas, Meta, Story, Source } from '@storybook/addon-docs';
+import { Canvas, Meta, Story, Source } from "@storybook/addon-docs";
 
-<Meta title="Migrating/From v3 to v4"/>
+<Meta title="Migrating/From v3 to v4" />
 
 # Objective
 
-The Cunningham color system has been revised with a methodical approach focused on modularity and accessibility. This revision enables the systematic generation of coherent themes, the automatic implementation of display modes (light/dark), the constant maintenance of contrast ratios independently of the selected theme, and the structured allocation of colors according to their role (background, content, border). 
+The Cunningham color system has been revised with a methodical approach focused on modularity and accessibility. This revision enables the systematic generation of coherent themes, the automatic implementation of display modes (light/dark), the constant maintenance of contrast ratios independently of the selected theme, and the structured allocation of colors according to their role (background, content, border).
 
 An algorithm (available soon) has been developed to facilitate the rapid generation and adaptation of color palettes, producing a JSON file compatible with the existing infrastructure and natively supporting both light and dark display modes. This algorithmic solution optimizes Cunningham's adaptability to a wide range of user environments.
-
-
 
 # Structure
 
@@ -19,16 +17,21 @@ The color system is structured around two complementary, interdependent palettes
 
 This two-tier architecture facilitates the systematic propagation of changes: any alteration to the primitive palette is automatically reflected in all interface elements without the need for additional adjustments (see Figure 1).
 
-
 <figure>
-  <img src="docs/migrating/ressources/v3_to_v4/one.gif" alt="Changing the color primitive palette automatically updates the color contextual palette while maintaining contrast ratios inside components." />
-  <figcaption style={{ textAlign: 'center' }}>Figure 1. Changing the color primitive palette automatically updates the color contextual palette while maintaining contrast ratios inside components.</figcaption>
+  <img
+    src="docs/migrating/ressources/v3_to_v4/Figure1.gif"
+    alt="Changing the color primitive palette automatically updates the color contextual palette while maintaining contrast ratios inside components."
+  />
+  <figcaption style={{ textAlign: "center" }}>
+    Figure 1. Changing the color primitive palette automatically updates the
+    color contextual palette while maintaining contrast ratios inside
+    components.
+  </figcaption>
 </figure>
 
 A **theme** is a comprehensive color configuration derived from a brand's visual identity. It constitutes a specific implementation of the "Color Primitive" palette with predetermined color values. The Cunningham theme is provided as the default reference.
 
 A **mode** represents a systematic modulation of luminance and contrast parameters from an established theme, executed through the "Color Contextual" palette. This parametric adjustment accommodates diverse usage contexts while preserving the fundamental chromatic identity. Standard implementations include light and dark modes. These could be supplemented with specialized modes (such as high contrast) to meet specific accessibility needs or style requirements.
-
 
 # Palettes
 
@@ -36,10 +39,15 @@ A **mode** represents a systematic modulation of luminance and contrast paramete
 
 The Color Primitive palette includes 16 colors. Each color is available in 19 distinct shades, except gray, which contains 22. Each shade is referenced by a number between 000 and 1000. A shade of 000 corresponds to pure white, while a shade of 1000 corresponds to pure black. Each intermediate shade value is then defined on the basis of the perceived luminance noted L* in the CIELAB color space ([more info on CIELAB](https://en.wikipedia.org/wiki/CIELAB_color_space)). Using L* as a reference ensures that each primitive color fits into a predictable tonal scale, regardless of hue or saturation. This ensures consistent contrast levels across all themes, promoting universal accessibility. The correspondence between shade (S) and perceived luminance (L*) is as follows: $S=1000 \times (1-L^*)$ with $L^* \in [0;1]$. See Figure 2 for an example.
 
-
 <figure>
-  <img src="docs/migrating/ressources/v3_to_v4/Figure2.png" alt="Breakdown of the first 6 colors of a Color Primitive theme. Gray includes 3 complementary shades." />
-  <figcaption style={{ textAlign: 'center' }}>Figure 2. Breakdown of the first 6 colors of a "Color Primitive" theme. Gray includes 3 complementary shades.</figcaption>
+  <img
+    src="docs/migrating/ressources/v3_to_v4/Figure2.png"
+    alt="Breakdown of the first 6 colors of a Color Primitive theme. Gray includes 3 complementary shades."
+  />
+  <figcaption style={{ textAlign: "center" }}>
+    Figure 2. Breakdown of the first 6 colors of a "Color Primitive" theme. Gray
+    includes 3 complementary shades.
+  </figcaption>
 </figure>
 
 To optimize visual ergonomics in dark mode, it is necessary to reduce color saturation in the darkest shades (S > 600). This gradual desaturation avoids perceptual glare in dark mode and improves legibility in low ambient light environments.
@@ -49,17 +57,26 @@ An algorithm will soon be available to automatically adjust the parameters of pe
 ## Color Contextual
 
 <figure>
-  <img src="docs/migrating/ressources/v3_to_v4/Figure3.png" alt="Excerpt from the Color Contextual palette for the background.semantic.brand role, with light and dark modes." />
-  <figcaption style={{ textAlign: 'center' }}>Figure 3. excerpt from the "Color Contextual" palette for the background.semantic.brand role, with light and dark modes.</figcaption>
+  <img
+    src="docs/migrating/ressources/v3_to_v4/Figure3.png"
+    alt="Excerpt from the Color Contextual palette for the background.semantic.brand role, with light and dark modes."
+  />
+  <figcaption style={{ textAlign: "center" }}>
+    Figure 3. excerpt from the "Color Contextual" palette for the
+    background.semantic.brand role, with light and dark modes.
+  </figcaption>
 </figure>
 
 The "Color Contextual" palette allows you to classify the various colors of a theme according to their actual use, differentiating between each of the modes (light, dark, etc.). This makes it possible (1) to simplify and limit errors when assigning colors to different components, and (2) to manage multiple modes.
 
 This palette introduces the notion of roles, whose format is as follows:
 
-<Source dark={true} code={`
+<Source
+  dark={true}
+  code={`
 layer.scope.(intent).variant.(state)
-`}></Source>
+`}
+></Source>
 
 ### Layer
 
@@ -96,16 +113,14 @@ The state characterizes the interactional state of an interface element (e.g., H
 
 # **Accessibility**
 
-Accessibility is a fundamental principle guiding the design of this color system. As demonstrated in the Color Primitive section, the methodical standardization of luminance values (L*) ensures consistent contrast ratios, regardless of the theme or display mode selected. This systematic approach eliminates the need to re-evaluate accessibility parameters when implementing new themes, ensuring ongoing compliance with WCAG accessibility standards. The main objective is to establish an accessibility framework that is invariant and resilient in the face of multiple usage contexts.
+Accessibility is a fundamental principle guiding the design of this color system. As demonstrated in the Color Primitive section, the methodical standardization of luminance values (L\*) ensures consistent contrast ratios, regardless of the theme or display mode selected. This systematic approach eliminates the need to re-evaluate accessibility parameters when implementing new themes, ensuring ongoing compliance with WCAG accessibility standards. The main objective is to establish an accessibility framework that is invariant and resilient in the face of multiple usage contexts.
 
 # **Technical implementation**
 
-Du à tout les changements, et à l'architecture des tokens, toutes les variables css ont changés. Vous devez donc mettre à jour vos variables css. Il faut absolument 
-regénérer vos tokens avec la commande `cunningham -g css,ts,js` pour avoir les nouvelles variables css.
+Due to all the changes and the token architecture, all CSS variables have changed. You must therefore update your CSS variables. It is absolutely necessary to regenerate your tokens with the command `cunningham -g css,ts,js` to get the new CSS variables.
 
-Dans le cas des tokens d'un theme, toutes les valeurs sémantiques sont dans le  ```theme.globals```. Cela correspond aux couleurs primitives, transitions, fonts, spacings, breakpoints, font weights, font families, etc.
-De fait toutes les valeurs contextuelles sont dans le ```theme.contextuals```. Cela correspond  aux couleurs de fond, aux couleurs de contenu, aux couleurs de bordure, aux couleurs de palette, etc.
-
+In the case of theme tokens, all primitive values are in `theme.globals`. This corresponds to primitive colors, transitions, fonts, spacings, breakpoints, font weights, font families, etc.
+As a result, all contextual values are in `theme.contextuals`. This corresponds to background colors, content colors, border colors, palette colors, etc.
 
 ```json
 // Old structure
@@ -113,18 +128,17 @@ De fait toutes les valeurs contextuelles sont dans le ```theme.contextuals```. C
   "themes": {
     "default": {
       "theme": {
-        "colors": "..."
-        "font": "..."
-        "spacings": "..."
-        "breakpoints": "..."
-        "...": "..."
+        "colors": "...",
+        "font": "...",
+        "spacings": "...",
+        "breakpoints": "...",
+        ...
       },
       "components": {
         "button": {
           "...": "..."
         }
       }
-     
     }
   }
 }
@@ -135,37 +149,35 @@ De fait toutes les valeurs contextuelles sont dans le ```theme.contextuals```. C
   "themes": {
     "default": {
       "globals": {
-        "colors": "..."
-        "font": "..."
-        "spacings": "..."
-        "breakpoints": "..."
-        "...": "..."
+        "colors": "...",
+        "font": "...",
+        "spacings": "...",
+        "breakpoints": "...",
+        ...
       },
       "contextuals": {
         "background": {
           "...": "..."
-        }
+        },
         "content": {
           "...": "..."
-        }
+        },
         "border": {
           "...": "..."
         }
-        }
-        "components": {
-          "button": {
-            "...": "..."
-          }
-        }
+      },
+      "components": {
+        "button": {
+          "...": "..."
+        },
+        ...
       }
-     
     }
-  
+  }
 }
 ```
 
 ## **Migration Steps**
-
 
 ### **1. Update Dependencies**
 
@@ -196,7 +208,7 @@ All your references to old CSS variables will need to be updated. The new variab
 ```css
 /* Old structure (v3) */
 .test {
-  color: var(--c--theme--colors--primary-500)
+  color: var(--c--theme--colors--primary-500);
 }
 
 /* New structure (v4) */
@@ -207,13 +219,12 @@ All your references to old CSS variables will need to be updated. The new variab
   color: var(--c--contextuals--border--semantic--brand--primary);
   color: var(--c--contextuals--palette--brand--primary);
 }
-
 ```
 
 ### **3. Update Button Props**
 
-Dans le cas du button, il faut mettre à jour les props `color` et `variant` pour utiliser le nouveau structure. 
-La props color correspond au color primitive et la props variant au type de button.
+For buttons, you need to update the `color` and `variant` props to use the new structure.
+The color prop corresponds to the primitive color and the variant prop corresponds to the button type.
 
 ```tsx
 /* Old structure (v3) */
@@ -228,7 +239,7 @@ La props color correspond au color primitive et la props variant au type de butt
 
 ### **4. Verify Accessibility**
 
-The new architecture automatically ensures WCAG accessibility standards compliance through methodical standardization of luminance values (L*). Contrast ratios are now consistent regardless of the selected theme or display mode.
+The new architecture automatically ensures WCAG accessibility standards compliance through methodical standardization of luminance values (L\*). Contrast ratios are now consistent regardless of the selected theme or display mode.
 
 ## **Migration Benefits**
 

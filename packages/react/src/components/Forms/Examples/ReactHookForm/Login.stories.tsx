@@ -84,9 +84,12 @@ export const Login = () => {
           />
         </div>
         <Button fullWidth={true}>Log in</Button>
-        <div className="fs-m clr-gray-800" style={{ textAlign: "center" }}>
+        <div
+          className="fs-m clr-content-semantic-neutral-primary"
+          style={{ textAlign: "center" }}
+        >
           You do not have an account?{" "}
-          <a href="/#" className="clr-gray-800">
+          <a href="/#" className="clr-content-semantic-neutral-primary">
             Register
           </a>
         </div>

@@ -64,7 +64,9 @@ export const OverflowLabels = () => {
           <Input label={"City" + overflow} fullWidth={true} />
         </div>
         <div>
-          <div className="fs-l clr-gray-800 mb-t">Your curriculum vitae</div>
+          <div className="fs-l clr-content-semantic-neutral-primary mb-t">
+            Your curriculum vitae
+          </div>
           <FileUploader
             fullWidth={true}
             text="pdf only ( 4mb maximum )"
@@ -79,7 +81,7 @@ export const OverflowLabels = () => {
         <Button fullWidth={true}>Apply</Button>
         <a
           href="/#"
-          className="clr-gray-800 fs-m"
+          className="clr-content-semantic-neutral-primary fs-m"
           style={{ textAlign: "center" }}
         >
           Need help ?

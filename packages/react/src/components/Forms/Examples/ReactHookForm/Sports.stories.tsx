@@ -72,7 +72,9 @@ const SportsBase = ({ values }: SportProps) => {
         </h1>
 
         <div>
-          <div className="fs-l clr-gray-800 mb-t">Gender</div>
+          <div className="fs-l clr-content-semantic-neutral-primary mb-t">
+            Gender
+          </div>
           <RadioGroup
             state={getFieldState("gender", methods.formState)}
             text={getFieldErrorMessage("gender", methods.formState)}
@@ -158,7 +160,7 @@ const SportsBase = ({ values }: SportProps) => {
         <Button fullWidth={true}>Apply</Button>
         <a
           href="/#"
-          className="clr-gray-800 fs-m"
+          className="clr-content-semantic-neutral-primary fs-m"
           style={{ textAlign: "center" }}
         >
           Need help ?

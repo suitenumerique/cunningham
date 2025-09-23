@@ -1,7 +1,7 @@
-import { Canvas, Meta, Source } from '@storybook/addon-docs';
+import { Canvas, Meta, Source } from "@storybook/addon-docs";
 import * as Stories from "./typo.stories";
 
-<Meta title="Getting Started/Typography"/>
+<Meta title="Getting Started/Typography" />
 
 # Typo
 
@@ -12,7 +12,7 @@ Cunningham comes with an existing toolkit to deal with typography, and it's easy
 You can use custom utility classes to set the font size of an element. These classes are named using the format `.fs-{size}`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={false}
   code={`
@@ -20,12 +20,12 @@ You can use custom utility classes to set the font size of an element. These cla
   `}
 />
 
-<Canvas sourceState="none" of={Stories.Sizes}/>
+<Canvas sourceState="none" of={Stories.Sizes} />
 
 You can customize the values of the font size design tokens with the configuration file this way:
 
 <Source
-  language='ts'
+  language="ts"
   dark
   format={true}
   code={`
@@ -53,7 +53,7 @@ You can customize the values of the font size design tokens with the configurati
 You can use custom utility classes to set the font weight of an element. These classes are named using the format `.fw-{weight}`.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={false}
   code={`
@@ -61,12 +61,12 @@ You can use custom utility classes to set the font weight of an element. These c
   `}
 />
 
-<Canvas sourceState="none" of={Stories.Weights}/>
+<Canvas sourceState="none" of={Stories.Weights} />
 
 You can customize the values of the font weight design tokens with the configuration file this way:
 
 <Source
-  language='ts'
+  language="ts"
   dark
   format={true}
   code={`
@@ -98,20 +98,20 @@ The font associated with `f-base` is the default font for the whole application,
 class on every dom element.
 
 <Source
-  language='tsx'
+  language="tsx"
   dark
   format={false}
   code={`
-  <div className="clr-gray-800 f-accent">Accent text</div>
+  <div className="clr-content-semantic-neutral-primary f-accent">Accent text</div>
   `}
 />
 
-<Canvas sourceState="none" of={Stories.Families}/>
+<Canvas sourceState="none" of={Stories.Families} />
 
 You can customize the values of the font family design tokens with the configuration file this way:
 
 <Source
-  language='ts'
+  language="ts"
   dark
   format={true}
   code={`

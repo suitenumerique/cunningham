@@ -62,7 +62,7 @@ export const BackgroundColors: Story = {
                   display: "flex",
                   flexDirection: "column",
                   flexShrink: 0,
-                  flexBasis: "120px",
+                  flexBasis: "200px",
                   alignItems: "center",
                   flexGrow: 1,
                 }}
@@ -71,7 +71,7 @@ export const BackgroundColors: Story = {
                   style={{ width: "72px", height: "48px" }}
                   className={"bg-" + color + "-" + tint}
                 />
-                <pre className="clr-gray-800 fs-s mt-st">
+                <pre className="clr-content-semantic-neutral-primary fs-s mt-st">
                   bg-semantic-{color}-{tint}
                 </pre>
               </div>

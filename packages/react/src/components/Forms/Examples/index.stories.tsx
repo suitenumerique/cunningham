@@ -25,7 +25,7 @@ export const Login = () => {
       }}
     >
       <h1
-        className="fs-h3 fw-bold clr-gray-900"
+        className="fs-h3 fw-bold clr-content-semantic-neutral-primary"
         style={{ textAlign: "center" }}
       >
         Log in
@@ -43,9 +43,12 @@ export const Login = () => {
         <Checkbox label="Remember me" />
       </div>
       <Button fullWidth={true}>Log in</Button>
-      <div className="fs-m clr-gray-800" style={{ textAlign: "center" }}>
+      <div
+        className="fs-m clr-content-semantic-neutral-primary"
+        style={{ textAlign: "center" }}
+      >
         You do not have an account?{" "}
-        <a href="/#" className="clr-gray-800">
+        <a href="/#" className="clr-content-semantic-neutral-primary">
           Register
         </a>
       </div>
@@ -65,7 +68,7 @@ export const Application = () => {
       method="get"
     >
       <h1
-        className="fs-h3 fw-bold clr-gray-900"
+        className="fs-h3 fw-bold clr-content-semantic-neutral-primary"
         style={{ textAlign: "center" }}
       >
         Application
@@ -102,7 +105,9 @@ export const Application = () => {
         <Input label="City" fullWidth={true} />
       </div>
       <div>
-        <div className="fs-l clr-gray-800 mb-t">Your curriculum vitae</div>
+        <div className="fs-l clr-content-semantic-neutral-primary mb-t">
+          Your curriculum vitae
+        </div>
         <FileUploader
           fullWidth={true}
           text="pdf only ( 4mb maximum )"
@@ -142,7 +147,7 @@ export const Application = () => {
       <Button fullWidth={true}>Apply</Button>
       <a
         href="/#"
-        className="clr-gray-800 fs-m"
+        className="clr-content-semantic-neutral-primary fs-m"
         style={{ textAlign: "center" }}
       >
         Need help ?
@@ -163,13 +168,15 @@ export const Sports = () => {
       onSubmit={(e) => e.preventDefault()}
     >
       <h1
-        className="fs-h3 fw-bold clr-gray-900"
+        className="fs-h3 fw-bold clr-content-semantic-neutral-primary"
         style={{ textAlign: "center" }}
       >
         Register
       </h1>
       <div>
-        <div className="fs-l clr-gray-800 mb-t">Gender</div>
+        <div className="fs-l clr-content-semantic-neutral-primary mb-t">
+          Gender
+        </div>
         <div style={{ display: "flex", gap: "0.5rem" }}>
           <Radio name="gender" label="Male" fullWidth={true} />
           <Radio name="gender" label="Female" />
@@ -234,7 +241,7 @@ export const Sports = () => {
       <Button fullWidth={true}>Apply</Button>
       <a
         href="/#"
-        className="clr-gray-800 fs-m"
+        className="clr-content-semantic-neutral-primary fs-m"
         style={{ textAlign: "center" }}
       >
         Need help ?
@@ -254,13 +261,15 @@ export const SportsDisabled = () => {
       }}
     >
       <h1
-        className="fs-h3 fw-bold clr-gray-900"
+        className="fs-h3 fw-bold clr-content-semantic-neutral-primary"
         style={{ textAlign: "center" }}
       >
         Register
       </h1>
       <div>
-        <div className="fs-l clr-gray-800 mb-t">Gender</div>
+        <div className="fs-l clr-content-semantic-neutral-primary mb-t">
+          Gender
+        </div>
         <div style={{ display: "flex", gap: "0.5rem" }}>
           <Radio name="gender" label="Male" fullWidth={true} disabled={true} />
           <Radio name="gender" label="Female" disabled={true} />
@@ -347,7 +356,7 @@ export const SportsDisabled = () => {
       </Button>
       <a
         href="/#"
-        className="clr-gray-800 fs-m"
+        className="clr-content-semantic-neutral-primary fs-m"
         style={{ textAlign: "center" }}
       >
         Need help ?

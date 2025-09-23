@@ -14,7 +14,7 @@ export const Default: Story = {
     // Trier les espacements par valeur croissante avant de les afficher
     // Sort spacings by value before rendering
     const sortedSpacings = Object.entries(
-      tokens.themes.default.globals.spacings,
+      tokens.themes.default.globals.spacings
     ).sort((a, b) => {
       // On retire les éventuelles unités pour comparer numériquement
       const parse = (v: any) =>
@@ -30,13 +30,13 @@ export const Default: Story = {
               style={{ display: "flex", alignItems: "center", gap: "10px" }}
             >
               <div
-                className="fw-bold clr-content-neutral-primary"
+                className="fw-bold clr-content-semantic-neutral-primary"
                 style={{ width: "50px" }}
               >
                 -{key}
               </div>
               <div
-                className="fw-medium fs-m clr-content-neutral-primary"
+                className="fw-medium fs-m clr-content-semantic-neutral-primary"
                 style={{ width: "100px" }}
               >
                 {value}
@@ -56,11 +56,11 @@ export const Default: Story = {
 export const Example: Story = {
   render: () => {
     return (
-      <div className="clr-gray-800 bg-error-tertiary">
-        <div className="clr-gray-800 bg-brand-tertiary  fw-medium p-t mb-l">
+      <div className="clr-content-semantic-neutral-primary bg-yellow-500">
+        <div className="clr-content-semantic-neutral-primary bg-purple-500  fw-medium p-t mb-l">
           Tiny padding + Large margin bottom
         </div>
-        <div className="content-neutral-primary bg-neutral-tertiary  fw-medium p-l ml-b">
+        <div className="content-neutral-primary bg-pink-500 fw-medium p-l ml-b">
           Large padding + Base margin left
         </div>
       </div>
