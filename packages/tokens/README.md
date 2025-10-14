@@ -1,4 +1,4 @@
-# @openfun/cunningham-tokens
+# @gouvfr-lasuite/cunningham-tokens
 
 ## Introduction
 
@@ -21,7 +21,7 @@ make Cunningham's Design System yours!
 Install the lib
 
 ```
-yarn add @openfun/cunningham-tokens
+yarn add @gouvfr-lasuite/cunningham-tokens
 ```
 
 ### Configuration file
@@ -90,7 +90,7 @@ Then, add these lines at the top of your main stylesheet file:
 
 ```
 @import "cunningham-tokens"; // Imports the file you just generated.
-@import "@openfun/cunningham-react/style";
+@import "@gouvfr-lasuite/cunningham-react/style";
 ```
 
 It's all done!

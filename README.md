@@ -44,7 +44,7 @@ See the [documentation](https://suitenumerique.github.io/cunningham/storybook) �
 ➡️ First, install the library
 
 ```
-yarn add @openfun/cunningham-react
+yarn add @gouvfr-lasuite/cunningham-react
 ```
 
 ➡️ Then, add this script to your `package.json` file
@@ -68,9 +68,9 @@ It will generate a file named `cunningham-tokens.css`.
 ➡️ Then, add these lines at the top of your main stylesheet file:
 
 ```
-@import "@openfun/cunningham-react/fonts"; // Imports default fonts ( Roboto ). You can also import fonts by yourself.
-@import "@openfun/cunningham-react/icons"; // Imports icons ( Material Icons ).
-@import "@openfun/cunningham-react/style"; // Imports the default theme.
+@import "@gouvfr-lasuite/cunningham-react/fonts"; // Imports default fonts ( Roboto ). You can also import fonts by yourself.
+@import "@gouvfr-lasuite/cunningham-react/icons"; // Imports icons ( Material Icons ).
+@import "@gouvfr-lasuite/cunningham-react/style"; // Imports the default theme.
 @import "cunningham-tokens"; // Imports the file you just generated.
 ```
 

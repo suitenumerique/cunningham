@@ -7,7 +7,7 @@ import {
   useToastProvider,
   VariantType,
   useModals,
-} from "@openfun/cunningham-react";
+} from "@gouvfr-lasuite/cunningham-react";
 import { PageProps } from "./App";
 import { database } from "./Character";
 

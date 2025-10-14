@@ -1,4 +1,4 @@
-import { defaultThemes } from "@openfun/cunningham-tokens";
+import { defaultThemes } from "@gouvfr-lasuite/cunningham-tokens";
 
 const defaultConfig = {
   themes: {

@@ -1,5 +1,5 @@
 import { dirname, sep } from "path";
-import { defaultTokenRefs } from "@openfun/cunningham-tokens";
+import { defaultTokenRefs } from "@gouvfr-lasuite/cunningham-tokens";
 import { globSync } from "glob";
 
 /**

@@ -47,7 +47,7 @@
       ],
       "outputs": []
     },
-    "@openfun/cunningham-tokens#test": {
+    "@gouvfr-lasuite/cunningham-tokens#test": {
       "dependsOn": [
         "build"
       ]

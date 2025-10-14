@@ -1,5 +1,5 @@
 {
-  "extends": "@openfun/typescript-configs/node.json",
+  "extends": "@gouvfr-lasuite/typescript-configs/node.json",
   "include": ["**/*"],
   "compilerOptions": {
     "baseUrl": "./",

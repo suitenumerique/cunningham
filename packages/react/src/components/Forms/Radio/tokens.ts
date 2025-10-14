@@ -1,4 +1,4 @@
-import { DefaultTokens } from "@openfun/cunningham-tokens";
+import { DefaultTokens } from "@gouvfr-lasuite/cunningham-tokens";
 
 export const tokens = (defaults: DefaultTokens) => ({
   "border-color": defaults.contextuals.border.semantic.neutral.tertiary,

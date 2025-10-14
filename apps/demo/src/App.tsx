@@ -3,7 +3,7 @@ import {
   CunninghamProvider,
   Select,
   useModal,
-} from "@openfun/cunningham-react";
+} from "@gouvfr-lasuite/cunningham-react";
 import React, { useEffect, useMemo, useState } from "react";
 import { Create } from "./Create";
 import { Home } from "./Home";

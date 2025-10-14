@@ -1,4 +1,4 @@
-# @openfun/cunningham-react
+# @gouvfr-lasuite/cunningham-react
 
 ## 4.0.0
 

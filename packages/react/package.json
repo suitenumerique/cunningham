@@ -1,5 +1,5 @@
 {
-  "name": "@openfun/cunningham-react",
+  "name": "@gouvfr-lasuite/cunningham-react",
   "private": false,
   "version": "4.0.0",
   "publishConfig": {
@@ -49,7 +49,7 @@
     "@fontsource-variable/roboto-flex": "5.2.5",
     "@fontsource/material-icons-outlined": "5.2.5",
     "@internationalized/date": "3.8.0",
-    "@openfun/cunningham-tokens": "*",
+    "@gouvfr-lasuite/cunningham-tokens": "*",
     "@react-aria/calendar": "3.8.0",
     "@react-aria/datepicker": "3.14.2",
     "@react-aria/i18n": "3.12.8",
@@ -76,8 +76,8 @@
     "@chromatic-com/storybook": "3.2.6",
     "@faker-js/faker": "9.7.0",
     "@hookform/resolvers": "5.0.1",
-    "@openfun/cunningham-tokens": "*",
-    "@openfun/typescript-configs": "*",
+    "@gouvfr-lasuite/cunningham-tokens": "*",
+    "@gouvfr-lasuite/typescript-configs": "*",
     "@storybook/addon-a11y": "8.6.12",
     "@storybook/addon-actions": "8.6.12",
     "@storybook/addon-essentials": "8.6.12",

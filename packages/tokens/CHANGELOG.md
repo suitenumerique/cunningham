@@ -1,4 +1,4 @@
-# @openfun/cunningham-tokens
+# @gouvfr-lasuite/cunningham-tokens
 
 ## 3.0.0
 

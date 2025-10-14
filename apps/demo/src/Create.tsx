@@ -16,7 +16,7 @@ import {
   TextArea,
   useToastProvider,
   VariantType,
-} from "@openfun/cunningham-react";
+} from "@gouvfr-lasuite/cunningham-react";
 import { faker } from "@faker-js/faker";
 import { PageProps } from "./App";
 import { Character, database, randomDates } from "./Character";

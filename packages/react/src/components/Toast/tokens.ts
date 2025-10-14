@@ -1,4 +1,4 @@
-import { DefaultTokens } from "@openfun/cunningham-tokens";
+import { DefaultTokens } from "@gouvfr-lasuite/cunningham-tokens";
 
 export const tokens = (defaults: DefaultTokens) => {
   return {
