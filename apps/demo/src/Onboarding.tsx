@@ -29,7 +29,7 @@ const Onboarding = () => {
             Let&apos;s go!
           </Button>
           <Button
-            href="https://openfun.github.io/cunningham/storybook"
+            href="https://suitenumerique.github.io/cunningham/storybook"
             color="brand"
             variant="tertiary"
             size="small"
@@ -50,7 +50,7 @@ const Onboarding = () => {
         <p>
           👀 Through this demo, you will be able to discover{" "}
           <strong>a bunch of Cunningham components</strong>. Take a look at the{" "}
-          <a href="https://openfun.github.io/cunningham/storybook">
+          <a href="https://suitenumerique.github.io/cunningham/storybook">
             documentation
           </a>{" "}
           to see how to use them.

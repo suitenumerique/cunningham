@@ -106,21 +106,21 @@
 - 4ebbf16: Add utility classes
 - 4ebbf16: Add official design tokens
 
-[unreleased]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@3.0.0...main
-[3.0.0]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@2.2.0...@openfun/cunningham-tokens@3.0.0
-[2.2.0]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@2.1.1...@openfun/cunningham-tokens@2.2.0
-[2.1.1]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@2.1.0...@openfun/cunningham-tokens@2.1.1
-[2.1.0]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@2.0.0...@openfun/cunningham-tokens@2.1.0
-[2.0.0]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@1.0.1...@openfun/cunningham-tokens@2.0.0
-[1.0.1]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@1.0.0...@openfun/cunningham-tokens@1.0.1
-[1.0.0]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@0.7.1...@openfun/cunningham-tokens@1.0.0
-[0.7.1]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@0.7.0...@openfun/cunningham-tokens@0.7.1
-[0.7.0]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@0.6.0...@openfun/cunningham-tokens@0.7.0
-[0.6.0]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@0.5.0...@openfun/cunningham-tokens@0.6.0
-[0.5.0]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@0.4.0...@openfun/cunningham-tokens@0.5.0
-[0.4.0]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@0.3.0...@openfun/cunningham-tokens@0.4.0
-[0.3.0]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@0.2.0...@openfun/cunningham-tokens@0.3.0
-[0.2.0]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@0.1.1...@openfun/cunningham-tokens@0.2.0
-[0.1.1]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@0.1.0...@openfun/cunningham-tokens@0.1.1
-[0.1.0]: https://github.com/openfun/cunningham/compare/@openfun/cunningham-tokens@0.0.0...@openfun/cunningham-tokens@0.1.0
-[0.0.0]: https://github.com/openfun/cunningham/compare/0b532742e7f9747c5d573b869daa8aca0d79e7f1...@openfun/cunningham-tokens@0.0.0
+[unreleased]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@3.0.0...main
+[3.0.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@2.2.0...@openfun/cunningham-tokens@3.0.0
+[2.2.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@2.1.1...@openfun/cunningham-tokens@2.2.0
+[2.1.1]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@2.1.0...@openfun/cunningham-tokens@2.1.1
+[2.1.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@2.0.0...@openfun/cunningham-tokens@2.1.0
+[2.0.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@1.0.1...@openfun/cunningham-tokens@2.0.0
+[1.0.1]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@1.0.0...@openfun/cunningham-tokens@1.0.1
+[1.0.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@0.7.1...@openfun/cunningham-tokens@1.0.0
+[0.7.1]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@0.7.0...@openfun/cunningham-tokens@0.7.1
+[0.7.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@0.6.0...@openfun/cunningham-tokens@0.7.0
+[0.6.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@0.5.0...@openfun/cunningham-tokens@0.6.0
+[0.5.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@0.4.0...@openfun/cunningham-tokens@0.5.0
+[0.4.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@0.3.0...@openfun/cunningham-tokens@0.4.0
+[0.3.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@0.2.0...@openfun/cunningham-tokens@0.3.0
+[0.2.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@0.1.1...@openfun/cunningham-tokens@0.2.0
+[0.1.1]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@0.1.0...@openfun/cunningham-tokens@0.1.1
+[0.1.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@0.0.0...@openfun/cunningham-tokens@0.1.0
+[0.0.0]: https://github.com/suitenumerique/cunningham/compare/0b532742e7f9747c5d573b869daa8aca0d79e7f1...@openfun/cunningham-tokens@0.0.0
