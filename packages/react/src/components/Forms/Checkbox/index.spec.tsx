@@ -138,7 +138,7 @@ describe("<Checkbox/>", () => {
   });
 
   /**
-   * From this issue: https://github.com/openfun/cunningham/issues/175
+   * From this issue: https://github.com/suitenumerique/cunningham/issues/175
    * The bug was that when clicking on the checkmark (svg) it was firing two onClick event to
    * <section>.
    */

@@ -3,7 +3,7 @@
 Want to contribute to Cunningham? We got you covered.
 
 We try to raise our code quality standards and expect contributors to follow
-the recommandations from our [handbook](https://handbook.openfun.fr/).
+the recommandations from our [handbook](https://suitenumerique.gitbook.io/handbook).
 
 ## Development
 
@@ -36,7 +36,7 @@ make build
 
 When submitting please follow those steps:
 
-- Make sure you followed the commit conventions from the [handbook/git](https://handbook.openfun.fr/git).
+- Make sure you followed the commit conventions from the [handbook/git](https://suitenumerique.gitbook.io/handbook/git).
 - Make sure that you added tests covering your changes.
 - Run `make deploy` to tests, lint and build the project.
 - Create a [changeset](#adding-a-changeset) by running `yarn changeset` at the root of the repo. In any case, a bot will verify if your PR contains a changeset.

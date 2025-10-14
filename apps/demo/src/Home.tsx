@@ -197,7 +197,7 @@ export const Home = ({ modal }: { modal: PageProps }) => {
               color="neutral"
               target="_blank"
               rel="noopener noreferrer"
-              href="https://github.com/openfun/cunningham"
+              href="https://github.com/suitenumerique/cunningham"
             >
               Github
             </Button>
@@ -209,7 +209,7 @@ export const Home = ({ modal }: { modal: PageProps }) => {
               color="neutral"
               target="_blank"
               rel="noopener noreferrer"
-              href="https://openfun.github.io/cunningham/storybook"
+              href="https://suitenumerique.github.io/cunningham/storybook"
             >
               Documentation
             </Button>

@@ -53,6 +53,10 @@ const SportsBase = ({ values }: SportProps) => {
     methods.reset(values);
   }, [values]);
 
+  useEffect(() => {
+    methods.setFocus("competition");
+  }, [methods.setFocus]);
+
   return (
     <FormProvider {...methods}>
       <form
@@ -116,6 +120,7 @@ const SportsBase = ({ values }: SportProps) => {
         </div>
 
         <RhfSelect
+          {...methods.register("competition")}
           name="competition"
           label="Competition"
           options={[

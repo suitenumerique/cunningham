@@ -6,7 +6,7 @@ const buildTheme = (
   type: "default" | "dark" = "default"
 ) => {
   return {
-    brandUrl: "https://github.com/openfun/cunningham",
+    brandUrl: "https://github.com/suitenumerique/cunningham",
     brandImage: "logo-cunningham.svg",
     brandTitle: "Cunningham",
     brandTarget: "_self",

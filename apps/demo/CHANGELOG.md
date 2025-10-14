@@ -36,10 +36,10 @@
 
 - 2a5acea: The CSS utility classes are no longer automatically included when using Cunningham bin.
 
-[unreleased]: https://github.com/openfun/cunningham/compare/cunningham-demo@3.0.0...main
-[3.0.0]: https://github.com/openfun/cunningham/compare/cunningham-demo@2.0.0...cunningham-demo@3.0.0
-[2.0.0]: https://github.com/openfun/cunningham/compare/cunningham-demo@1.0.1...cunningham-demo@2.0.0
-[1.0.1]: https://github.com/openfun/cunningham/compare/cunningham-demo@1.0.0...cunningham-demo@1.0.1
-[1.0.0]: https://github.com/openfun/cunningham/compare/cunningham-demo@0.1.0...cunningham-demo@1.0.0
-[0.1.0]: https://github.com/openfun/cunningham/compare/cunningham-demo@0.0.1...cunningham-demo@0.1.0
-[0.0.1]: https://github.com/openfun/cunningham/compare/0b532742e7f9747c5d573b869daa8aca0d79e7f1...cunningham-demo@0.0.1
+[unreleased]: https://github.com/suitenumerique/cunningham/compare/cunningham-demo@3.0.0...main
+[3.0.0]: https://github.com/suitenumerique/cunningham/compare/cunningham-demo@2.0.0...cunningham-demo@3.0.0
+[2.0.0]: https://github.com/suitenumerique/cunningham/compare/cunningham-demo@1.0.1...cunningham-demo@2.0.0
+[1.0.1]: https://github.com/suitenumerique/cunningham/compare/cunningham-demo@1.0.0...cunningham-demo@1.0.1
+[1.0.0]: https://github.com/suitenumerique/cunningham/compare/cunningham-demo@0.1.0...cunningham-demo@1.0.0
+[0.1.0]: https://github.com/suitenumerique/cunningham/compare/cunningham-demo@0.0.1...cunningham-demo@0.1.0
+[0.0.1]: https://github.com/suitenumerique/cunningham/compare/0b532742e7f9747c5d573b869daa8aca0d79e7f1...cunningham-demo@0.0.1
