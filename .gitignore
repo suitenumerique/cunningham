@@ -33,4 +33,6 @@ env.d
 .turbo
 ghpages-output
 
+# Project ignore files
 packages/react/chromatic.config.json
+packages/tokens/src/lib/cunningham.ts

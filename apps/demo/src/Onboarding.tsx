@@ -1,5 +1,10 @@
 import React from "react";
-import { Button, Modal, ModalSize, useModal } from "@gouvfr-lasuite/cunningham-react";
+import {
+  Button,
+  Modal,
+  ModalSize,
+  useModal,
+} from "@gouvfr-lasuite/cunningham-react";
 
 const Onboarding = () => {
   const modal = useModal({

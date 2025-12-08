@@ -27,11 +27,11 @@ const THEMES: Record<Theme, Record<Variant, string | undefined>> = {
   },
   [Theme.REDFLUX]: {
     light: undefined,
-    dark: "redflux",
+    dark: "redflux-dark",
   },
   [Theme.BLUENEY]: {
     light: undefined,
-    dark: "blueney",
+    dark: "blueney-dark",
   },
 };
 

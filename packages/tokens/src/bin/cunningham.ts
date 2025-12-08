@@ -1,8 +1,22 @@
+/*
+  This file is hardlinked from `src/shared/cunningham.ts`
+  to `src/bin/cunningham.ts` and `src/lib/cunningham.ts`
+
+  ```
+  cd packages/tokens
+  ln src/shared/cunningham.ts src/lib/cunningham.ts
+  ln src/shared/cunningham.ts src/bin/cunningham.ts
+  ```
+
+  It is a convenient way to share the same tokens between the bin and the lib
+  and do not put extra logic to customize build outputs.
+*/
+
 export const colors = {
-  "logo-1": "#377FDB",
-  "logo-2": "#377FDB",
-  "logo-1-dark": "#95ABFF",
-  "logo-2-dark": "#95ABFF",
+  "logo-1-light": "#377FDB",
+  "logo-2-light": "#377FDB",
+  "logo-1-dark": "#C1D6F2",
+  "logo-2-dark": "#C1D6F2",
   "brand-050": "#EAF1FB",
   "brand-100": "#D5E4F7",
   "brand-150": "#C0D6F4",
@@ -291,46 +305,47 @@ export const colors = {
   "pink-850": "#332028",
   "pink-900": "#24181D",
   "pink-950": "#160F12",
-  "black-000": "#00000000",
-  "black-050": "#0000000D",
-  "black-100": "#0000001A",
-  "black-150": "#00000026",
-  "black-200": "#00000033",
-  "black-250": "#00000040",
-  "black-300": "#0000004D",
-  "black-350": "#00000059",
-  "black-400": "#00000066",
-  "black-450": "#00000073",
-  "black-500": "#00000080",
-  "black-550": "#0000008C",
-  "black-600": "#00000099",
-  "black-650": "#000000A6",
-  "black-700": "#000000B3",
-  "black-750": "#000000BF",
-  "black-800": "#000000CC",
-  "black-850": "#000000D9",
-  "black-900": "#000000E6",
-  "black-950": "#000000F2",
-  "white-000": "#FFFFFF",
-  "white-050": "#FFFFFF0D",
-  "white-100": "#FFFFFF1A",
-  "white-150": "#FFFFFF26",
-  "white-200": "#FFFFFF33",
-  "white-250": "#FFFFFF40",
-  "white-300": "#FFFFFF4D",
-  "white-350": "#FFFFFF59",
-  "white-400": "#FFFFFF66",
-  "white-450": "#FFFFFF73",
-  "white-500": "#FFFFFF80",
-  "white-550": "#FFFFFF8C",
-  "white-600": "#FFFFFF99",
-  "white-650": "#FFFFFFA6",
-  "white-700": "#FFFFFFB3",
-  "white-750": "#FFFFFFBF",
-  "white-800": "#FFFFFFCC",
-  "white-850": "#FFFFFFD9",
-  "white-900": "#FFFFFFE6",
-  "white-950": "#FFFFFFF2",
+  "black-000": "#1B1C1D00",
+  "black-050": "#1B1C1D0D",
+  "black-100": "#1B1C1D1A",
+  "black-150": "#1B1C1D26",
+  "black-200": "#1B1C1D33",
+  "black-250": "#1B1C1D40",
+  "black-300": "#1B1C1D4D",
+  "black-350": "#1B1C1D59",
+  "black-400": "#1B1C1D66",
+  "black-450": "#1B1C1D73",
+  "black-500": "#1B1C1D80",
+  "black-550": "#1B1C1D8C",
+  "black-600": "#1B1C1D99",
+  "black-650": "#1B1C1DA6",
+  "black-700": "#1B1C1DB2",
+  "black-750": "#1B1C1DBF",
+  "black-800": "#1B1C1DCC",
+  "black-850": "#1B1C1DD9",
+  "black-900": "#1B1C1DE5",
+  "black-950": "#101112F2",
+  "white-000": "#F7F8F800",
+  "white-050": "#F7F8F80D",
+  "white-100": "#F7F8F81A",
+  "white-150": "#F7F8F826",
+  "white-200": "#F7F8F833",
+  "white-250": "#F7F8F840",
+  "white-300": "#F7F8F84D",
+  "white-350": "#F7F8F859",
+  "white-400": "#F7F8F866",
+  "white-450": "#F7F8F873",
+  "white-500": "#F7F8F880",
+  "white-550": "#F7F8F88C",
+  "white-600": "#F7F8F899",
+  "white-650": "#F7F8F8A6",
+  "white-700": "#F7F8F8B2",
+  "white-750": "#F7F8F8BF",
+  "white-800": "#F7F8F8CC",
+  "white-850": "#F7F8F8D9",
+  "white-900": "#F7F8F8E5",
+  "white-950": "#F7F8F8F2",
+  "white-975": "#F7F8F8F9",
 };
 
 const fontFamilies = {
@@ -374,7 +389,7 @@ const transitions = {
 };
 
 const breakpoints = {
-  xs: 0,
+  xs: "0px",
   sm: "576px",
   md: "768px",
   lg: "992px",
@@ -425,7 +440,7 @@ export const globals = {
   breakpoints,
 };
 
-export const contextuaDefault = {
+export const contextualDefaultTokens = {
   background: {
     surface: {
       primary: "ref(globals.colors.gray-000)",
@@ -551,13 +566,10 @@ export const contextuaDefault = {
         tertiary: "ref(globals.colors.gray-150)",
       },
     },
-    text: {
-      primary: "ref(globals.colors.black-050)",
-    },
   },
   content: {
-    logo1: "ref(globals.colors.logo-1)",
-    logo2: "ref(globals.colors.logo-2)",
+    logo1: "ref(globals.colors.logo-1-light)",
+    logo2: "ref(globals.colors.logo-2-light)",
     semantic: {
       contextual: {
         primary: "ref(globals.colors.white-950)",
@@ -688,11 +700,6 @@ export const contextuaDefault = {
       },
     },
   },
-};
-const defaultTheme = {
-  globals,
-  contextuals: contextuaDefault,
-  components: {},
 };
 
 export const contextualDarkTokens = {
@@ -959,7 +966,11 @@ export const contextualDarkTokens = {
 
 export default {
   themes: {
-    default: defaultTheme,
+    default: {
+      globals,
+      contextuals: contextualDefaultTokens,
+      components: {},
+    },
     dark: {
       globals,
       contextuals: contextualDarkTokens,
