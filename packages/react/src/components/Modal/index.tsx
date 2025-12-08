@@ -53,6 +53,7 @@ export type ModalProps = PropsWithChildren & {
   closeOnClickOutside?: boolean;
   closeOnEsc?: boolean;
   preventClose?: boolean;
+  "aria-label"?: string;
 };
 
 export const Modal = (props: ModalProps) => {
@@ -93,6 +94,7 @@ export const ModalInner = ({ closeOnEsc = true, ...props }: ModalProps) => {
       shouldCloseOnOverlayClick={!!props.closeOnClickOutside}
       shouldCloseOnEsc={closeOnEsc}
       bodyOpenClassName={classNames("c__modals--opened", NOSCROLL_CLASS)}
+      contentLabel={props["aria-label"] || props.title?.toString()}
     >
       <div className="c__modal__scroller">
         {!props.hideCloseButton && !props.preventClose && (
