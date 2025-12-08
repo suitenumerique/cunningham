@@ -2,10 +2,10 @@ $themes: (
   'default': (
     'globals': (
       'colors': (
-        'logo-1': #377FDB,
-        'logo-2': #377FDB,
-        'logo-1-dark': #95ABFF,
-        'logo-2-dark': #95ABFF,
+        'logo-1-light': #377FDB,
+        'logo-2-light': #377FDB,
+        'logo-1-dark': #C1D6F2,
+        'logo-2-dark': #C1D6F2,
         'brand-050': #EAF1FB,
         'brand-100': #D5E4F7,
         'brand-150': #C0D6F4,
@@ -294,46 +294,47 @@ $themes: (
         'pink-850': #332028,
         'pink-900': #24181D,
         'pink-950': #160F12,
-        'black-000': #00000000,
-        'black-050': #0000000D,
-        'black-100': #0000001A,
-        'black-150': #00000026,
-        'black-200': #00000033,
-        'black-250': #00000040,
-        'black-300': #0000004D,
-        'black-350': #00000059,
-        'black-400': #00000066,
-        'black-450': #00000073,
-        'black-500': #00000080,
-        'black-550': #0000008C,
-        'black-600': #00000099,
-        'black-650': #000000A6,
-        'black-700': #000000B3,
-        'black-750': #000000BF,
-        'black-800': #000000CC,
-        'black-850': #000000D9,
-        'black-900': #000000E6,
-        'black-950': #000000F2,
-        'white-000': #FFFFFF,
-        'white-050': #FFFFFF0D,
-        'white-100': #FFFFFF1A,
-        'white-150': #FFFFFF26,
-        'white-200': #FFFFFF33,
-        'white-250': #FFFFFF40,
-        'white-300': #FFFFFF4D,
-        'white-350': #FFFFFF59,
-        'white-400': #FFFFFF66,
-        'white-450': #FFFFFF73,
-        'white-500': #FFFFFF80,
-        'white-550': #FFFFFF8C,
-        'white-600': #FFFFFF99,
-        'white-650': #FFFFFFA6,
-        'white-700': #FFFFFFB3,
-        'white-750': #FFFFFFBF,
-        'white-800': #FFFFFFCC,
-        'white-850': #FFFFFFD9,
-        'white-900': #FFFFFFE6,
-        'white-950': #FFFFFFF2
+        'black-000': #1B1C1D00,
+        'black-050': #1B1C1D0D,
+        'black-100': #1B1C1D1A,
+        'black-150': #1B1C1D26,
+        'black-200': #1B1C1D33,
+        'black-250': #1B1C1D40,
+        'black-300': #1B1C1D4D,
+        'black-350': #1B1C1D59,
+        'black-400': #1B1C1D66,
+        'black-450': #1B1C1D73,
+        'black-500': #1B1C1D80,
+        'black-550': #1B1C1D8C,
+        'black-600': #1B1C1D99,
+        'black-650': #1B1C1DA6,
+        'black-700': #1B1C1DB2,
+        'black-750': #1B1C1DBF,
+        'black-800': #1B1C1DCC,
+        'black-850': #1B1C1DD9,
+        'black-900': #1B1C1DE5,
+        'black-950': #101112F2,
+        'white-000': #F7F8F800,
+        'white-050': #F7F8F80D,
+        'white-100': #F7F8F81A,
+        'white-150': #F7F8F826,
+        'white-200': #F7F8F833,
+        'white-250': #F7F8F840,
+        'white-300': #F7F8F84D,
+        'white-350': #F7F8F859,
+        'white-400': #F7F8F866,
+        'white-450': #F7F8F873,
+        'white-500': #F7F8F880,
+        'white-550': #F7F8F88C,
+        'white-600': #F7F8F899,
+        'white-650': #F7F8F8A6,
+        'white-700': #F7F8F8B2,
+        'white-750': #F7F8F8BF,
+        'white-800': #F7F8F8CC,
+        'white-850': #F7F8F8D9,
+        'white-900': #F7F8F8E5,
+        'white-950': #F7F8F8F2,
+        'white-975': #F7F8F8F9
       ),
       'transitions': (
         'ease-in': #{cubic-bezier(0.32, 0, 0.67, 0)},
@@ -385,6 +386,8 @@ $themes: (
         't': 0.5rem,
         'st': 0.25rem,
         '4xs': 0.125rem,
+        '3xs': 0.25rem,
+        '2xs': 0.375rem,
         'xxxs': 0.25rem,
         'xxs': 0.375rem,
         'xs': 0.5rem,
@@ -395,13 +398,15 @@ $themes: (
         'xl': 2.5rem,
         'xxl': 3rem,
         'xxxl': 3.5rem,
+        '2xl': 3rem,
+        '3xl': 3.5rem,
         '4xl': 4rem,
         '5xl': 4.5rem,
         '6xl': 6rem,
         '7xl': 7.5rem
       ),
       'breakpoints': (
-        'xs': 0,
+        'xs': 0px,
         'sm': 576px,
         'md': 768px,
         'lg': 992px,
@@ -417,6 +422,14 @@ $themes: (
           'tertiary': #F7F8F8
         ),
         'semantic': (
+          'overlay': (
+            'primary': #1B1C1D0D,
+            'primary-hover': #1B1C1D1A
+          ),
+          'contextual': (
+            'primary': #1B1C1D0D,
+            'primary-hover': #1B1C1D1A
+          ),
           'brand': (
             'primary': #1167D4,
             'primary-hover': #1A509F,
@@ -432,10 +445,6 @@ $themes: (
             'secondary-hover': #D2D4D8,
             'tertiary': #F0F1F2,
             'tertiary-hover': #E1E2E5
-          ),
-          'contextual': (
-            'primary': #0000000D,
-            'primary-hover': #0000001A
           ),
           'info': (
             'primary': #1167D4,
@@ -530,114 +539,92 @@ $themes: (
             'secondary': #999EA5,
             'tertiary': #D2D4D8
           )
-        ),
-        'text': (
-          'primary': #0000000D
         )
       ),
       'content': (
         'logo1': #377FDB,
         'logo2': #377FDB,
         'semantic': (
+          'contextual': (
+            'primary': #F7F8F8F2
+          ),
+          'overlay': (
+            'primary': #F7F8F8F2
+          ),
           'brand': (
             'primary': #20467F,
             'secondary': #0659C5,
-            'tertiary': #2976D8,
+            'tertiary': #1167D4,
             'on-brand': #EAF1FB
           ),
           'neutral': (
             'primary': #252627,
             'secondary': #5C5F63,
-            'tertiary': #74777C,
+            'tertiary': #686B6F,
             'on-neutral': #F0F1F2
-          ),
-          'contextual': (
-            'primary': #FFFFFFF2
           ),
           'info': (
             'primary': #20467F,
             'secondary': #0659C5,
-            'tertiary': #2976D8,
+            'tertiary': #1167D4,
             'on-info': #EAF1FB
           ),
           'success': (
             'primary': #344D24,
             'secondary': #3A6A14,
-            'tertiary': #4B851A,
+            'tertiary': #427816,
             'on-success': #E4F7D4
           ),
           'warning': (
             'primary': #524620,
             'secondary': #745B03,
-            'tertiary': #937303,
+            'tertiary': #836703,
             'on-warning': #FFF1BD
           ),
           'error': (
             'primary': #802820,
             'secondary': #C00101,
-            'tertiary': #E13131,
+            'tertiary': #D80000,
             'on-error': #FCEDED
           ),
           'disabled': (
             'primary': #A7ACB2,
-            'secondary': #FFFFFF80
+            'secondary': #F7F8F880
           )
         ),
         'palette': (
           'brand': (
-            'primary': #2976D8,
-            'secondary': #6CA0E4,
-            'tertiary': #C0D6F4
+            'primary': #2976D8
           ),
           'red': (
-            'primary': #D83F3D,
-            'secondary': #EE7C7B,
-            'tertiary': #F8C9C9
+            'primary': #D83F3D
           ),
           'orange': (
-            'primary': #BE5B0F,
-            'secondary': #F27E27,
-            'tertiary': #FACBA8
+            'primary': #BE5B0F
           ),
           'brown': (
-            'primary': #8F7065,
-            'secondary': #AF9992,
-            'tertiary': #DCD2CF
+            'primary': #8F7065
           ),
           'yellow': (
-            'primary': #93730C,
-            'secondary': #C39810,
-            'tertiary': #F0D275
+            'primary': #93730C
           ),
           'green': (
-            'primary': #368741,
-            'secondary': #48B257,
-            'tertiary': #A7E3AF
+            'primary': #368741
           ),
           'blue-1': (
-            'primary': #3D71E4,
-            'secondary': #6F9BFD,
-            'tertiary': #C2D5FE
+            'primary': #3D71E4
           ),
           'blue-2': (
-            'primary': #2C8199,
-            'secondary': #3BAACA,
-            'tertiary': #A7DDED
+            'primary': #2C8199
           ),
           'purple': (
-            'primary': #9B4BF3,
-            'secondary': #BD83FD,
-            'tertiary': #E3CBFE
+            'primary': #9B4BF3
           ),
           'pink': (
-            'primary': #CD4089,
-            'secondary': #EA77B3,
-            'tertiary': #F7C7E0
+            'primary': #CD4089
           ),
           'gray': (
-            'primary': #74777C,
-            'secondary': #999EA5,
-            'tertiary': #D2D4D8
+            'primary': #74777C
           )
         )
       ),
@@ -646,13 +633,16 @@ $themes: (
           'primary': #E1E2E5
         ),
         'semantic': (
+          'contextual': (
+            'primary': #F7F8F833
+          ),
+          'overlay': (
+            'primary': #F7F8F833
+          ),
           'brand': (
             'primary': #1167D4,
             'secondary': #80AEE8,
             'tertiary': #C0D6F4
-          ),
-          'contextual': (
-            'primary': #FFFFFF33
           ),
           'neutral': (
             'primary': #686B6F,
@@ -682,63 +672,6 @@ $themes: (
           'disabled': (
             'primary': #E1E2E5
           )
-        ),
-        'palette': (
-          'brand': (
-            'primary': #2976D8,
-            'secondary': #6CA0E4,
-            'tertiary': #C0D6F4
-          ),
-          'red': (
-            'primary': #D83F3D,
-            'secondary': #EE7C7B,
-            'tertiary': #F8C9C9
-          ),
-          'orange': (
-            'primary': #BE5B0F,
-            'secondary': #F27E27,
-            'tertiary': #FACBA8
-          ),
-          'brown': (
-            'primary': #8F7065,
-            'secondary': #AF9992,
-            'tertiary': #DCD2CF
-          ),
-          'yellow': (
-            'primary': #93730C,
-            'secondary': #C39810,
-            'tertiary': #F0D275
-          ),
-          'green': (
-            'primary': #368741,
-            'secondary': #48B257,
-            'tertiary': #A7E3AF
-          ),
-          'blue-1': (
-            'primary': #3D71E4,
-            'secondary': #6F9BFD,
-            'tertiary': #C2D5FE
-          ),
-          'blue-2': (
-            'primary': #2C8199,
-            'secondary': #3BAACA,
-            'tertiary': #A7DDED
-          ),
-          'purple': (
-            'primary': #9B4BF3,
-            'secondary': #BD83FD,
-            'tertiary': #E3CBFE
-          ),
-          'pink': (
-            'primary': #CD4089,
-            'secondary': #EA77B3,
-            'tertiary': #F7C7E0
-          ),
-          'gray': (
-            'primary': #74777C,
-            'secondary': #999EA5,
-            'tertiary': #D2D4D8
-          )
         )
       )
     ),
@@ -747,7 +680,7 @@ $themes: (
         'border-radius': 0.5rem,
         'background-color': #F0F1F2,
         'border-color': #D2D4D8,
-        'color': #74777C,
+        'color': #686B6F,
         'font-size': 0.75rem,
         'padding': 1rem,
         'max-width': 150px
@@ -784,59 +717,60 @@ $themes: (
         'border-radius--hover': 2px,
         'border-radius--focus': 2px,
         'border-width': 1px,
+        'border-width--hover': 1px,
+        'border-width--focus': 1px,
         'border-color': #D2D4D8,
-        'border-color--hover': #A7ACB2,
+        'border-color--hover': #D2D4D8,
         'border-color--focus': #1167D4,
         'border-color--disabled': #E1E2E5,
         'border-style': solid,
-        'label-color--focus': #1167D4,
+        'label-color': #686B6F,
+        'label-color--focus': #20467F,
         'background-color': #FFFFFF,
         'value-color': #252627,
         'value-color--disabled': #5C5F63
       ),
       'forms-switch': (
-        'accent-color': #2976D8,
-        'rail-background-color': #74777C,
+        'accent-color': #1167D4,
+        'rail-background-color': #686B6F,
         'rail-background-color--disabled': #A7ACB2,
         'rail-border-radius': 50vw,
-        'handle-background-color': #FFFFFFF2,
-        'handle-background-color--disabled': #FFFFFF80,
+        'handle-background-color': #F7F8F8F2,
+        'handle-background-color--disabled': #F7F8F880,
         'handle-border-radius': 50%
       ),
       'forms-select': (
         'border-color': #D2D4D8,
         'border-color--focus': #1167D4,
-        'border-color--hover': #A7ACB2,
+        'border-color--hover': #D2D4D8,
         'border-radius': 8px,
         'border-radius--focus': 2px,
         'border-radius--hover': 2px,
         'border-style': solid,
         'border-width': 1px,
+        'border-width--focus': 1px,
+        'border-width--hover': 1px,
         'value-color': #252627,
         'value-color--disabled': #A7ACB2,
         'font-size': 1rem,
         'height': 3.5rem,
-        'item-background-color--hover': #E1E2E5,
+        'item-background-color--hover': #1B1C1D0D,
         'item-background-color--selected': #D5E4F7,
         'item-color': #252627,
-        'item-color--disabled': #FFFFFF80,
+        'item-color--disabled': #F7F8F880,
         'item-font-size': 1rem,
         'background-color': #FFFFFF,
         'menu-background-color': #FFFFFF,
-        'label-color--focus': #1167D4,
+        'label-color': #686B6F,
+        'label-color--focus': #20467F,
         'multi-pill-background-color': #F0F1F2,
         'multi-pill-border-radius': 2px,
         'multi-pill-max-width': 68%,
         'multi-pill-font-size': 1rem
       ),
-      'forms-radio': (
-        'border-color': #D2D4D8,
-        'border-color--disabled': #D2D4D8,
-        'accent-color': #2976D8,
-        'background-color': #FFFFFF
-      ),
+      'forms-radio': (),
       'forms-labelledbox': (
-        'label-color--small': #74777C,
+        'label-color--small': #686B6F,
         'label-color--big': #252627,
         'label-color--small--disabled': #5C5F63,
         'label-color--big--disabled': #5C5F63
@@ -854,8 +788,8 @@ $themes: (
         'border-color--hover': #D2D4D8,
         'border-color--focus': #1167D4,
         'border-style': solid,
-        'placeholder-color': #74777C,
-        'label-color': #74777C,
+        'placeholder-color': #686B6F,
+        'label-color': #686B6F,
         'label-color--focus': #20467F,
         'background-color': #FFFFFF,
         'value-color': #252627,
@@ -869,11 +803,11 @@ $themes: (
         'border-style': dotted,
         'background-color--active': #EAF1FB,
         'color': #252627,
-        'color--success': #4B851A,
-        'color--error': #E13131,
+        'color--success': #427816,
+        'color--error': #D80000,
         'padding': 1rem,
         'accent-color': #1167D4,
-        'text-color': #74777C,
+        'text-color': #686B6F,
         'text-size': 0.6875rem,
         'file-text-size': 0.8125rem,
         'file-text-color': #252627,
@@ -883,7 +817,7 @@ $themes: (
         'file-border-radius': 0.5rem,
         'file-background-color': #FFFFFF,
         'file-specs-size': 0.6875rem,
-        'file-specs-color': #74777C
+        'file-specs-color': #686B6F
       ),
       'forms-field': (
         'width': 292px,
@@ -895,15 +829,17 @@ $themes: (
       ),
       'forms-datepicker': (
         'border-color': #D2D4D8,
-        'border-color--disabled': #E1E2E5,
+        'border-color--disabled': #D2D4D8,
         'border-color--focus': #1167D4,
-        'border-color--hover': #A7ACB2,
+        'border-color--hover': #D2D4D8,
         'border-radius': 8px,
         'border-radius--focus': 2px,
         'border-radius--hover': 2px,
         'border-style': solid,
         'border-width': 1px,
-        'value-color': #74777C,
+        'border-width--focus': 1px,
+        'border-width--hover': 1px,
+        'value-color': #686B6F,
         'value-color--disabled': #A7ACB2,
         'font-size': 1.125rem,
         'height': 3.5rem,
@@ -917,7 +853,7 @@ $themes: (
         'range-selection-background-color--disabled': #F0F1F2,
         'grid-cell--border-color--today': #1167D4,
         'grid-cell--color--today': #20467F,
-        'label-color--focus': #80AEE8
+        'label-color--focus': #20467F
       ),
       'forms-checkbox': (
         'background-color--hover': #E1E2E5,
@@ -925,14 +861,16 @@ $themes: (
         'font-size': 0.75rem,
         'font-weight': 500,
         'color': #252627,
-        'border-color': #74777C,
+        'border-color': #686B6F,
+        'border-color--hover': #686B6F,
+        'border-color--focus': #20467F,
         'border-radius': 2px,
-        'accent-color': #FFFFFFF2,
-        'size': 1.5rem,
-        'background-color--checked': #2976D8,
-        'background-color--indeterminate': #2976D8,
-        'background-color--disabled': #A7ACB2,
-        'border-color--disabled': #A7ACB2
+        'border-width': 1.5px,
+        'border-width--hover': 1px,
+        'accent-color': #1167D4,
+        'accent-color--disabled': #A7ACB2,
+        'checkmark-color': #F7F8F8F2,
+        'size': 1.5rem
       ),
       'button': (
         'border-radius': 8px,
@@ -948,9 +886,8 @@ $themes: (
         'small-icon-font-size': 1rem,
         'nano-font-size': 0.75rem,
         'nano-icon-font-size': 1rem,
-        'font-weight': 400,
-        'font-family': #{\Roboto Flex Variable\, sans-serif},
-        'text-font-weight': 500
+        'font-weight': 500,
+        'font-family': #{\Roboto Flex Variable\, sans-serif}
       ),
       'alert': (
         'background-color': #F0F1F2,
@@ -968,10 +905,10 @@ $themes: (
   'dark': (
     'globals': (
       'colors': (
-        'logo-1': #377FDB,
-        'logo-2': #377FDB,
-        'logo-1-dark': #95ABFF,
-        'logo-2-dark': #95ABFF,
+        'logo-1-light': #377FDB,
+        'logo-2-light': #377FDB,
+        'logo-1-dark': #C1D6F2,
+        'logo-2-dark': #C1D6F2,
         'brand-050': #EAF1FB,
         'brand-100': #D5E4F7,
         'brand-150': #C0D6F4,
@@ -1260,46 +1197,47 @@ $themes: (
         'pink-850': #332028,
         'pink-900': #24181D,
         'pink-950': #160F12,
-        'black-000': #00000000,
-        'black-050': #0000000D,
-        'black-100': #0000001A,
-        'black-150': #00000026,
-        'black-200': #00000033,
-        'black-250': #00000040,
-        'black-300': #0000004D,
-        'black-350': #00000059,
-        'black-400': #00000066,
-        'black-450': #00000073,
-        'black-500': #00000080,
-        'black-550': #0000008C,
-        'black-600': #00000099,
-        'black-650': #000000A6,
-        'black-700': #000000B3,
-        'black-750': #000000BF,
-        'black-800': #000000CC,
-        'black-850': #000000D9,
-        'black-900': #000000E6,
-        'black-950': #000000F2,
-        'white-000': #FFFFFF,
-        'white-050': #FFFFFF0D,
-        'white-100': #FFFFFF1A,
-        'white-150': #FFFFFF26,
-        'white-200': #FFFFFF33,
-        'white-250': #FFFFFF40,
-        'white-300': #FFFFFF4D,
-        'white-350': #FFFFFF59,
-        'white-400': #FFFFFF66,
-        'white-450': #FFFFFF73,
-        'white-500': #FFFFFF80,
-        'white-550': #FFFFFF8C,
-        'white-600': #FFFFFF99,
-        'white-650': #FFFFFFA6,
-        'white-700': #FFFFFFB3,
-        'white-750': #FFFFFFBF,
-        'white-800': #FFFFFFCC,
-        'white-850': #FFFFFFD9,
-        'white-900': #FFFFFFE6,
-        'white-950': #FFFFFFF2
+        'black-000': #1B1C1D00,
+        'black-050': #1B1C1D0D,
+        'black-100': #1B1C1D1A,
+        'black-150': #1B1C1D26,
+        'black-200': #1B1C1D33,
+        'black-250': #1B1C1D40,
+        'black-300': #1B1C1D4D,
+        'black-350': #1B1C1D59,
+        'black-400': #1B1C1D66,
+        'black-450': #1B1C1D73,
+        'black-500': #1B1C1D80,
+        'black-550': #1B1C1D8C,
+        'black-600': #1B1C1D99,
+        'black-650': #1B1C1DA6,
+        'black-700': #1B1C1DB2,
+        'black-750': #1B1C1DBF,
+        'black-800': #1B1C1DCC,
+        'black-850': #1B1C1DD9,
+        'black-900': #1B1C1DE5,
+        'black-950': #101112F2,
+        'white-000': #F7F8F800,
+        'white-050': #F7F8F80D,
+        'white-100': #F7F8F81A,
+        'white-150': #F7F8F826,
+        'white-200': #F7F8F833,
+        'white-250': #F7F8F840,
+        'white-300': #F7F8F84D,
+        'white-350': #F7F8F859,
+        'white-400': #F7F8F866,
+        'white-450': #F7F8F873,
+        'white-500': #F7F8F880,
+        'white-550': #F7F8F88C,
+        'white-600': #F7F8F899,
+        'white-650': #F7F8F8A6,
+        'white-700': #F7F8F8B2,
+        'white-750': #F7F8F8BF,
+        'white-800': #F7F8F8CC,
+        'white-850': #F7F8F8D9,
+        'white-900': #F7F8F8E5,
+        'white-950': #F7F8F8F2,
+        'white-975': #F7F8F8F9
       ),
       'transitions': (
         'ease-in': #{cubic-bezier(0.32, 0, 0.67, 0)},
@@ -1351,6 +1289,8 @@ $themes: (
         't': 0.5rem,
         'st': 0.25rem,
         '4xs': 0.125rem,
+        '3xs': 0.25rem,
+        '2xs': 0.375rem,
         'xxxs': 0.25rem,
         'xxs': 0.375rem,
         'xs': 0.5rem,
@@ -1361,13 +1301,15 @@ $themes: (
         'xl': 2.5rem,
         'xxl': 3rem,
         'xxxl': 3.5rem,
+        '2xl': 3rem,
+        '3xl': 3.5rem,
         '4xl': 4rem,
         '5xl': 4.5rem,
         '6xl': 6rem,
         '7xl': 7.5rem
       ),
       'breakpoints': (
-        'xs': 0,
+        'xs': 0px,
         'sm': 576px,
         'md': 768px,
         'lg': 992px,
@@ -1383,6 +1325,14 @@ $themes: (
           'tertiary': #1B1C1D
         ),
         'semantic': (
+          'contextual': (
+            'primary': #F7F8F80D,
+            'primary-hover': #F7F8F81A
+          ),
+          'overlay': (
+            'primary': #F7F8F80D,
+            'primary-hover': #F7F8F81A
+          ),
           'brand': (
             'primary': #1167D4,
             'primary-hover': #1A509F,
@@ -1398,10 +1348,6 @@ $themes: (
             'secondary-hover': #3A3B3E,
             'tertiary': #3A3B3E,
             'tertiary-hover': #2F3033
-          ),
-          'contextual': (
-            'primary': #FFFFFF0D,
-            'primary-hover': #FFFFFF1A
           ),
           'info': (
             'primary': #1167D4,
@@ -1499,9 +1445,15 @@ $themes: (
         )
       ),
       'content': (
-        'logo1': #95ABFF,
-        'logo2': #95ABFF,
+        'logo1': #C1D6F2,
+        'logo2': #C1D6F2,
         'semantic': (
+          'contextual': (
+            'primary': #1B1C1DD9
+          ),
+          'overlay': (
+            'primary': #1B1C1DD9
+          ),
           'brand': (
             'primary': #EAF1FB,
             'secondary': #D5E4F7,
@@ -1513,9 +1465,6 @@ $themes: (
             'secondary': #E1E2E5,
             'tertiary': #B5B9BE,
             'on-neutral': #F0F1F2
-          ),
-          'contextual': (
-            'primary': #000000D9
           ),
           'info': (
             'primary': #EAF1FB,
@@ -1543,64 +1492,42 @@ $themes: (
           ),
           'disabled': (
             'primary': #5C5F63,
-            'secondary': #0000004D
+            'secondary': #1B1C1D4D
           )
         ),
         'palette': (
           'brand': (
-            'primary': #6CA0E4,
-            'secondary': #4085DC,
-            'tertiary': #1167D4
+            'primary': #2976D8
           ),
           'red': (
-            'primary': #EE7C7B,
-            'secondary': #E74E4D,
-            'tertiary': #C23837
+            'primary': #D83F3D
           ),
           'orange': (
-            'primary': #F27E27,
-            'secondary': #D26411,
-            'tertiary': #AA510E
+            'primary': #BE5B0F
           ),
           'brown': (
-            'primary': #AF9992,
-            'secondary': #997E74,
-            'tertiary': #846357
+            'primary': #8F7065
           ),
           'yellow': (
-            'primary': #C39810,
-            'secondary': #A37F0D,
-            'tertiary': #84670B
+            'primary': #93730C
           ),
           'green': (
-            'primary': #48B257,
-            'secondary': #3B9548,
-            'tertiary': #30793A
+            'primary': #368741
           ),
           'blue-1': (
-            'primary': #6F9BFD,
-            'secondary': #437DFC,
-            'tertiary': #3665CC
+            'primary': #3D71E4
           ),
           'blue-2': (
-            'primary': #3BAACA,
-            'secondary': #318EA9,
-            'tertiary': #277389
+            'primary': #2C8199
           ),
           'purple': (
-            'primary': #BD83FD,
-            'secondary': #A85BFD,
-            'tertiary': #8B43DA
+            'primary': #9B4BF3
           ),
           'pink': (
-            'primary': #EA77B3,
-            'secondary': #E24797,
-            'tertiary': #B8397B
+            'primary': #CD4089
           ),
           'gray': (
-            'primary': #999EA5,
-            'secondary': #80848A,
-            'tertiary': #686B6F
+            'primary': #74777C
           )
         )
       ),
@@ -1609,13 +1536,16 @@ $themes: (
           'primary': #3A3B3E
         ),
         'semantic': (
+          'contextual': (
+            'primary': #1B1C1D33
+          ),
+          'overlay': (
+            'primary': #1B1C1D33
+          ),
           'brand': (
             'primary': #4085DC,
             'secondary': #0659C5,
             'tertiary': #20467F
-          ),
-          'contextual': (
-            'primary': #00000033
           ),
           'neutral': (
             'primary': #80848A,
@@ -1645,65 +1575,9 @@ $themes: (
           'disabled': (
             'primary': #2F3033
           )
-        ),
-        'palette': (
-          'brand': (
-            'primary': #6CA0E4,
-            'secondary': #4085DC,
-            'tertiary': #1167D4
-          ),
-          'red': (
-            'primary': #EE7C7B,
-            'secondary': #E74E4D,
-            'tertiary': #C23837
-          ),
-          'orange': (
-            'primary': #F27E27,
-            'secondary': #D26411,
-            'tertiary': #AA510E
-          ),
-          'brown': (
-            'primary': #AF9992,
-            'secondary': #997E74,
-            'tertiary': #846357
-          ),
-          'yellow': (
-            'primary': #C39810,
-            'secondary': #A37F0D,
-            'tertiary': #84670B
-          ),
-          'green': (
-            'primary': #48B257,
-            'secondary': #3B9548,
-            'tertiary': #30793A
-          ),
-          'blue-1': (
-            'primary': #6F9BFD,
-            'secondary': #437DFC,
-            'tertiary': #3665CC
-          ),
-          'blue-2': (
-            'primary': #3BAACA,
-            'secondary': #318EA9,
-            'tertiary': #277389
-          ),
-          'purple': (
-            'primary': #BD83FD,
-            'secondary': #A85BFD,
-            'tertiary': #8B43DA
-          ),
-          'pink': (
-            'primary': #EA77B3,
-            'secondary': #E24797,
-            'tertiary': #B8397B
-          ),
-          'gray': (
-            'primary': #999EA5,
-            'secondary': #80848A,
-            'tertiary': #686B6F
-          )
         )
       )
-    )
+    ),
+    'components': ()
   )
 ) !default;

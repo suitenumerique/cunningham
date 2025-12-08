@@ -4,20 +4,38 @@
     margin: 0;
     width: var(--c--components--forms-checkbox--size);
     height: var(--c--components--forms-checkbox--size);
-    border: 1.5px solid var(--c--components--forms-radio--border-color);
-    background-color: var(--c--components--forms-radio--background-color);
+    border: var(--c--components--forms-checkbox--border-width) solid var(--c--components--forms-checkbox--border-color);
+    background-color: var(--c--components--forms-checkbox--background-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition:
+      border var(--c--globals--transitions--duration)
+        var(--c--globals--transitions--ease-out),
+      box-shadow var(--c--globals--transitions--duration)
+        var(--c--globals--transitions--ease-out);
+
+    &:hover {
+      box-shadow: 0 0 0 var(--c--components--forms-checkbox--border-width--hover) var(--c--components--forms-checkbox--border-color);
+    }
 
     &:focus {
       outline: none;
+      box-shadow: 0 0 0 var(--c--components--forms-checkbox--border-width--hover) var(--c--components--forms-checkbox--border-color);
     }
 
     &:checked {
-      border-color: var(--c--components--forms-radio--accent-color);
+      border-color: var(--c--components--forms-checkbox--accent-color);
+
+      &:hover {
+        box-shadow: 0 0 0 var(--c--components--forms-checkbox--border-width--hover) var(--c--components--forms-checkbox--accent-color);
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 var(--c--components--forms-checkbox--border-width--hover) var(--c--components--forms-checkbox--accent-color);
+      }
     }
 
     &::before {
@@ -28,7 +46,7 @@
       transform: scale(0);
       transition: all var(--c--globals--transitions--duration)
         var(--c--globals--transitions--ease-out);
-      box-shadow: inset 1em 1em var(--c--components--forms-radio--accent-color);
+      box-shadow: inset 1em 1em var(--c--components--forms-checkbox--accent-color);
     }
 
     &:checked::before {
@@ -37,11 +55,12 @@
   }
 
   &.c__checkbox--disabled {
+    pointer-events: none;
     input {
-      border-color: var(--c--components--forms-radio--border-color--disabled);
+      border-color: var(--c--components--forms-checkbox--accent-color--disabled);
       &::before {
         box-shadow: inset 1em 1em
-          var(--c--components--forms-radio--border-color--disabled);
+          var(--c--components--forms-checkbox--accent-color--disabled);
       }
     }
   }

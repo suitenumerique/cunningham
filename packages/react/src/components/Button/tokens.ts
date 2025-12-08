@@ -15,8 +15,7 @@ export const tokens = (defaults: DefaultTokens) => {
     "small-icon-font-size": defaults.globals.font.sizes.md,
     "nano-font-size": defaults.globals.font.sizes.xs,
     "nano-icon-font-size": defaults.globals.font.sizes.md,
-    "font-weight": defaults.globals.font.weights.regular,
+    "font-weight": defaults.globals.font.weights.medium,
     "font-family": defaults.globals.font.families.base,
-    "text-font-weight": defaults.globals.font.weights.medium,
   };
 };

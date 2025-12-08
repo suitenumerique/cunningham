@@ -8,16 +8,15 @@ export const tokens = (defaults: DefaultTokens) => ({
   "font-weight": defaults.globals.font.weights.medium,
   color: defaults.contextuals.content.semantic.neutral.primary,
   "border-color": defaults.contextuals.content.semantic.neutral.tertiary,
+  "border-color--hover": defaults.contextuals.content.semantic.neutral.tertiary,
+  "border-color--focus": defaults.contextuals.content.semantic.brand.primary,
   "border-radius": "2px",
-  "accent-color": defaults.contextuals.content.semantic.contextual.primary,
+  "border-width": "1.5px",
+  "border-width--hover": "1px",
+  "accent-color": defaults.contextuals.content.semantic.brand.tertiary,
+  "accent-color--disabled":
+    defaults.contextuals.content.semantic.disabled.primary,
+  "checkmark-color": defaults.contextuals.content.semantic.contextual.primary,
 
   size: "1.5rem",
-  "background-color--checked":
-    defaults.contextuals.content.semantic.brand.tertiary,
-  "background-color--indeterminate":
-    defaults.contextuals.content.semantic.brand.tertiary,
-  "background-color--disabled":
-    defaults.contextuals.content.semantic.disabled.primary,
-  "border-color--disabled":
-    defaults.contextuals.content.semantic.disabled.primary,
 });

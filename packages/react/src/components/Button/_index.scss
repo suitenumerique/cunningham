@@ -1,7 +1,7 @@
 @mixin button-variant($context) {
   white-space: nowrap;
   &:hover,
-    &:focus-visible {  
+    &:focus-visible {
       border-radius: var(--c--components--button--border-radius--focus);
     }
 
@@ -19,9 +19,9 @@
       background-color: var(
         --c--contextuals--background--semantic--#{$context}--primary-hover
       );
-      
+
     }
-    
+
     &:disabled {
       background-color: var(--c--contextuals--background--semantic--disabled--primary);
       color: var(--c--contextuals--content--semantic--disabled--primary);
@@ -43,7 +43,7 @@
         --c--contextuals--background--semantic--#{$context}--secondary-hover
       );
     }
-    
+
     &:disabled {
       background-color: var(--c--contextuals--background--semantic--disabled--secondary);
       color: var(--c--contextuals--content--semantic--disabled--primary);
@@ -111,10 +111,6 @@
   &__icon {
     display: flex;
     align-items: center;
-  }
-
-  &--text {
-    font-weight: var(--c--components--button--text-font-weight);
   }
 
   &--full-width {

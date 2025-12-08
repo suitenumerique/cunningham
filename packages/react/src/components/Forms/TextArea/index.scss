@@ -17,6 +17,8 @@
     border var(--c--globals--transitions--duration)
       var(--c--globals--transitions--ease-out),
     border-radius var(--c--globals--transitions--duration)
+      var(--c--globals--transitions--ease-out),
+    box-shadow var(--c--globals--transitions--duration)
       var(--c--globals--transitions--ease-out);
   overflow: hidden;
 
@@ -42,14 +44,14 @@
 
   &:hover {
     border-radius: var(--c--components--forms-textarea--border-radius--hover);
-    border-color: var(--c--components--forms-textarea--border-color--hover);
+    border-color: var(--c--components--forms-textarea--border-color--hover) !important;
+    box-shadow: 0 0 0 var(--c--components--forms-textarea--border-width--hover) var(--c--components--forms-textarea--border-color--hover) !important;
   }
 
   &:focus-within {
     border-radius: var(--c--components--forms-textarea--border-radius--focus);
-    border-color: var(
-      --c--components--forms-textarea--border-color--focus
-    ) !important;
+    border-color: var(--c--components--forms-textarea--border-color--focus) !important;
+    box-shadow: 0 0 0 var(--c--components--forms-textarea--border-width--focus) var(--c--components--forms-textarea--border-color--focus) !important;
 
     label {
       color: var(--c--components--forms-textarea--label-color--focus);
@@ -58,6 +60,7 @@
 
   &--disabled {
     cursor: default;
+    pointer-events: none;
     border-color: var(--c--components--forms-textarea--border-color--disabled);
 
     .c__textarea {
@@ -78,38 +81,12 @@
   &--success {
     .c__textarea__wrapper {
       border-color: var(--c--contextuals--content--semantic--success--tertiary);
-
-      .labelled-box label {
-        color: var(--c--contextuals--content--semantic--success--tertiary);
-      }
-
-      &:not(.c__input__wrapper--disabled) {
-        &:hover {
-          border-color: var(--c--contextuals--content--semantic--success--secondary);
-          color: var(--c--contextuals--content--semantic--success--secondary);
-
-          .labelled-box label {
-            color: var(--c--contextuals--content--semantic--success--secondary);
-          }
-        }
-      }
     }
   }
 
   &--error {
     .c__textarea__wrapper {
       border-color: var(--c--contextuals--content--semantic--error--tertiary);
-
-      &:not(.c__input__wrapper--disabled) {
-        &:hover {
-          border-color: var(--c--contextuals--content--semantic--error--secondary);
-          color: var(--c--contextuals--content--semantic--error--secondary);
-
-          label {
-            color: var(--c--contextuals--content--semantic--error--secondary);
-          }
-        }
-      }
     }
   }
 }

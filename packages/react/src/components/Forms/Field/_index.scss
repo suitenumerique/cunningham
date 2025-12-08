@@ -46,7 +46,8 @@
   &--success {
     color: var(--c--components--forms-field--color--success);
 
-    .c__field__text {
+    label,
+    .labelled-box label {
       color: var(--c--components--forms-field--color--success);
     }
   }
