@@ -7,13 +7,16 @@ export const tokens = (defaults: DefaultTokens) => ({
   "border-radius--hover": "2px",
   "border-radius--focus": "2px",
   "border-width": "1px",
+  "border-width--hover": "1px",
+  "border-width--focus": "1px",
   "border-color": defaults.contextuals.border.semantic.neutral.tertiary,
-  "border-color--hover": defaults.contextuals.border.semantic.neutral.secondary,
+  "border-color--hover": defaults.contextuals.border.semantic.neutral.tertiary,
   "border-color--focus": defaults.contextuals.border.semantic.brand.primary,
   "border-color--disabled":
     defaults.contextuals.border.semantic.disabled.primary,
   "border-style": "solid",
-  "label-color--focus": defaults.contextuals.border.semantic.brand.primary,
+  "label-color": defaults.contextuals.content.semantic.neutral.tertiary,
+  "label-color--focus": defaults.contextuals.content.semantic.brand.primary,
   "background-color": defaults.contextuals.background.surface.primary,
   "value-color": defaults.contextuals.content.semantic.neutral.primary,
   "value-color--disabled":

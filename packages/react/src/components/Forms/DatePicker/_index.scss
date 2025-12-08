@@ -14,6 +14,8 @@
       border var(--c--globals--transitions--duration)
         var(--c--globals--transitions--ease-out),
       border-radius var(--c--globals--transitions--duration)
+        var(--c--globals--transitions--ease-out),
+      box-shadow var(--c--globals--transitions--duration)
         var(--c--globals--transitions--ease-out);
     padding: 0 0.75rem;
     gap: 1rem;
@@ -98,6 +100,7 @@
   /** Modifiers */
 
   &--disabled {
+    pointer-events: none;
     .c__date-picker__wrapper {
       color: var(--c--contextuals--content--semantic--disabled--primary);
       border-color: var(
@@ -129,73 +132,34 @@
   &--invalid {
     .c__date-picker__wrapper {
       border-color: var(--c--contextuals--border--semantic--error--primary);
-      border-radius: var(--c--components--forms-datepicker--border-radius);
 
       &__toggle {
-        color: var(--c--contextuals--content--semantic--error--primary);
-      }
-
-      label {
-        color: var(--c--contextuals--content--semantic--error--primary);
-      }
-    }
-
-    &:not(.c__date-picker--disabled) {
-      &:hover {
-        .c__date-picker__wrapper {
-          border-color: var(--c--contextuals--border--semantic--error--secondary);
-          &__toggle {
-            color: var(--c--contextuals--content--semantic--error--secondary);
-          }
-
-          label {
-            color: var(--c--contextuals--content--semantic--error--secondary);
-          }
-        }
+        color: var(--c--contextuals--content--semantic--error--secondary);
       }
     }
   }
 
   &--success {
     .c__date-picker__wrapper {
-      border-color: var(--c--contextuals--border--semantic--success--secondary);
-      border-radius: var(--c--components--forms-datepicker--border-radius);
+      border-color: var(--c--contextuals--border--semantic--success--primary);
 
       &__toggle {
         color: var(--c--contextuals--content--semantic--success--secondary);
       }
-
-      label {
-        color: var(--c--contextuals--content--semantic--success--secondary);
-      }
-    }
-
-    &:not(.c__date-picker--disabled) {
-      &:hover {
-        .c__date-picker__wrapper {
-          border-color: var(--c--contextuals--border--semantic--success--primary);
-          &__toggle {
-            color: var(--c--contextuals--content--semantic--success--primary);
-          }
-
-          label {
-            color: var(--c--contextuals--content--semantic--success--primary);
-          }
-        }
-      }
     }
   }
 
-  &:not(&--focused):not(&--invalid):not(&--disabled):not(&--success) {
-    &:hover {
-      .c__date-picker__wrapper {
-        border-radius: var(
-          --c--components--forms-datepicker--border-radius--hover
-        );
-        border-color: var(
-          --c--components--forms-datepicker--border-color--hover
-        );
-      }
+
+  &:hover {
+    .c__date-picker__wrapper {
+      border-radius: var(
+        --c--components--forms-datepicker--border-radius--hover
+      );
+      border-color: var(
+        --c--components--forms-datepicker--border-color--hover
+      );
+      box-shadow: 0 0 0 var(--c--components--forms-datepicker--border-width--hover)
+        var(--c--components--forms-datepicker--border-color--hover);
     }
   }
 
@@ -210,6 +174,8 @@
     border-color: var(
       --c--components--forms-datepicker--border-color--focus
     ) !important;
+    box-shadow: 0 0 0 var(--c--components--forms-datepicker--border-width--focus)
+      var(--c--components--forms-datepicker--border-color--focus) !important;
 
     .c__date-picker__wrapper__toggle {
       color: var(

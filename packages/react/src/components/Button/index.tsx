@@ -60,9 +60,6 @@ export const Button = ({
   if (fullWidth) {
     classes.push("c__button--full-width");
   }
-  if (["primary-text", "tertiary-text"].includes(variant)) {
-    classes.push("c__button--text");
-  }
   if (props.href && props.disabled) {
     classes.push("c__button--disabled");
   }

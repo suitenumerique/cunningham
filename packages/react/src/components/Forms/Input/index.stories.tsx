@@ -14,6 +14,15 @@ import { Button } from ":/components/Button";
 export default {
   title: "Components/Forms/Input",
   component: Input,
+  argTypes: {
+    disabled: {
+      control: "boolean",
+    },
+    state: {
+      control: "select",
+      options: ["default", "success", "error"],
+    },
+  },
 } as Meta<typeof Input>;
 
 export const Default = {
@@ -40,6 +49,7 @@ export const Error = {
     state: "error",
     icon: <span className="material-icons">person</span>,
     text: "This is an optional error message",
+    disabled: false,
   },
 };
 

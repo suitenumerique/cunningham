@@ -1,9 +1,6 @@
-import { DefaultTokens } from "@gouvfr-lasuite/cunningham-tokens";
+// TODO : Homegenize tokens between all inputs
 
-export const tokens = (defaults: DefaultTokens) => ({
-  "border-color": defaults.contextuals.border.semantic.neutral.tertiary,
-  "border-color--disabled":
-    defaults.contextuals.border.semantic.neutral.tertiary,
-  "accent-color": defaults.contextuals.content.semantic.brand.tertiary,
-  "background-color": defaults.contextuals.background.surface.primary,
-});
+// For now, radio tokens are the same as checkbox tokens
+// Take a look at the checkbox tokens
+
+export const tokens = () => ({});
