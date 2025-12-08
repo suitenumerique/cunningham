@@ -1,5 +1,12 @@
 # @gouvfr-lasuite/cunningham-tokens
 
+## 3.1.0
+
+### Minor Changes
+
+- 414ca0d: Fix inconsistency between cunningham tokens and figma variables
+- 55e2aa8: Add getThemesFromGlobals util
+
 ## 3.0.0
 
 ### Major Changes
@@ -106,7 +113,8 @@
 - 4ebbf16: Add utility classes
 - 4ebbf16: Add official design tokens
 
-[unreleased]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@3.0.0...main
+[unreleased]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@3.1.0...main
+[3.1.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@3.0.0...@openfun/cunningham-tokens@3.1.0
 [3.0.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@2.2.0...@openfun/cunningham-tokens@3.0.0
 [2.2.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@2.1.1...@openfun/cunningham-tokens@2.2.0
 [2.1.1]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@2.1.0...@openfun/cunningham-tokens@2.1.1
