@@ -2,6 +2,7 @@ import React, { PropsWithChildren, ReactNode, RefAttributes } from "react";
 import { SelectMulti } from ":/components/Forms/Select/multi";
 import { SelectMono } from ":/components/Forms/Select/mono";
 import { FieldProps } from ":/components/Forms/Field";
+import type { FieldVariant } from ":/components/Forms/types";
 
 export * from ":/components/Forms/Select/mono";
 export * from ":/components/Forms/Select/multi";
@@ -32,6 +33,8 @@ export type SelectProps = PropsWithChildren &
   FieldProps & {
     label: string;
     hideLabel?: boolean;
+    variant?: FieldVariant;
+    placeholder?: string;
     options: Option[];
     searchable?: boolean;
     name?: string;

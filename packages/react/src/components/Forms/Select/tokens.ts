@@ -33,4 +33,5 @@ export const tokens = (defaults: DefaultTokens) => ({
   "multi-pill-border-radius": "2px",
   "multi-pill-max-width": "68%",
   "multi-pill-font-size": defaults.globals.font.sizes.md,
+  "placeholder-color": defaults.contextuals.content.semantic.neutral.secondary,
 });

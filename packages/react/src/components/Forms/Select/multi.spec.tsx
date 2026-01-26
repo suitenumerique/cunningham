@@ -1895,4 +1895,105 @@ describe("<Select multi={true} />", () => {
       document.querySelector(".c__field.my-custom-class"),
     ).toBeInTheDocument();
   });
+
+  describe("classic variant", () => {
+    it("renders with classic variant", async () => {
+      render(
+        <CunninghamProvider>
+          <Select
+            label="Cities"
+            variant="classic"
+            multi={true}
+            options={[
+              { label: "Paris", value: "paris" },
+              { label: "London", value: "london" },
+            ]}
+          />
+        </CunninghamProvider>,
+      );
+      // In classic mode, label is rendered outside the wrapper with its own class
+      expect(document.querySelector(".c__select__label")).toBeInTheDocument();
+      expect(document.querySelector(".c__select--classic")).toBeInTheDocument();
+    });
+
+    it("shows placeholder in classic variant when no selection", async () => {
+      render(
+        <CunninghamProvider>
+          <Select
+            label="Cities"
+            variant="classic"
+            placeholder="Select cities..."
+            multi={true}
+            options={[
+              { label: "Paris", value: "paris" },
+              { label: "London", value: "london" },
+            ]}
+          />
+        </CunninghamProvider>,
+      );
+      expect(screen.getByText("Select cities...")).toBeInTheDocument();
+      expect(
+        document.querySelector(".c__select__placeholder"),
+      ).toBeInTheDocument();
+    });
+
+    it("hides placeholder after selection in classic variant", async () => {
+      const user = userEvent.setup();
+      render(
+        <CunninghamProvider>
+          <Select
+            label="Cities"
+            variant="classic"
+            placeholder="Select cities..."
+            multi={true}
+            options={[
+              { label: "Paris", value: "paris" },
+              { label: "London", value: "london" },
+            ]}
+          />
+        </CunninghamProvider>,
+      );
+
+      // Placeholder should be visible initially
+      expect(screen.getByText("Select cities...")).toBeInTheDocument();
+
+      // Open menu and select an option
+      const input = screen.getByRole("combobox", { name: "Cities" });
+      await user.click(input);
+      await user.click(screen.getByRole("option", { name: "Paris" }));
+
+      // Placeholder should be hidden, selection should be shown
+      expect(screen.queryByText("Select cities...")).not.toBeInTheDocument();
+      expectSelectedOptions(["Paris"]);
+    });
+
+    it("label is always static in classic variant", async () => {
+      const user = userEvent.setup();
+      render(
+        <CunninghamProvider>
+          <Select
+            label="Cities"
+            variant="classic"
+            multi={true}
+            options={[
+              { label: "Paris", value: "paris" },
+              { label: "London", value: "london" },
+            ]}
+          />
+        </CunninghamProvider>,
+      );
+
+      const label = screen.getByText("Cities");
+
+      // In classic variant, label is outside the wrapper with c__select__label class
+      expect(label.classList.contains("c__select__label")).toBe(true);
+
+      // Open menu
+      const input = screen.getByRole("combobox", { name: "Cities" });
+      await user.click(input);
+
+      // Label should still have the same class
+      expect(label.classList.contains("c__select__label")).toBe(true);
+    });
+  });
 });

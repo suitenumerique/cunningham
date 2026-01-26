@@ -16,6 +16,12 @@ import { Input } from ":/components/Forms/Input";
 export default {
   title: "Components/Forms/Select/Multi",
   component: Select,
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["floating", "classic"],
+    },
+  },
 } as Meta<typeof Select>;
 
 const Template: StoryFn<typeof Select> = (args) => {
@@ -70,6 +76,49 @@ export const Monoline = {
     defaultValue: [OPTIONS[4].value, OPTIONS[2].value, OPTIONS[1].value],
     monoline: true,
     clearable: true,
+  },
+};
+
+export const ClassicVariant = {
+  render: Template,
+  args: {
+    label: "Select cities",
+    variant: "classic",
+    placeholder: "Choose cities...",
+    options: OPTIONS,
+  },
+};
+
+export const ClassicVariantFilled = {
+  render: Template,
+  args: {
+    label: "Select cities",
+    variant: "classic",
+    placeholder: "Choose cities...",
+    options: OPTIONS,
+    defaultValue: [OPTIONS[4].value, OPTIONS[2].value],
+  },
+};
+
+export const ClassicVariantSearchable = {
+  render: Template,
+  args: {
+    label: "Select cities",
+    variant: "classic",
+    placeholder: "Search for cities...",
+    options: OPTIONS,
+    searchable: true,
+  },
+};
+
+export const ClassicVariantDisabled = {
+  render: Template,
+  args: {
+    label: "Select cities",
+    variant: "classic",
+    placeholder: "Choose cities...",
+    options: OPTIONS,
+    disabled: true,
   },
 };
 

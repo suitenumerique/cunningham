@@ -16,6 +16,12 @@ import { Input } from ":/components/Forms/Input";
 export default {
   title: "Components/Forms/Select/Mono",
   component: Select,
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["floating", "classic"],
+    },
+  },
 } as Meta<typeof Select>;
 
 const Template: StoryFn<typeof Select> = (args) => (
@@ -300,6 +306,66 @@ export const SearchableCustomRender = {
       getCountryOption("Spain", "ES"),
       getCountryOption("China", "CN"),
     ],
+  },
+};
+
+export const ClassicVariant = {
+  render: Template,
+
+  args: {
+    label: "Select a city",
+    variant: "classic",
+    placeholder: "Choose a city...",
+    options: OPTIONS,
+  },
+};
+
+export const ClassicVariantFilled = {
+  render: Template,
+
+  args: {
+    label: "Select a city",
+    variant: "classic",
+    placeholder: "Choose a city...",
+    options: OPTIONS,
+    defaultValue: OPTIONS[4].value,
+  },
+};
+
+export const ClassicVariantSearchable = {
+  render: Template,
+
+  args: {
+    label: "Select a city",
+    variant: "classic",
+    placeholder: "Search for a city...",
+    options: OPTIONS,
+    searchable: true,
+  },
+};
+
+export const ClassicVariantDisabled = {
+  render: Template,
+
+  args: {
+    label: "Select a city",
+    variant: "classic",
+    placeholder: "Choose a city...",
+    options: OPTIONS,
+    disabled: true,
+  },
+};
+
+export const ClassicVariantError = {
+  render: Template,
+
+  args: {
+    label: "Select a city",
+    variant: "classic",
+    placeholder: "Choose a city...",
+    options: OPTIONS,
+    state: "error",
+    text: "Please select a city",
   },
 };
 
