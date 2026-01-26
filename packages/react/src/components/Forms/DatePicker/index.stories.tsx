@@ -9,6 +9,7 @@ import { DateRangePicker } from ":/components/Forms/DatePicker/DateRangePicker";
 import { DatePicker } from ":/components/Forms/DatePicker/DatePicker";
 import { onSubmit } from ":/components/Forms/Examples/ReactHookForm/reactHookFormUtils";
 import { RhfDatePicker } from ":/components/Forms/DatePicker/stories-utils";
+import { FieldVariant } from ":/components/Forms/types";
 
 export default {
   title: "Components/Forms/DatePicker",
@@ -250,3 +251,80 @@ export const RangeControlledFull = () => {
     </>
   );
 };
+
+export const ClassicVariant = () => (
+  <div style={{ minHeight: "400px" }}>
+    <DatePicker label="Pick a date" variant={FieldVariant.Classic} />
+  </div>
+);
+
+export const ClassicVariantWithValue = () => (
+  <div style={{ minHeight: "400px" }}>
+    <DatePicker
+      label="Pick a date"
+      variant={FieldVariant.Classic}
+      defaultValue="2023-05-24T00:00:00.000+00:00"
+    />
+  </div>
+);
+
+export const RangeClassicVariant = () => (
+  <div style={{ minHeight: "400px" }}>
+    <DateRangePicker
+      label="Pick a date range"
+      startLabel="Start date"
+      endLabel="End date"
+      variant={FieldVariant.Classic}
+    />
+  </div>
+);
+
+export const RangeClassicVariantWithValue = () => (
+  <div style={{ minHeight: "400px" }}>
+    <DateRangePicker
+      label="Pick a date range"
+      startLabel="Start date"
+      endLabel="End date"
+      variant={FieldVariant.Classic}
+      defaultValue={[
+        "2023-05-23T00:00:00.000+00:00",
+        "2023-06-23T00:00:00.000+00:00",
+      ]}
+    />
+  </div>
+);
+
+export const HiddenLabel = () => (
+  <div style={{ minHeight: "400px" }}>
+    <DatePicker label="Pick a date" hideLabel />
+  </div>
+);
+
+export const HiddenLabelClassic = () => (
+  <div style={{ minHeight: "400px" }}>
+    <DatePicker label="Pick a date" variant={FieldVariant.Classic} hideLabel />
+  </div>
+);
+
+export const RangeHiddenLabel = () => (
+  <div style={{ minHeight: "400px" }}>
+    <DateRangePicker
+      label="Pick a date range"
+      startLabel="Start date"
+      endLabel="End date"
+      hideLabel
+    />
+  </div>
+);
+
+export const RangeHiddenLabelClassic = () => (
+  <div style={{ minHeight: "400px" }}>
+    <DateRangePicker
+      label="Pick a date range"
+      startLabel="Start date"
+      endLabel="End date"
+      variant={FieldVariant.Classic}
+      hideLabel
+    />
+  </div>
+);

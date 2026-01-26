@@ -15,6 +15,7 @@ import {
   getDefaultPickerOptions,
   parseDateValue,
 } from ":/components/Forms/DatePicker/utils";
+import { FieldVariant } from ":/components/Forms/types";
 
 export type DatePickerProps = DatePickerAuxSubProps & {
   value?: null | string;
@@ -51,6 +52,7 @@ export const DatePicker = (props: DatePickerProps) => {
     ref,
   );
 
+  const isClassic = props.variant === FieldVariant.Classic;
   const labelAsPlaceholder = useMemo(
     () => !isFocused && !pickerState.isOpen && !pickerState.value,
     [pickerState.value, pickerState.isOpen, isFocused],
@@ -74,8 +76,12 @@ export const DatePicker = (props: DatePickerProps) => {
       <DateFieldBox
         {...{
           ...fieldProps,
-          label: props.label,
-          labelAsPlaceholder,
+          // In classic mode, label is rendered outside by DatePickerAux
+          label: isClassic ? undefined : props.label,
+          variant: props.variant,
+          hideLabel: isClassic ? undefined : props.hideLabel,
+          // In classic mode, always show date segments (never collapse them)
+          labelAsPlaceholder: isClassic ? false : labelAsPlaceholder,
           onFocusChange: setIsFocused,
           disabled: props.disabled,
         }}
