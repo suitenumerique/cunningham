@@ -14,16 +14,22 @@ import { I18nProvider } from "@react-aria/i18n";
 import { Button } from ":/components/Button";
 import { Popover } from ":/components/Popover";
 import { Field, FieldProps } from ":/components/Forms/Field";
+import { ClassicLabel } from ":/components/Forms/ClassicLabel";
 import { useCunningham } from ":/components/Provider";
 import {
   Calendar,
   CalendarRange,
 } from ":/components/Forms/DatePicker/Calendar";
 import { convertDateValueToString } from ":/components/Forms/DatePicker/utils";
+import type { FieldVariant } from ":/components/Forms/types";
 
 export type DatePickerAuxSubProps = FieldProps & {
   // eslint-disable-next-line react/no-unused-prop-types
   label?: string;
+  // eslint-disable-next-line react/no-unused-prop-types
+  variant?: FieldVariant;
+  // eslint-disable-next-line react/no-unused-prop-types
+  hideLabel?: boolean;
   // eslint-disable-next-line react/no-unused-prop-types
   minValue?: string;
   // eslint-disable-next-line react/no-unused-prop-types
@@ -48,6 +54,13 @@ export type DatePickerAuxProps = PropsWithChildren &
     optionalClassName?: string;
     isRange?: boolean;
     onClear: () => void;
+    // For classic range mode: render labels above the wrapper
+    rangeLabels?: {
+      startLabel: string;
+      endLabel: string;
+      disabled?: boolean;
+      hideLabel?: boolean;
+    };
   };
 
 /**
@@ -68,16 +81,20 @@ const DatePickerAux = ({
   disabled = false,
   optionalClassName,
   isRange,
+  rangeLabels,
   ref,
   ...props
 }: DatePickerAuxProps) => {
   const { t, currentLocale } = useCunningham();
   const pickerRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const isDateInvalid = useMemo(
     () => pickerState.validationState === "invalid" || props.state === "error",
     [pickerState.validationState, props.state],
   );
+
+  const isClassic = props.variant === "classic";
 
   return (
     <I18nProvider locale={locale || currentLocale}>
@@ -95,13 +112,91 @@ const DatePickerAux = ({
             "c__date-picker--success": props.state === "success",
             "c__date-picker--focused":
               !isDateInvalid && !disabled && (pickerState.isOpen || isFocused),
+            "c__date-picker--classic": isClassic,
           })}
         >
+          {isClassic && !isRange && (
+            <ClassicLabel
+              label={props.label}
+              hideLabel={props.hideLabel}
+              disabled={disabled}
+              className="c__date-picker__label"
+              disabledClassName="c__date-picker__label--disabled"
+              onClick={() => {
+                wrapperRef.current?.focus();
+                if (!pickerState.isOpen) {
+                  pickerState.open();
+                }
+              }}
+            />
+          )}
+          {/* Classic variant: range labels above the wrapper */}
+          {isClassic && rangeLabels && !rangeLabels.hideLabel && (
+            <div className="c__date-picker__range__labels">
+              <ClassicLabel
+                label={rangeLabels.startLabel}
+                disabled={rangeLabels.disabled}
+                className="c__date-picker__label"
+                disabledClassName="c__date-picker__label--disabled"
+                onClick={() => {
+                  wrapperRef.current?.focus();
+                  if (!pickerState.isOpen) {
+                    pickerState.open();
+                  }
+                }}
+              />
+              <div className="c__date-picker__range__labels__spacer" />
+              <ClassicLabel
+                label={rangeLabels.endLabel}
+                disabled={rangeLabels.disabled}
+                className="c__date-picker__label"
+                disabledClassName="c__date-picker__label--disabled"
+                onClick={() => {
+                  wrapperRef.current?.focus();
+                  if (!pickerState.isOpen) {
+                    pickerState.open();
+                  }
+                }}
+              />
+            </div>
+          )}
+          {/* Hidden range labels for accessibility when hideLabel is true */}
+          {isClassic && rangeLabels && rangeLabels.hideLabel && (
+            <>
+              <ClassicLabel
+                label={rangeLabels.startLabel}
+                hideLabel
+                onClick={() => {
+                  wrapperRef.current?.focus();
+                  if (!pickerState.isOpen) {
+                    pickerState.open();
+                  }
+                }}
+              />
+              <ClassicLabel
+                label={rangeLabels.endLabel}
+                hideLabel
+                onClick={() => {
+                  wrapperRef.current?.focus();
+                  if (!pickerState.isOpen) {
+                    pickerState.open();
+                  }
+                }}
+              />
+            </>
+          )}
           <div
             className={classNames("c__date-picker__wrapper", {
               "c__date-picker__wrapper--clickable": labelAsPlaceholder,
             })}
-            ref={ref}
+            ref={(node) => {
+              wrapperRef.current = node;
+              if (typeof ref === "function") {
+                ref(node);
+              } else if (ref) {
+                ref.current = node;
+              }
+            }}
             {...pickerProps.groupProps}
             role="button"
             tabIndex={0}

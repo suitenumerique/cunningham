@@ -60,6 +60,7 @@ export const DateRangePicker = ({
   const { startFieldProps, endFieldProps, calendarProps, ...pickerProps } =
     useDateRangePicker(options, pickerState, ref);
 
+  const isClassic = props.variant === "classic";
   const labelAsPlaceholder = useMemo(
     () =>
       !isFocused &&
@@ -88,14 +89,27 @@ export const DateRangePicker = ({
           });
         },
         calendar,
+        // Pass labels for classic range mode
+        rangeLabels: isClassic
+          ? {
+              startLabel,
+              endLabel,
+              disabled: props.disabled,
+              hideLabel: props.hideLabel,
+            }
+          : undefined,
       }}
       ref={ref}
     >
       <DateFieldBox
         {...{
           ...startFieldProps,
-          label: startLabel,
-          labelAsPlaceholder,
+          // In classic mode, label is rendered outside by DatePickerAux
+          label: isClassic ? undefined : startLabel,
+          variant: props.variant,
+          hideLabel: isClassic ? undefined : props.hideLabel,
+          // In classic mode, always show date segments (never collapse them)
+          labelAsPlaceholder: isClassic ? false : labelAsPlaceholder,
           onFocusChange: setIsFocused,
           disabled: props.disabled,
         }}
@@ -104,8 +118,12 @@ export const DateRangePicker = ({
       <DateFieldBox
         {...{
           ...endFieldProps,
-          label: endLabel,
-          labelAsPlaceholder,
+          // In classic mode, label is rendered outside by DatePickerAux
+          label: isClassic ? undefined : endLabel,
+          variant: props.variant,
+          hideLabel: isClassic ? undefined : props.hideLabel,
+          // In classic mode, always show date segments (never collapse them)
+          labelAsPlaceholder: isClassic ? false : labelAsPlaceholder,
           onFocusChange: setIsFocused,
           disabled: props.disabled,
         }}
