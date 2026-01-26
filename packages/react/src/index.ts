@@ -18,6 +18,7 @@ export * from "./components/Forms/Radio";
 export * from "./components/Forms/Select";
 export * from "./components/Forms/Switch";
 export * from "./components/Forms/TextArea";
+export type { FieldVariant } from "./components/Forms/types";
 export * from "./components/Loader";
 export * from "./components/Modal";
 export * from "./components/Modal/ConfirmationModal";
