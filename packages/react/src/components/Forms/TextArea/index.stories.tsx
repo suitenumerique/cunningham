@@ -10,6 +10,12 @@ export default {
   args: {
     rows: 4,
   },
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["floating", "classic"],
+    },
+  },
 } as Meta<typeof TextArea>;
 
 export const ShowCase = () => {
@@ -173,6 +179,60 @@ export const WithRef = () => {
       <Button onClick={() => ref.current?.focus()}>Focus</Button>
     </div>
   );
+};
+
+export const ClassicVariant = {
+  args: {
+    label: "Description",
+    variant: "classic",
+    placeholder: "Enter a description...",
+  },
+};
+
+export const ClassicVariantFilled = {
+  args: {
+    label: "Description",
+    variant: "classic",
+    placeholder: "Enter a description...",
+    defaultValue: "This is a detailed description of the project.",
+  },
+};
+
+export const ClassicVariantDisabled = {
+  args: {
+    label: "Description",
+    variant: "classic",
+    placeholder: "Enter a description...",
+    disabled: true,
+  },
+};
+
+export const ClassicVariantError = {
+  args: {
+    label: "Description",
+    variant: "classic",
+    placeholder: "Enter a description...",
+    defaultValue: "Too short",
+    state: "error",
+    text: "Description must be at least 50 characters",
+  },
+};
+
+export const HiddenLabel = {
+  args: {
+    label: "Notes",
+    hideLabel: true,
+    placeholder: "Add your notes here...",
+  },
+};
+
+export const HiddenLabelClassic = {
+  args: {
+    label: "Notes",
+    variant: "classic",
+    hideLabel: true,
+    placeholder: "Add your notes here...",
+  },
 };
 
 export const FormExample = () => {
