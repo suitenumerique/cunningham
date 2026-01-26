@@ -7,4 +7,7 @@ export const tokens = (defaults: DefaultTokens) => ({
     defaults.contextuals.content.semantic.neutral.secondary,
   "label-color--big--disabled":
     defaults.contextuals.content.semantic.neutral.secondary,
+  // Classic variant tokens
+  "classic-label-margin-bottom": defaults.globals.spacings.xs,
+  "classic-label-font-size": defaults.globals.font.sizes.s,
 });
