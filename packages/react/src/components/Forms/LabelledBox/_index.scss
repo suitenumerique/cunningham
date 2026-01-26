@@ -77,4 +77,30 @@
       }
     }
   }
+
+  &--classic {
+    label {
+      position: static;
+      margin-bottom: var(
+        --c--components--forms-labelledbox--classic-label-margin-bottom
+      );
+      font-size: var(
+        --c--components--forms-labelledbox--classic-label-font-size
+      );
+      color: var(--c--components--forms-labelledbox--label-color--small);
+      transition: none;
+    }
+
+    .labelled-box__children {
+      padding-top: 0;
+    }
+
+    &.labelled-box--disabled {
+      label {
+        color: var(
+          --c--components--forms-labelledbox--label-color--small--disabled
+        );
+      }
+    }
+  }
 }
