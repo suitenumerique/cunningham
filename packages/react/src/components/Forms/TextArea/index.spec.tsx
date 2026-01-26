@@ -199,4 +199,104 @@ describe("<TextArea/>", () => {
       document.querySelector(".c__field--textarea.my-custom-class"),
     ).toBeInTheDocument();
   });
+
+  describe("classic variant", () => {
+    it("renders with classic variant", () => {
+      render(<TextArea label="Description" variant="classic" />);
+      // In classic mode, label is rendered outside the wrapper with its own class
+      expect(document.querySelector(".c__textarea__label")).toBeInTheDocument();
+      expect(screen.getByText("Description")).toBeInTheDocument();
+    });
+
+    it("label is always static in classic variant", async () => {
+      const user = userEvent.setup();
+      render(
+        <div>
+          <TextArea label="Description" variant="classic" />
+          <TextArea label="Notes" variant="classic" />
+        </div>,
+      );
+
+      const textarea: HTMLTextAreaElement = screen.getByRole("textbox", {
+        name: "Description",
+      });
+      const label = screen.getByText("Description");
+
+      // In classic variant, label is outside the wrapper and has c__textarea__label class
+      expect(label.classList.contains("c__textarea__label")).toBe(true);
+
+      // Focusing should not change anything
+      await user.click(textarea);
+      expect(label.classList.contains("c__textarea__label")).toBe(true);
+
+      // Typing should not change anything
+      await user.type(textarea, "Some text");
+      expect(label.classList.contains("c__textarea__label")).toBe(true);
+    });
+
+    it("shows placeholder in classic variant", () => {
+      render(
+        <TextArea
+          label="Description"
+          variant="classic"
+          placeholder="Enter a description"
+        />,
+      );
+      const textarea: HTMLTextAreaElement = screen.getByRole("textbox", {
+        name: "Description",
+      });
+      expect(textarea.placeholder).toEqual("Enter a description");
+    });
+
+    it("ignores placeholder in floating variant", () => {
+      render(
+        <TextArea
+          label="Description"
+          variant="floating"
+          placeholder="Enter a description"
+        />,
+      );
+      const textarea: HTMLTextAreaElement = screen.getByRole("textbox", {
+        name: "Description",
+      });
+      expect(textarea.placeholder).toEqual("");
+    });
+
+    it("defaults to floating variant (placeholder ignored)", () => {
+      render(
+        <TextArea label="Description" placeholder="Enter a description" />,
+      );
+      const textarea: HTMLTextAreaElement = screen.getByRole("textbox", {
+        name: "Description",
+      });
+      expect(textarea.placeholder).toEqual("");
+      expect(
+        document.querySelector(".c__textarea__label"),
+      ).not.toBeInTheDocument();
+    });
+  });
+
+  describe("hideLabel", () => {
+    it("hides label visually but keeps it accessible in floating variant", () => {
+      render(<TextArea label="Description" hideLabel />);
+      const textarea = screen.getByRole("textbox", { name: "Description" });
+      expect(textarea).toBeInTheDocument();
+      // Label should be visually hidden via LabelledBox
+      const label = screen.getByText("Description");
+      expect(label.closest("label")).toHaveClass("c__offscreen");
+    });
+
+    it("hides label visually but keeps it accessible in classic variant", () => {
+      render(<TextArea label="Description" variant="classic" hideLabel />);
+      const textarea = screen.getByRole("textbox", { name: "Description" });
+      expect(textarea).toBeInTheDocument();
+      // Label should be visually hidden with c__offscreen class
+      const label = screen.getByText("Description");
+      expect(label).toHaveClass("c__offscreen");
+      // The visible label class should not be present
+      expect(
+        document.querySelector(".c__textarea__label"),
+      ).not.toBeInTheDocument();
+    });
+  });
 });
