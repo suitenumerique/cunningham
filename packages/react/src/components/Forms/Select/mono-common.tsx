@@ -6,6 +6,7 @@ import { Field } from ":/components/Forms/Field";
 import { LabelledBox } from ":/components/Forms/LabelledBox";
 import { Button } from ":/components/Button";
 import { Option, SelectProps } from ":/components/Forms/Select";
+import { ClassicLabel } from ":/components/Forms/ClassicLabel";
 import { isOptionWithRender } from ":/components/Forms/Select/utils";
 import { SelectMenu } from ":/components/Forms/Select/select-menu";
 
@@ -77,6 +78,8 @@ export const SelectMonoAux = ({
   name,
   label,
   hideLabel,
+  variant = "floating",
+  placeholder,
   labelAsPlaceholder,
   downshiftProps,
   downshiftReturn,
@@ -89,6 +92,60 @@ export const SelectMonoAux = ({
   const { t } = useCunningham();
   const labelProps = downshiftReturn.getLabelProps();
   const ref = useRef<HTMLDivElement>(null);
+  const isClassic = variant === "classic";
+  const showPlaceholder =
+    isClassic && !downshiftReturn.selectedItem && placeholder;
+
+  const selectInner = (
+    <div className="c__select__inner">
+      <div className="c__select__inner__value">
+        {showPlaceholder ? (
+          <span className="c__select__placeholder">{placeholder}</span>
+        ) : (
+          children
+        )}
+      </div>
+      <div className="c__select__inner__actions">
+        {clearable && !disabled && downshiftReturn.selectedItem && (
+          <>
+            <Button
+              variant="tertiary"
+              color="neutral"
+              size="nano"
+              aria-label={t("components.forms.select.clear_button_aria_label")}
+              className="c__select__inner__actions__clear"
+              onClick={(e) => {
+                downshiftReturn.selectItem(null);
+                e.stopPropagation();
+              }}
+              icon={<span className="material-icons">close</span>}
+              type="button"
+            />
+            <div className="c__select__inner__actions__separator" />
+          </>
+        )}
+
+        <Button
+          variant="tertiary"
+          color="neutral"
+          size="nano"
+          className="c__select__inner__actions__open"
+          icon={
+            <span
+              className={classNames("material-icons", {
+                opened: downshiftReturn.isOpen,
+              })}
+            >
+              arrow_drop_down
+            </span>
+          }
+          disabled={disabled}
+          type="button"
+          {...downshiftReturn.toggleButtonProps}
+        />
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -101,12 +158,24 @@ export const SelectMonoAux = ({
             "c__select--" + state,
             {
               "c__select--disabled": disabled,
+              "c__select--classic": isClassic,
             },
           )}
           onBlur={() =>
             onBlur?.({ target: { value: downshiftReturn.selectedItem?.value } })
           }
         >
+          {isClassic && (
+            <ClassicLabel
+              label={label}
+              hideLabel={hideLabel}
+              disabled={disabled}
+              className="c__select__label"
+              disabledClassName="c__select__label--disabled"
+              htmlFor={labelProps.htmlFor}
+              id={labelProps.id}
+            />
+          )}
           {/* We disabled linting for this specific line because we consider that the onClick props is only used for */}
           {/* mouse users, so this do not engender any issue for accessibility. */}
           {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
@@ -124,59 +193,21 @@ export const SelectMonoAux = ({
               />
             )}
 
-            <LabelledBox
-              label={label}
-              hideLabel={hideLabel}
-              labelAsPlaceholder={labelAsPlaceholder}
-              htmlFor={labelProps.htmlFor}
-              labelId={labelProps.id}
-              disabled={disabled}
-            >
-              <div className="c__select__inner">
-                <div className="c__select__inner__value">{children}</div>
-                <div className="c__select__inner__actions">
-                  {clearable && !disabled && downshiftReturn.selectedItem && (
-                    <>
-                      <Button
-                        variant="tertiary"
-                        color="neutral"
-                        size="nano"
-                        aria-label={t(
-                          "components.forms.select.clear_button_aria_label",
-                        )}
-                        className="c__select__inner__actions__clear"
-                        onClick={(e) => {
-                          downshiftReturn.selectItem(null);
-                          e.stopPropagation();
-                        }}
-                        icon={<span className="material-icons">close</span>}
-                        type="button"
-                      />
-                      <div className="c__select__inner__actions__separator" />
-                    </>
-                  )}
-
-                  <Button
-                    variant="tertiary"
-                    color="neutral"
-                    size="nano"
-                    className="c__select__inner__actions__open"
-                    icon={
-                      <span
-                        className={classNames("material-icons", {
-                          opened: downshiftReturn.isOpen,
-                        })}
-                      >
-                        arrow_drop_down
-                      </span>
-                    }
-                    disabled={disabled}
-                    type="button"
-                    {...downshiftReturn.toggleButtonProps}
-                  />
-                </div>
-              </div>
-            </LabelledBox>
+            {isClassic ? (
+              selectInner
+            ) : (
+              <LabelledBox
+                label={label}
+                hideLabel={hideLabel}
+                variant={variant}
+                labelAsPlaceholder={labelAsPlaceholder}
+                htmlFor={labelProps.htmlFor}
+                labelId={labelProps.id}
+                disabled={disabled}
+              >
+                {selectInner}
+              </LabelledBox>
+            )}
           </div>
         </div>
       </Field>

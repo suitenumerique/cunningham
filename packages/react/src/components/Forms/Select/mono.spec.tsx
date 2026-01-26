@@ -2133,4 +2133,122 @@ describe("<Select/>", () => {
       document.querySelector(".c__field.my-custom-class"),
     ).toBeInTheDocument();
   });
+
+  describe("classic variant", () => {
+    it("renders with classic variant", async () => {
+      render(
+        <CunninghamProvider>
+          <Select
+            label="City"
+            variant="classic"
+            options={[
+              { label: "Paris", value: "paris" },
+              { label: "London", value: "london" },
+            ]}
+          />
+        </CunninghamProvider>,
+      );
+      // In classic mode, label is rendered outside the wrapper with its own class
+      expect(document.querySelector(".c__select__label")).toBeInTheDocument();
+      expect(document.querySelector(".c__select--classic")).toBeInTheDocument();
+    });
+
+    it("shows placeholder in classic variant when no selection", async () => {
+      render(
+        <CunninghamProvider>
+          <Select
+            label="City"
+            variant="classic"
+            placeholder="Select a city..."
+            options={[
+              { label: "Paris", value: "paris" },
+              { label: "London", value: "london" },
+            ]}
+          />
+        </CunninghamProvider>,
+      );
+      expect(screen.getByText("Select a city...")).toBeInTheDocument();
+      expect(
+        document.querySelector(".c__select__placeholder"),
+      ).toBeInTheDocument();
+    });
+
+    it("hides placeholder after selection in classic variant", async () => {
+      const user = userEvent.setup();
+      render(
+        <CunninghamProvider>
+          <Select
+            label="City"
+            variant="classic"
+            placeholder="Select a city..."
+            options={[
+              { label: "Paris", value: "paris" },
+              { label: "London", value: "london" },
+            ]}
+          />
+        </CunninghamProvider>,
+      );
+
+      // Placeholder should be visible initially
+      expect(screen.getByText("Select a city...")).toBeInTheDocument();
+
+      // Open menu and select an option
+      const input = screen.getByRole("combobox", { name: "City" });
+      await user.click(input);
+      await user.click(screen.getByRole("option", { name: "Paris" }));
+
+      // Placeholder should be hidden, value should be shown
+      expect(screen.queryByText("Select a city...")).not.toBeInTheDocument();
+      const valueRendered = document.querySelector(".c__select__inner__value");
+      expect(valueRendered).toHaveTextContent("Paris");
+    });
+
+    it("label is always static in classic variant", async () => {
+      const user = userEvent.setup();
+      render(
+        <CunninghamProvider>
+          <Select
+            label="City"
+            variant="classic"
+            options={[
+              { label: "Paris", value: "paris" },
+              { label: "London", value: "london" },
+            ]}
+          />
+        </CunninghamProvider>,
+      );
+
+      const label = screen.getByText("City");
+
+      // In classic variant, label is outside the wrapper with c__select__label class
+      expect(label.classList.contains("c__select__label")).toBe(true);
+
+      // Open menu
+      const input = screen.getByRole("combobox", { name: "City" });
+      await user.click(input);
+
+      // Label should still have the same class
+      expect(label.classList.contains("c__select__label")).toBe(true);
+    });
+
+    it("defaults to floating variant (no placeholder shown)", () => {
+      render(
+        <CunninghamProvider>
+          <Select
+            label="City"
+            placeholder="Select a city..."
+            options={[
+              { label: "Paris", value: "paris" },
+              { label: "London", value: "london" },
+            ]}
+          />
+        </CunninghamProvider>,
+      );
+      // In floating variant, placeholder prop is ignored
+      expect(screen.queryByText("Select a city...")).not.toBeInTheDocument();
+      expect(
+        document.querySelector(".c__select--classic"),
+      ).not.toBeInTheDocument();
+    });
+  });
 });
