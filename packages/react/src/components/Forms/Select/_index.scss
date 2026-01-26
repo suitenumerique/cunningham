@@ -3,6 +3,34 @@
 .c__select {
   position: relative;
 
+  &__label {
+    display: block;
+    font-size: var(--c--components--forms-labelledbox--classic-label-font-size);
+    color: var(--c--components--forms-labelledbox--label-color--small);
+    margin-bottom: var(--c--components--forms-labelledbox--classic-label-margin-bottom);
+    cursor: pointer;
+
+    &--disabled {
+      color: var(--c--components--forms-labelledbox--label-color--small--disabled);
+      cursor: default;
+    }
+  }
+
+  &--classic {
+    .c__select__wrapper {
+      align-items: center;
+      height: 2.75rem;
+    }
+
+    .c__select__inner {
+      align-items: center;
+
+      &__actions {
+        top: 0;
+      }
+    }
+  }
+
   &__wrapper {
     border-radius: var(--c--components--forms-select--border-radius);
     border-width: var(--c--components--forms-select--border-width);
@@ -47,6 +75,11 @@
         color: var(--c--components--forms-select--label-color--focus);
       }
     }
+  }
+
+  &__placeholder {
+    color: var(--c--components--forms-select--placeholder-color);
+    font-size: var(--c--components--forms-select--font-size);
   }
 
   &__inner {
