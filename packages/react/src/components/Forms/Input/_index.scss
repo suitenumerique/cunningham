@@ -1,3 +1,14 @@
+.c__input__label {
+  display: block;
+  font-size: var(--c--components--forms-labelledbox--classic-label-font-size);
+  color: var(--c--components--forms-labelledbox--label-color--small);
+  margin-bottom: var(--c--components--forms-labelledbox--classic-label-margin-bottom);
+
+  &--disabled {
+    color: var(--c--components--forms-labelledbox--label-color--small--disabled);
+  }
+}
+
 .c__input__wrapper {
   border-radius: var(--c--components--forms-input--border-radius);
   border-width: var(--c--components--forms-input--border-width);
@@ -122,6 +133,11 @@
 
   &--error {
     border-color: var(--c--contextuals--border--semantic--error--primary);
+  }
+
+  &--classic {
+    align-items: center;
+    height: 2.75rem;
   }
 }
 

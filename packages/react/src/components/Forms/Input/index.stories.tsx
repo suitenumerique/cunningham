@@ -22,6 +22,10 @@ export default {
       control: "select",
       options: ["default", "success", "error"],
     },
+    variant: {
+      control: "select",
+      options: ["floating", "classic"],
+    },
   },
 } as Meta<typeof Input>;
 
@@ -251,6 +255,71 @@ export const FormExample = () => {
       </form>
     </div>
   );
+};
+
+export const ClassicVariant = {
+  args: {
+    label: "Your name",
+    variant: "classic",
+    placeholder: "Enter your name",
+  },
+};
+
+export const ClassicVariantFilled = {
+  args: {
+    label: "Your name",
+    variant: "classic",
+    placeholder: "Enter your name",
+    defaultValue: "John Doe",
+  },
+};
+
+export const ClassicVariantWithIcon = {
+  args: {
+    label: "Your email",
+    variant: "classic",
+    placeholder: "Enter your email address",
+    icon: <span className="material-icons">email</span>,
+  },
+};
+
+export const ClassicVariantDisabled = {
+  args: {
+    label: "Your name",
+    variant: "classic",
+    placeholder: "Enter your name",
+    disabled: true,
+  },
+};
+
+export const ClassicVariantError = {
+  args: {
+    label: "Your email",
+    variant: "classic",
+    placeholder: "Enter your email",
+    defaultValue: "invalid-email",
+    state: "error",
+    text: "Please enter a valid email address",
+  },
+};
+
+export const HiddenLabel = {
+  args: {
+    label: "Search",
+    hideLabel: true,
+    placeholder: "Search...",
+    icon: <span className="material-icons">search</span>,
+  },
+};
+
+export const HiddenLabelClassic = {
+  args: {
+    label: "Search",
+    variant: "classic",
+    hideLabel: true,
+    placeholder: "Search...",
+    icon: <span className="material-icons">search</span>,
+  },
 };
 
 export const ReactHookForm = () => {
