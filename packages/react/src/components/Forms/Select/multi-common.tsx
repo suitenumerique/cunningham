@@ -10,6 +10,7 @@ import {
   getOptionsFilter,
   optionToValue,
 } from ":/components/Forms/Select/mono-common";
+import { FieldVariant } from ":/components/Forms/types";
 import { SelectedItems } from ":/components/Forms/Select/multi-selected-items";
 import { SelectMultiMenu } from ":/components/Forms/Select/multi-menu";
 
@@ -64,10 +65,71 @@ export const SelectMultiAux = ({ children, ...props }: SelectMultiAuxProps) => {
   const { t } = useCunningham();
   const labelProps = props.downshiftReturn.getLabelProps();
   const ref = useRef<HTMLDivElement>(null);
+  const variant = props.variant ?? FieldVariant.Floating;
+  const isClassic = variant === FieldVariant.Classic;
+  const showPlaceholder =
+    isClassic && props.selectedItems.length === 0 && props.placeholder;
 
   // We need to remove onBlur from toggleButtonProps because it triggers a menu closing each time
   // we tick a checkbox using the monoline style.
   const { onBlur, ...toggleProps } = props.downshiftReturn.toggleButtonProps;
+
+  const selectInner = (
+    <div className="c__select__inner">
+      <div className="c__select__inner__actions">
+        {props.clearable &&
+          !props.disabled &&
+          props.selectedItems.length > 0 && (
+            <>
+              <Button
+                variant="tertiary"
+                color="neutral"
+                size="nano"
+                aria-label={t(
+                  "components.forms.select.clear_all_button_aria_label",
+                )}
+                className="c__select__inner__actions__clear"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  props.onSelectedItemsChange([]);
+                }}
+                icon={<span className="material-icons">close</span>}
+                type="button"
+              />
+              <div className="c__select__inner__actions__separator" />
+            </>
+          )}
+        <Button
+          variant="tertiary"
+          color="neutral"
+          size="nano"
+          className="c__select__inner__actions__open"
+          icon={
+            <span
+              className={classNames("material-icons", {
+                opened: props.downshiftReturn.isOpen,
+              })}
+            >
+              arrow_drop_down
+            </span>
+          }
+          disabled={props.disabled}
+          type="button"
+        />
+      </div>
+      <div className="c__select__inner__value">
+        {showPlaceholder ? (
+          <span className="c__select__placeholder">{props.placeholder}</span>
+        ) : (
+          <>
+            <SelectedItems {...props} />
+            {children}
+          </>
+        )}
+      </div>
+    </div>
+  );
+
   return (
     <>
       <Field {...props}>
@@ -83,9 +145,22 @@ export const SelectMultiAux = ({ children, ...props }: SelectMultiAuxProps) => {
               "c__select--populated": props.selectedItems.length > 0,
               "c__select--monoline": props.monoline,
               "c__select--multiline": !props.monoline,
+              "c__select--classic": isClassic,
             },
           )}
         >
+          {/* Classic variant: label outside the bordered wrapper */}
+          {isClassic && props.label && !props.hideLabel && (
+            <label
+              className={classNames("c__select__label", {
+                "c__select__label--disabled": props.disabled,
+              })}
+              htmlFor={labelProps.htmlFor}
+              id={labelProps.id}
+            >
+              {props.label}
+            </label>
+          )}
           <div
             className={classNames("c__select__wrapper", {
               "c__select__wrapper--focus":
@@ -102,62 +177,21 @@ export const SelectMultiAux = ({ children, ...props }: SelectMultiAuxProps) => {
                 value={optionToValue(selectedItem)}
               />
             ))}
-            <LabelledBox
-              label={props.label}
-              labelAsPlaceholder={props.labelAsPlaceholder}
-              htmlFor={labelProps.htmlFor}
-              labelId={labelProps.id}
-              hideLabel={props.hideLabel}
-              disabled={props.disabled}
-            >
-              <div className="c__select__inner">
-                <div className="c__select__inner__actions">
-                  {props.clearable &&
-                    !props.disabled &&
-                    props.selectedItems.length > 0 && (
-                      <>
-                        <Button
-                          variant="tertiary"
-                          color="neutral"
-                          size="nano"
-                          aria-label={t(
-                            "components.forms.select.clear_all_button_aria_label",
-                          )}
-                          className="c__select__inner__actions__clear"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            props.onSelectedItemsChange([]);
-                          }}
-                          icon={<span className="material-icons">close</span>}
-                          type="button"
-                        />
-                        <div className="c__select__inner__actions__separator" />
-                      </>
-                    )}
-                  <Button
-                    variant="tertiary"
-                    color="neutral"
-                    size="nano"
-                    className="c__select__inner__actions__open"
-                    icon={
-                      <span
-                        className={classNames("material-icons", {
-                          opened: props.downshiftReturn.isOpen,
-                        })}
-                      >
-                        arrow_drop_down
-                      </span>
-                    }
-                    disabled={props.disabled}
-                    type="button"
-                  />
-                </div>
-                <div className="c__select__inner__value">
-                  <SelectedItems {...props} />
-                  {children}
-                </div>
-              </div>
-            </LabelledBox>
+            {isClassic ? (
+              selectInner
+            ) : (
+              <LabelledBox
+                label={props.label}
+                variant={variant}
+                labelAsPlaceholder={props.labelAsPlaceholder}
+                htmlFor={labelProps.htmlFor}
+                labelId={labelProps.id}
+                hideLabel={props.hideLabel}
+                disabled={props.disabled}
+              >
+                {selectInner}
+              </LabelledBox>
+            )}
           </div>
         </div>
       </Field>

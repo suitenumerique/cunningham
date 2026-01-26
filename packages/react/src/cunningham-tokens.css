@@ -616,10 +616,13 @@
 	--c--components--forms-select--multi-pill-border-radius: 2px;
 	--c--components--forms-select--multi-pill-max-width: 68%;
 	--c--components--forms-select--multi-pill-font-size: var(--c--globals--font--sizes--md);
+	--c--components--forms-select--placeholder-color: var(--c--contextuals--content--semantic--neutral--secondary);
 	--c--components--forms-labelledbox--label-color--small: var(--c--contextuals--content--semantic--neutral--tertiary);
 	--c--components--forms-labelledbox--label-color--big: var(--c--contextuals--content--semantic--neutral--primary);
 	--c--components--forms-labelledbox--label-color--small--disabled: var(--c--contextuals--content--semantic--neutral--secondary);
 	--c--components--forms-labelledbox--label-color--big--disabled: var(--c--contextuals--content--semantic--neutral--secondary);
+	--c--components--forms-labelledbox--classic-label-margin-bottom: var(--c--globals--spacings--xs);
+	--c--components--forms-labelledbox--classic-label-font-size: var(--c--globals--font--sizes--s);
 	--c--components--forms-input--font-weight: var(--c--globals--font--weights--regular);
 	--c--components--forms-input--font-size: var(--c--globals--font--sizes--md);
 	--c--components--forms-input--border-radius: 8px;

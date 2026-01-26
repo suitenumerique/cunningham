@@ -766,14 +766,17 @@ $themes: (
         'multi-pill-background-color': #F0F1F2,
         'multi-pill-border-radius': 2px,
         'multi-pill-max-width': 68%,
-        'multi-pill-font-size': 1rem
+        'multi-pill-font-size': 1rem,
+        'placeholder-color': #5C5F63
       ),
       'forms-radio': (),
       'forms-labelledbox': (
         'label-color--small': #686B6F,
         'label-color--big': #252627,
         'label-color--small--disabled': #5C5F63,
-        'label-color--big--disabled': #5C5F63
+        'label-color--big--disabled': #5C5F63,
+        'classic-label-margin-bottom': 0.5rem,
+        'classic-label-font-size': 0.75rem
       ),
       'forms-input': (
         'font-weight': 400,

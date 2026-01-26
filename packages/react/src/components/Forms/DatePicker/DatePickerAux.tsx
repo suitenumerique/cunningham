@@ -20,10 +20,15 @@ import {
   CalendarRange,
 } from ":/components/Forms/DatePicker/Calendar";
 import { convertDateValueToString } from ":/components/Forms/DatePicker/utils";
+import { FieldVariant } from ":/components/Forms/types";
 
 export type DatePickerAuxSubProps = FieldProps & {
   // eslint-disable-next-line react/no-unused-prop-types
   label?: string;
+  // eslint-disable-next-line react/no-unused-prop-types
+  variant?: FieldVariant;
+  // eslint-disable-next-line react/no-unused-prop-types
+  hideLabel?: boolean;
   // eslint-disable-next-line react/no-unused-prop-types
   minValue?: string;
   // eslint-disable-next-line react/no-unused-prop-types
@@ -48,6 +53,13 @@ export type DatePickerAuxProps = PropsWithChildren &
     optionalClassName?: string;
     isRange?: boolean;
     onClear: () => void;
+    // For classic range mode: render labels above the wrapper
+    rangeLabels?: {
+      startLabel: string;
+      endLabel: string;
+      disabled?: boolean;
+      hideLabel?: boolean;
+    };
   };
 
 /**
@@ -68,6 +80,7 @@ const DatePickerAux = ({
   disabled = false,
   optionalClassName,
   isRange,
+  rangeLabels,
   ref,
   ...props
 }: DatePickerAuxProps) => {
@@ -78,6 +91,8 @@ const DatePickerAux = ({
     () => pickerState.validationState === "invalid" || props.state === "error",
     [pickerState.validationState, props.state],
   );
+
+  const isClassic = props.variant === FieldVariant.Classic;
 
   return (
     <I18nProvider locale={locale || currentLocale}>
@@ -95,8 +110,50 @@ const DatePickerAux = ({
             "c__date-picker--success": props.state === "success",
             "c__date-picker--focused":
               !isDateInvalid && !disabled && (pickerState.isOpen || isFocused),
+            "c__date-picker--classic": isClassic,
           })}
         >
+          {/* Classic variant: label outside the bordered wrapper (single DatePicker only) */}
+          {isClassic && !isRange && props.label && !props.hideLabel && (
+            <label
+              className={classNames("c__date-picker__label", {
+                "c__date-picker__label--disabled": disabled,
+              })}
+            >
+              {props.label}
+            </label>
+          )}
+          {/* Hidden label for accessibility when hideLabel is true */}
+          {isClassic && !isRange && props.label && props.hideLabel && (
+            <label className="c__offscreen">{props.label}</label>
+          )}
+          {/* Classic variant: range labels above the wrapper */}
+          {isClassic && rangeLabels && !rangeLabels.hideLabel && (
+            <div className="c__date-picker__range__labels">
+              <label
+                className={classNames("c__date-picker__label", {
+                  "c__date-picker__label--disabled": rangeLabels.disabled,
+                })}
+              >
+                {rangeLabels.startLabel}
+              </label>
+              <div className="c__date-picker__range__labels__spacer" />
+              <label
+                className={classNames("c__date-picker__label", {
+                  "c__date-picker__label--disabled": rangeLabels.disabled,
+                })}
+              >
+                {rangeLabels.endLabel}
+              </label>
+            </div>
+          )}
+          {/* Hidden range labels for accessibility when hideLabel is true */}
+          {isClassic && rangeLabels && rangeLabels.hideLabel && (
+            <>
+              <label className="c__offscreen">{rangeLabels.startLabel}</label>
+              <label className="c__offscreen">{rangeLabels.endLabel}</label>
+            </>
+          )}
           <div
             className={classNames("c__date-picker__wrapper", {
               "c__date-picker__wrapper--clickable": labelAsPlaceholder,
