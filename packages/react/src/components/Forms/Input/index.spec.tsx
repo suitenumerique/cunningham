@@ -273,4 +273,102 @@ describe("<Input/>", () => {
     await user.click(button);
     expect(input.type).toEqual("password");
   });
+
+  describe("classic variant", () => {
+    it("renders with classic variant", () => {
+      render(<Input label="First name" variant="classic" />);
+      // In classic mode, label is rendered outside the wrapper with its own class
+      expect(document.querySelector(".c__input__label")).toBeInTheDocument();
+      expect(screen.getByText("First name")).toBeInTheDocument();
+    });
+
+    it("label is always static in classic variant", async () => {
+      const user = userEvent.setup();
+      render(
+        <div>
+          <Input label="First name" variant="classic" />
+          <Input label="Second name" variant="classic" />
+        </div>,
+      );
+
+      const input: HTMLInputElement = screen.getByRole("textbox", {
+        name: "First name",
+      });
+      const label = screen.getByText("First name");
+
+      // In classic variant, label is outside the wrapper and has c__input__label class
+      expect(label.classList.contains("c__input__label")).toBe(true);
+
+      // Focusing should not change anything
+      await user.click(input);
+      expect(label.classList.contains("c__input__label")).toBe(true);
+
+      // Typing should not change anything
+      await user.type(input, "John");
+      expect(label.classList.contains("c__input__label")).toBe(true);
+    });
+
+    it("shows placeholder in classic variant", () => {
+      render(
+        <Input
+          label="First name"
+          variant="classic"
+          placeholder="Enter your first name"
+        />,
+      );
+      const input: HTMLInputElement = screen.getByRole("textbox", {
+        name: "First name",
+      });
+      expect(input.placeholder).toEqual("Enter your first name");
+    });
+
+    it("ignores placeholder in floating variant", () => {
+      render(
+        <Input
+          label="First name"
+          variant="floating"
+          placeholder="Enter your first name"
+        />,
+      );
+      const input: HTMLInputElement = screen.getByRole("textbox", {
+        name: "First name",
+      });
+      expect(input.placeholder).toEqual("");
+    });
+
+    it("defaults to floating variant (placeholder ignored)", () => {
+      render(<Input label="First name" placeholder="Enter your first name" />);
+      const input: HTMLInputElement = screen.getByRole("textbox", {
+        name: "First name",
+      });
+      expect(input.placeholder).toEqual("");
+      expect(
+        document.querySelector(".c__input__label"),
+      ).not.toBeInTheDocument();
+    });
+  });
+
+  describe("hideLabel", () => {
+    it("hides label visually but keeps it accessible in floating variant", () => {
+      render(<Input label="First name" hideLabel />);
+      const input = screen.getByRole("textbox", { name: "First name" });
+      expect(input).toBeInTheDocument();
+      // Label should be visually hidden via LabelledBox
+      const label = screen.getByText("First name");
+      expect(label.closest("label")).toHaveClass("c__offscreen");
+    });
+
+    it("hides label visually but keeps it accessible in classic variant", () => {
+      render(<Input label="First name" variant="classic" hideLabel />);
+      const input = screen.getByRole("textbox", { name: "First name" });
+      expect(input).toBeInTheDocument();
+      // Label should be visually hidden with c__offscreen class
+      const label = screen.getByText("First name");
+      expect(label).toHaveClass("c__offscreen");
+      // The visible label class should not be present
+      expect(
+        document.querySelector(".c__input__label"),
+      ).not.toBeInTheDocument();
+    });
+  });
 });
