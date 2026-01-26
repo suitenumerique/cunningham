@@ -1212,4 +1212,116 @@ describe("<DateRangePicker/>", () => {
       document.querySelector(".c__field.my-custom-class"),
     ).toBeInTheDocument();
   });
+
+  describe("classic variant", () => {
+    it("renders with classic variant", async () => {
+      render(
+        <CunninghamProvider>
+          <DateRangePicker
+            label="Pick a date"
+            startLabel="Start date"
+            endLabel="End date"
+            variant="classic"
+          />
+        </CunninghamProvider>,
+      );
+      // In classic mode, both labels are rendered in a row above the wrapper
+      expect(
+        document.querySelector(".c__date-picker--classic"),
+      ).toBeInTheDocument();
+      expect(
+        document.querySelector(".c__date-picker__range__labels"),
+      ).toBeInTheDocument();
+      // Should have two labels in the labels row
+      const labels = document.querySelectorAll(".c__date-picker__label");
+      expect(labels.length).toBe(2);
+    });
+
+    it("labels are always static in classic variant", async () => {
+      const user = userEvent.setup();
+      render(
+        <CunninghamProvider>
+          <DateRangePicker
+            label="Pick a date"
+            startLabel="Start date"
+            endLabel="End date"
+            variant="classic"
+          />
+        </CunninghamProvider>,
+      );
+
+      const startLabel = screen.getByText("Start date");
+      const endLabel = screen.getByText("End date");
+
+      // In classic variant, labels are outside the wrapper with c__date-picker__label class
+      expect(startLabel.classList.contains("c__date-picker__label")).toBe(true);
+      expect(endLabel.classList.contains("c__date-picker__label")).toBe(true);
+
+      // Open calendar
+      const toggleButton = (await screen.findAllByRole("button"))![1];
+      await user.click(toggleButton);
+
+      // Labels should still have the same class
+      expect(startLabel.classList.contains("c__date-picker__label")).toBe(true);
+      expect(endLabel.classList.contains("c__date-picker__label")).toBe(true);
+    });
+
+    it("defaults to floating variant", () => {
+      render(
+        <CunninghamProvider>
+          <DateRangePicker
+            label="Pick a date"
+            startLabel="Start date"
+            endLabel="End date"
+          />
+        </CunninghamProvider>,
+      );
+      expect(
+        document.querySelector(".c__date-picker--classic"),
+      ).not.toBeInTheDocument();
+    });
+  });
+
+  describe("hideLabel", () => {
+    it("hides labels visually but keeps them accessible in floating variant", () => {
+      render(
+        <CunninghamProvider>
+          <DateRangePicker
+            label="Pick a date"
+            startLabel="Start date"
+            endLabel="End date"
+            hideLabel
+          />
+        </CunninghamProvider>,
+      );
+      // Labels should be visually hidden via LabelledBox
+      const startLabel = screen.getByText("Start date");
+      const endLabel = screen.getByText("End date");
+      expect(startLabel.closest("label")).toHaveClass("c__offscreen");
+      expect(endLabel.closest("label")).toHaveClass("c__offscreen");
+    });
+
+    it("hides labels visually but keeps them accessible in classic variant", () => {
+      render(
+        <CunninghamProvider>
+          <DateRangePicker
+            label="Pick a date"
+            startLabel="Start date"
+            endLabel="End date"
+            variant="classic"
+            hideLabel
+          />
+        </CunninghamProvider>,
+      );
+      // Labels should be visually hidden with c__offscreen class
+      const startLabel = screen.getByText("Start date");
+      const endLabel = screen.getByText("End date");
+      expect(startLabel).toHaveClass("c__offscreen");
+      expect(endLabel).toHaveClass("c__offscreen");
+      // The visible labels row should not be present
+      expect(
+        document.querySelector(".c__date-picker__range__labels"),
+      ).not.toBeInTheDocument();
+    });
+  });
 });

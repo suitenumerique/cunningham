@@ -13,6 +13,7 @@ import {
 import { createCalendar, DateValue } from "@internationalized/date";
 import classNames from "classnames";
 import { LabelledBox, Props } from ":/components/Forms/LabelledBox";
+import type { FieldVariant } from ":/components/Forms/types";
 
 interface DateSegmentProps {
   currentSegment: DateSegment;
@@ -68,10 +69,15 @@ const DateField = (props: AriaDatePickerProps<DateValue>) => {
 
 interface DateFieldBoxProps
   extends Props,
-    Omit<AriaDatePickerProps<DateValue>, "label"> {}
+    Omit<AriaDatePickerProps<DateValue>, "label"> {
+  variant?: FieldVariant;
+}
 
-const DateFieldBox = ({ ...props }: DateFieldBoxProps) => (
-  <LabelledBox {...props}>
+const DateFieldBox = ({
+  variant = "floating",
+  ...props
+}: DateFieldBoxProps) => (
+  <LabelledBox {...props} variant={variant}>
     <div
       className={classNames("c__date-picker__inner", {
         "c__date-picker__inner--collapsed": props.labelAsPlaceholder,

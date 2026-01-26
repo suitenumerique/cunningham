@@ -4,6 +4,33 @@
 .c__date-picker {
   position: relative;
 
+  &__label {
+    display: block;
+    font-size: var(--c--components--forms-labelledbox--classic-label-font-size);
+    color: var(--c--components--forms-labelledbox--label-color--small);
+    margin-bottom: var(--c--components--forms-labelledbox--classic-label-margin-bottom);
+
+    &--disabled {
+      color: var(--c--components--forms-labelledbox--label-color--small--disabled);
+    }
+  }
+
+  &--classic {
+    .c__date-picker__wrapper {
+      align-items: center;
+      height: 2.75rem;
+    }
+
+    .c__date-picker__inner__action {
+      margin-top: 0;
+    }
+
+    .c__date-picker__range__separator {
+      align-self: center;
+      flex-shrink: 0;
+    }
+  }
+
   &__wrapper {
     border-radius: var(--c--components--forms-datepicker--border-radius);
     border-width: var(--c--components--forms-datepicker--border-width);
@@ -201,6 +228,22 @@
 
   &__range {
     $component-min-width: px-to-rem(350px);
+
+    &__labels {
+      display: flex;
+      margin-bottom: var(--c--components--forms-labelledbox--classic-label-margin-bottom);
+
+      .c__date-picker__label {
+        flex: 1;
+        margin-bottom: 0;
+      }
+
+      &__spacer {
+        // Space for the separator
+        width: 1rem;
+        flex-shrink: 0;
+      }
+    }
 
     // MUST READ:
     // We can only use @container property for full-width fields, as the container-type: inline-size property

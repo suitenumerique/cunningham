@@ -1459,4 +1459,82 @@ describe("<DatePicker/>", () => {
       document.querySelector(".c__field.my-custom-class"),
     ).toBeInTheDocument();
   });
+
+  describe("classic variant", () => {
+    it("renders with classic variant", async () => {
+      render(
+        <CunninghamProvider>
+          <DatePicker label="Pick a date" variant="classic" />
+        </CunninghamProvider>,
+      );
+      // In classic mode, label is rendered outside the wrapper with its own class
+      expect(
+        document.querySelector(".c__date-picker__label"),
+      ).toBeInTheDocument();
+
+      expect(
+        document.querySelector(".c__date-picker--classic"),
+      ).toBeInTheDocument();
+    });
+
+    it("label is always static in classic variant", async () => {
+      const user = userEvent.setup();
+      render(
+        <CunninghamProvider>
+          <DatePicker label="Pick a date" variant="classic" />
+        </CunninghamProvider>,
+      );
+
+      const label = screen.getByText("Pick a date");
+
+      // In classic variant, label is outside the wrapper with c__date-picker__label class
+      expect(label.classList.contains("c__date-picker__label")).toBe(true);
+
+      // Open calendar
+      const toggleButton = (await screen.findAllByRole("button"))![1];
+      await user.click(toggleButton);
+
+      // Label should still have the same class
+      expect(label.classList.contains("c__date-picker__label")).toBe(true);
+    });
+
+    it("defaults to floating variant", () => {
+      render(
+        <CunninghamProvider>
+          <DatePicker label="Pick a date" />
+        </CunninghamProvider>,
+      );
+      expect(
+        document.querySelector(".c__date-picker--classic"),
+      ).not.toBeInTheDocument();
+    });
+  });
+
+  describe("hideLabel", () => {
+    it("hides label visually but keeps it accessible in floating variant", () => {
+      render(
+        <CunninghamProvider>
+          <DatePicker label="Pick a date" hideLabel />
+        </CunninghamProvider>,
+      );
+      // Label should be visually hidden via LabelledBox
+      const label = screen.getByText("Pick a date");
+      expect(label.closest("label")).toHaveClass("c__offscreen");
+    });
+
+    it("hides label visually but keeps it accessible in classic variant", () => {
+      render(
+        <CunninghamProvider>
+          <DatePicker label="Pick a date" variant="classic" hideLabel />
+        </CunninghamProvider>,
+      );
+      // Label should be visually hidden with c__offscreen class
+      const label = screen.getByText("Pick a date");
+      expect(label).toHaveClass("c__offscreen");
+      // The visible label class should not be present
+      expect(
+        document.querySelector(".c__date-picker__label:not(.c__offscreen)"),
+      ).not.toBeInTheDocument();
+    });
+  });
 });
