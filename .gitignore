@@ -40,3 +40,6 @@ packages/tokens/src/lib/cunningham.ts
 # Claude Code
 CLAUDE.md
 .claude*
+
+# OpenSpec
+openspec/
