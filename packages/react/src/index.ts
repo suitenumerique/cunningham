@@ -38,5 +38,6 @@ export type Configuration = {
   themes: Record<string, PartialExtendableNested<typeof tokens.themes.default>>;
 };
 
+export { default as deDE } from "./locales/de-DE.json";
 export { default as enUS } from "./locales/en-US.json";
 export { default as frFR } from "./locales/fr-FR.json";

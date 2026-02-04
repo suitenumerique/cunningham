@@ -4,13 +4,14 @@ import React, {
   useContext,
   useEffect,
   useMemo,
-} from "react";
-import * as enUS from ":/locales/en-US.json";
-import * as frFR from ":/locales/fr-FR.json";
-import { PartialNested } from ":/types";
-import { Locales } from ":/components/Provider/Locales";
-import { ToastProvider } from ":/components/Toast/ToastProvider";
-import { ModalProvider } from ":/components/Modal/ModalProvider";
+} from 'react';
+import * as deDE from ':/locales/de-DE.json';
+import * as enUS from ':/locales/en-US.json';
+import * as frFR from ':/locales/fr-FR.json';
+import { PartialNested } from ':/types';
+import { Locales } from ':/components/Provider/Locales';
+import { ToastProvider } from ':/components/Toast/ToastProvider';
+import { ModalProvider } from ':/components/Modal/ModalProvider';
 
 type TranslationSet = PartialNested<typeof enUS>;
 
@@ -25,7 +26,7 @@ const CunninghamContext = createContext<
 export const useCunningham = () => {
   const context = useContext(CunninghamContext);
   if (context === undefined) {
-    throw new Error("useCunningham must be used within a CunninghamProvider.");
+    throw new Error('useCunningham must be used within a CunninghamProvider.');
   }
   return context;
 };
@@ -38,18 +39,18 @@ interface Props extends PropsWithChildren {
 }
 
 export const DEFAULT_LOCALE = Locales.enUS;
-export const DEFAULT_THEME = "default";
+export const DEFAULT_THEME = 'default';
 export const SUPPORTED_LOCALES = Object.values(Locales);
-const THEME_CLASSNAME_PREFIX = "cunningham-theme--";
+const THEME_CLASSNAME_PREFIX = 'cunningham-theme--';
 
 const findTranslation = (
   key: string,
-  locale: TranslationSet,
+  locale: TranslationSet
 ): string | undefined => {
-  const [namespace, ...keys] = key.split(".");
+  const [namespace, ...keys] = key.split('.');
   return keys.reduce(
     (acc, subKey) => acc?.[subKey],
-    (locale as any)[namespace],
+    (locale as any)[namespace]
   );
 };
 
@@ -63,10 +64,11 @@ export const CunninghamProvider = ({
   const locales: Record<string, TranslationSet> = useMemo(
     () => ({
       [DEFAULT_LOCALE]: enUS,
-      "fr-FR": frFR,
+      'de-DE': deDE,
+      'fr-FR': frFR,
       ...customLocales,
     }),
-    [customLocales],
+    [customLocales]
   );
 
   const locale = useMemo(() => {
@@ -84,7 +86,7 @@ export const CunninghamProvider = ({
         // Replace vars in message from vars in form of {varName}.
         if (vars) {
           Object.keys(vars).forEach((varName) => {
-            message = message?.replace(`{${varName}}`, "" + vars[varName]);
+            message = message?.replace(`{${varName}}`, '' + vars[varName]);
           });
         }
 
@@ -92,11 +94,11 @@ export const CunninghamProvider = ({
       },
       currentLocale: locale,
     }),
-    [currentLocale, locales],
+    [currentLocale, locales]
   );
 
   useEffect(() => {
-    const root = document.querySelector(":root")!;
+    const root = document.querySelector(':root')!;
     root.classList.forEach((className) => {
       if (className.startsWith(THEME_CLASSNAME_PREFIX)) {
         root.classList.remove(className);
@@ -108,7 +110,7 @@ export const CunninghamProvider = ({
   return (
     <CunninghamContext.Provider value={context}>
       <ModalProvider modalParentSelector={modalParentSelector}>
-        <div className="c__app">
+        <div className='c__app'>
           <ToastProvider>{children}</ToastProvider>
         </div>
       </ModalProvider>
