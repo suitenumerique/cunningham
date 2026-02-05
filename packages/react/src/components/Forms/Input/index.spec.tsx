@@ -233,6 +233,8 @@ describe("<Input/>", () => {
       textItems: ["my text item 1", "my text item 2"],
       rightText: "my right text",
       disabled: false,
+      variant: "floating",
+      hideLabel: false,
     };
 
     render(<Input {...propsInput} />);
