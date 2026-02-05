@@ -38,7 +38,7 @@ When submitting please follow those steps:
 
 - Make sure you followed the commit conventions from the [handbook/git](https://suitenumerique.gitbook.io/handbook/git).
 - Make sure that you added tests covering your changes.
-- Run `make deploy` to tests, lint and build the project.
+- Run `make deploy` to test, lint and build the project.
 - Create a [changeset](#adding-a-changeset) by running `yarn changeset` at the root of the repo. In any case, a bot will verify if your PR contains a changeset.
 
 ### Changelog

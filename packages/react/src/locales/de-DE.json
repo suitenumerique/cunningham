@@ -1,0 +1,80 @@
+{
+  "components": {
+    "alert": {
+      "close_aria_label": "Warnung löschen",
+      "expand_aria_label": "Warnung erweitern",
+      "shrink_aria_label": "Warnung verkleinern"
+    },
+    "pagination": {
+      "goto_label": "Zur Seite…",
+      "goto_label_aria": "Zu einer beliebigen Seite gehen",
+      "next_aria": "Zur nächsten Seite gehen",
+      "previous_aria": "Zur vorherigen Seite gehen",
+      "goto_page_aria": "Zur Seite {page} gehen",
+      "current_page_aria": "Sie befinden sich derzeit auf Seite {page}"
+    },
+    "datagrid": {
+      "empty": "Diese Tabelle ist leer",
+      "empty_alt": "Illustration einer leeren Tabelle",
+      "loader_aria": "Daten werden geladen",
+      "rows_selection_aria": "Alle Zeilen auswählen",
+      "row_selection_aria": "Zeile auswählen"
+    },
+    "provider": {
+      "test": "Dies ist ein Test: {name}"
+    },
+    "forms": {
+      "input": {
+        "password": {
+          "show_password": "Passwort anzeigen",
+          "hide_password": "Passwort ausblenden"
+        }
+      },
+      "select": {
+        "toggle_button_aria_label": "Dropdown umschalten",
+        "clear_button_aria_label": "Auswahl löschen",
+        "clear_all_button_aria_label": "Alle Auswahlen löschen",
+        "menu_empty_placeholder": "Keine Optionen verfügbar"
+      },
+      "file_uploader": {
+        "delete_file_name": "Datei {name} löschen",
+        "delete_file": "Datei löschen",
+        "uploading": "Wird hochgeladen...",
+        "caption": "Ziehen Sie Dateien hierher oder ",
+        "browse_files": "Dateien durchsuchen"
+      },
+      "date_picker": {
+        "toggle_button_aria_label_open": "Kalender öffnen",
+        "toggle_button_aria_label_close": "Kalender schließen",
+        "clear_button_aria_label": "Datum löschen",
+        "next_month_button_aria_label": "Nächster Monat",
+        "next_year_button_aria_label": "Nächstes Jahr",
+        "previous_month_button_aria_label": "Vorheriger Monat",
+        "previous_year_button_aria_label": "Vorheriges Jahr",
+        "year_select_button_aria_label": "Jahr auswählen",
+        "month_select_button_aria_label": "Monat auswählen"
+      }
+    },
+    "modals": {
+      "helpers": {
+        "delete_confirmation": {
+          "title": "Sind Sie sicher?",
+          "children": "Möchten Sie dieses Element wirklich löschen?",
+          "cancel": "Abbrechen",
+          "delete": "Löschen"
+        },
+        "confirmation": {
+          "title": "Sind Sie sicher?",
+          "children": "Möchten Sie das wirklich tun?",
+          "cancel": "Abbrechen",
+          "yes": "Ja"
+        },
+        "disclaimer": {
+          "title": "Haftungsausschluss",
+          "children": "Dies ist ein Haftungsausschluss",
+          "ok": "OK"
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 export enum Locales {
-  enUS = "en-US",
-  frFR = "fr-FR",
+  deDE = 'de-DE',
+  enUS = 'en-US',
+  frFR = 'fr-FR',
 }
