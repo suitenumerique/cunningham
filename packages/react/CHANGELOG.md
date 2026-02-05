@@ -1,5 +1,11 @@
 # @gouvfr-lasuite/cunningham-react
 
+## 4.2.0
+
+### Minor Changes
+
+- add a classic variant for form fields
+
 ## 4.1.0
 
 ### Minor Changes
@@ -494,7 +500,8 @@
 - 4ebbf16: Add package
 - 4ebbf16: Add component's tokens handling
 
-[unreleased]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-react@4.1.0...main
+[unreleased]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-react@4.2.0...main
+[4.2.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-react@4.1.0...@openfun/cunningham-react@4.2.0
 [4.1.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-react@4.0.0...@openfun/cunningham-react@4.1.0
 [4.0.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-react@3.2.3...@openfun/cunningham-react@4.0.0
 [3.2.3]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-react@3.2.2...@openfun/cunningham-react@3.2.3
