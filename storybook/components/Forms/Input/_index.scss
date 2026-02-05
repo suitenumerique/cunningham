@@ -1,0 +1,148 @@
+.c__input__label {
+  display: block;
+  font-size: var(--c--components--forms-labelledbox--classic-label-font-size);
+  color: var(--c--components--forms-labelledbox--label-color--small);
+  margin-bottom: var(--c--components--forms-labelledbox--classic-label-margin-bottom);
+
+  &--disabled {
+    color: var(--c--components--forms-labelledbox--label-color--small--disabled);
+  }
+}
+
+.c__input__wrapper {
+  border-radius: var(--c--components--forms-input--border-radius);
+  border-width: var(--c--components--forms-input--border-width);
+  border-color: var(--c--components--forms-input--border-color);
+  border-style: var(--c--components--forms-input--border-style);
+  background-color: var(--c--components--forms-input--background-color);
+  display: flex;
+  transition:
+    border var(--c--globals--transitions--duration)
+      var(--c--globals--transitions--ease-out),
+    border-radius var(--c--globals--transitions--duration)
+      var(--c--globals--transitions--ease-out),
+    box-shadow var(--c--globals--transitions--duration)
+      var(--c--globals--transitions--ease-out);
+  padding: 0 1rem;
+  gap: 1rem;
+  cursor: text;
+  box-sizing: border-box;
+  height: 3.5rem;
+
+  %text-style {
+    font-size: var(--c--components--forms-input--font-size);
+    font-weight: var(--c--components--forms-input--font-weight);
+  }
+
+  .c__input {
+    box-sizing: border-box;
+    outline: 0;
+    border: none;
+    color: var(--c--components--forms-input--value-color);
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    background-color: transparent;
+    font-family: var(--c--globals--font--families--base);
+    @extend %text-style;
+
+    &__icon-left,
+    &__icon-right {
+      display: flex;
+      align-items: center;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    &--medium {
+      min-width: 150px;
+    }
+
+    &--nano {
+      min-width: 10px;
+    }
+  }
+
+  label {
+    position: absolute;
+    font-size: var(--c--globals--font--sizes--s);
+    left: 0;
+    top: 0.75rem;
+    transition: all var(--c--globals--transitions--duration)
+      var(--c--globals--transitions--ease-out);
+    color: var(--c--components--forms-input--label-color);
+
+    &.placeholder {
+      color: var(--c--components--forms-input--placeholder-color) !important;
+      @extend %text-style;
+      top: 18px;
+    }
+  }
+
+  &:hover {
+    &:not(.c__input__wrapper--disabled) {
+      border-radius: var(--c--components--forms-input--border-radius--hover);
+      border-color: var(--c--components--forms-input--border-color--hover);
+      box-shadow: 0 0 0 var(--c--components--forms-input--border-width--hover)
+        var(--c--components--forms-input--border-color--hover);
+    }
+  }
+
+  /** Modifiers. */
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 var(--c--components--forms-input--border-width--focus) var(--c--components--forms-input--border-color--focus) !important;
+    border-radius: var(--c--components--forms-input--border-radius--focus);
+    border-color: var(
+      --c--components--forms-input--border-color--focus
+    ) !important;
+
+    label {
+      color: var(--c--components--forms-input--label-color--focus);
+    }
+  }
+
+  &--disabled {
+    cursor: default;
+    pointer-events: none;
+    border-color: var(--c--contextuals--border--semantic--neutral--tertiary);
+
+    .c__input {
+      color: var(--c--components--forms-input--value-color--disabled);
+    }
+
+    &:hover {
+      border-color: var(--c--contextuals--border--semantic--neutral--tertiary);
+    }
+  }
+
+  &--success {
+    border-color: var(--c--contextuals--border--semantic--success--primary);
+  }
+
+  &--error {
+    border-color: var(--c--contextuals--border--semantic--error--primary);
+  }
+
+  &--classic {
+    align-items: center;
+    height: 2.75rem;
+  }
+}
+
+.c__input--password {
+  .c__input__icon-right .material-icons {
+    font-size: 1.5rem;
+  }
+}

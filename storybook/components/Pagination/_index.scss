@@ -1,0 +1,49 @@
+@use "../../utils/responsive" as *;
+
+.c__pagination {
+  display: flex;
+  gap: 2rem;
+  height: 3.5rem;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    border: 1px var(--c--contextuals--border--surface--primary) solid;
+    border-radius: 2px;
+    padding: var(--c--globals--spacings--st);
+    background: var(--c--contextuals--background--surface--secondary);
+
+    &__ellipsis {
+      color: var(--c--contextuals--content--semantic--neutral--tertiary);
+    }
+  }
+
+
+
+  &__goto {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .c__field--default {
+      width: 100px;
+    }
+  }
+}
+
+@include container(md) {
+  .c__pagination {
+    width: 100%;
+    display: block;
+
+    &__list {
+      justify-content: center;
+      height: 3.5rem;
+      box-sizing: border-box;
+    }
+
+    &__goto {
+      display: none;
+    }
+  }
+}

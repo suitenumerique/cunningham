@@ -1,0 +1,61 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
+import { tokens } from ":/cunningham-tokens";
+
+const meta: Meta = {
+  title: "Misc/Spacings",
+};
+
+export default meta;
+type Story = StoryObj<{}>;
+
+export const Sizes: Story = {
+  render: () => {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        {Object.keys(tokens.themes.default.globals.font.sizes).map((key) => (
+          <div
+            key={key}
+            className={"clr-content-semantic-neutral-primary fs-" + key}
+          >
+            Using the <code>fs-{key}</code> class
+          </div>
+        ))}
+      </div>
+    );
+  },
+};
+
+export const Weights: Story = {
+  render: () => {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        {Object.keys(tokens.themes.default.globals.font.weights).map((key) => (
+          <div
+            key={key}
+            className={"clr-content-semantic-neutral-primary fs-l fw-" + key}
+          >
+            Using the <code>fw-{key}</code> class
+          </div>
+        ))}
+      </div>
+    );
+  },
+};
+
+export const Families: Story = {
+  render: () => {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        {Object.keys(tokens.themes.default.globals.font.families).map((key) => (
+          <div
+            key={key}
+            className={"clr-content-semantic-neutral-primary f-" + key}
+          >
+            Using the <code>f-{key}</code> class
+          </div>
+        ))}
+      </div>
+    );
+  },
+};
