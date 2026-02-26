@@ -113,8 +113,7 @@ export const ModalInner = ({ closeOnEsc = true, ...props }: ModalProps) => {
         )}
         {props.title && <div className="c__modal__title">{props.title}</div>}
 
-        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-        <div className="c__modal__content" tabIndex={0}>
+        <div className="c__modal__content">
           {props.children}
         </div>
         <ModalFooter {...props} />

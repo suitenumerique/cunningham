@@ -1,5 +1,11 @@
 # @gouvfr-lasuite/cunningham-react
 
+## [unreleased]
+
+### Minor Changes
+
+- ♿️(Modal) remove tabindex from content modal
+
 ## 4.2.0
 
 ### Minor Changes
