@@ -697,7 +697,7 @@ describe("<Select multi={true} />", () => {
       await waitFor(() => expectSelectedOptions(["Tokyo"]));
     });
 
-    it("is accessible if the the label is not shown", async () => {
+    it("is accessible if the label is not shown", async () => {
       render(
         <CunninghamProvider>
           <Select
