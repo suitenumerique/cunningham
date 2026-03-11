@@ -20,7 +20,7 @@
 
 ### Patch Changes
 
-- 4220061: Update react & react-dom version strategy to support minor and patch verions
+- 4220061: Update react & react-dom version strategy to support minor and patch versions
 - Updated dependencies [414ca0d]
 - Updated dependencies [55e2aa8]
   - @gouvfr-lasuite/cunningham-tokens@3.1.0

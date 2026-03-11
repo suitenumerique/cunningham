@@ -3,7 +3,7 @@
 Want to contribute to Cunningham? We got you covered.
 
 We try to raise our code quality standards and expect contributors to follow
-the recommandations from our [handbook](https://suitenumerique.gitbook.io/handbook).
+the recommendations from our [handbook](https://suitenumerique.gitbook.io/handbook).
 
 ## Development
 
