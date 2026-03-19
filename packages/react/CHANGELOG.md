@@ -4,8 +4,9 @@
 
 ### Minor Changes
 
-- ♿️(Modal) remove tabindex from content modal
-- ♿️(frontend) fix accessible name of dropdown toggle button
+- b6e2b6: remove tabindex from content modal
+- 5c715f: fix accessible name of dropdown toggle button
+- 8a5c13: hide decorative icon from screen reader
 
 ## 4.2.0
 

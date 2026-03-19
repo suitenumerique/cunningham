@@ -90,18 +90,21 @@ export const Toast = (props: ToastProps) => {
 export const ToastIcon = ({ type, ...props }: ToastProps) => {
   const icon = useMemo(() => iconFromType(type), [type]);
   if (props.icon) {
-    return props.icon;
+    return (
+      <div className="c__toast__icon" aria-hidden="true">
+        {props.icon}
+      </div>
+    );
   }
   if (!icon) {
     return null;
   }
   return (
-    <div className="c__toast__icon">
+    <div className="c__toast__icon" aria-hidden="true">
       <span className="material-icons">{icon}</span>
     </div>
   );
 };
-
 export const ProgressBar = ({ duration }: { duration: number }) => {
   const content = useRef<HTMLDivElement>(null);
 
