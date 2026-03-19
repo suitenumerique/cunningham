@@ -5,6 +5,7 @@
 ### Minor Changes
 
 - ♿️(Modal) remove tabindex from content modal
+- ♿️(frontend) fix accessible name of dropdown toggle button
 
 ## 4.2.0
 
