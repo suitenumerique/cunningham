@@ -118,7 +118,7 @@ export const SelectMonoAux = ({
                 downshiftReturn.selectItem(null);
                 e.stopPropagation();
               }}
-              icon={<span className="material-icons">close</span>}
+              icon={<span className="material-icons" aria-hidden="true">close</span>}
               type="button"
             />
             <div className="c__select__inner__actions__separator" />
@@ -129,12 +129,14 @@ export const SelectMonoAux = ({
           variant="tertiary"
           color="neutral"
           size="nano"
+          aria-label={t("components.forms.select.toggle_button_aria_label")}
           className="c__select__inner__actions__open"
           icon={
             <span
               className={classNames("material-icons", {
                 opened: downshiftReturn.isOpen,
               })}
+              aria-hidden="true"
             >
               arrow_drop_down
             </span>

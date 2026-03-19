@@ -52,7 +52,11 @@ const SelectedItemsChips = ({
               selectedItemForRender,
             );
           }}
-          icon={<span className="material-icons">close</span>}
+          icon={
+            <span className="material-icons" aria-hidden="true">
+              close
+            </span>
+          }
         />
       </div>
     );

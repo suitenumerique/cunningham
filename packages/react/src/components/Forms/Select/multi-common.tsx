@@ -93,7 +93,11 @@ export const SelectMultiAux = ({ children, ...props }: SelectMultiAuxProps) => {
                   e.stopPropagation();
                   props.onSelectedItemsChange([]);
                 }}
-                icon={<span className="material-icons">close</span>}
+                icon={
+                  <span className="material-icons" aria-hidden="true">
+                    close
+                  </span>
+                }
                 type="button"
               />
               <div className="c__select__inner__actions__separator" />
@@ -103,12 +107,14 @@ export const SelectMultiAux = ({ children, ...props }: SelectMultiAuxProps) => {
           variant="tertiary"
           color="neutral"
           size="nano"
+          aria-label={t("components.forms.select.toggle_button_aria_label")}
           className="c__select__inner__actions__open"
           icon={
             <span
               className={classNames("material-icons", {
                 opened: props.downshiftReturn.isOpen,
               })}
+              aria-hidden="true"
             >
               arrow_drop_down
             </span>
