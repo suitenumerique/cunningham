@@ -1,8 +1,14 @@
 .c__input__label {
   display: block;
   font-size: var(--c--components--forms-labelledbox--classic-label-font-size);
-  color: var(--c--components--forms-labelledbox--label-color--small);
+  font-weight: var(--c--components--forms-labelledbox--classic-label-font-weight);
+  font-family: var(--c--globals--font--families--base);
+  font-style: normal;
+  line-height: var(--c--components--forms-labelledbox--classic-label-line-height);
+  color: var(--c--components--forms-labelledbox--classic-label-color);
   margin-bottom: var(--c--components--forms-labelledbox--classic-label-margin-bottom);
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &--disabled {
     color: var(--c--components--forms-labelledbox--label-color--small--disabled);
@@ -23,7 +29,7 @@
       var(--c--globals--transitions--ease-out),
     box-shadow var(--c--globals--transitions--duration)
       var(--c--globals--transitions--ease-out);
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   gap: 1rem;
   cursor: text;
   box-sizing: border-box;
@@ -55,6 +61,12 @@
     &::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
+    }
+
+    &::placeholder {
+      color: var(--c--components--forms-input--placeholder-color);
+      font-weight: var(--c--components--forms-input--font-weight);
+      line-height: 1.125rem;
     }
 
     &[type="number"] {
