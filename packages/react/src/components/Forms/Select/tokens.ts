@@ -14,7 +14,7 @@ export const tokens = (defaults: DefaultTokens) => ({
   "value-color": defaults.contextuals.content.semantic.neutral.primary,
   "value-color--disabled":
     defaults.contextuals.content.semantic.disabled.primary,
-  "font-size": defaults.globals.font.sizes.md,
+  "font-size": defaults.globals.font.sizes.sm,
   height: "3.5rem",
   "item-background-color--hover":
     defaults.contextuals.background.semantic.overlay.primary,
@@ -23,7 +23,7 @@ export const tokens = (defaults: DefaultTokens) => ({
   "item-color": defaults.contextuals.content.semantic.neutral.primary,
   "item-color--disabled":
     defaults.contextuals.content.semantic.disabled.secondary,
-  "item-font-size": defaults.globals.font.sizes.md,
+  "item-font-size": defaults.globals.font.sizes.sm,
   "background-color": defaults.contextuals.background.surface.primary,
   "menu-background-color": defaults.contextuals.background.surface.secondary,
   "label-color": defaults.contextuals.content.semantic.neutral.tertiary,
@@ -32,6 +32,6 @@ export const tokens = (defaults: DefaultTokens) => ({
     defaults.contextuals.background.semantic.neutral.tertiary,
   "multi-pill-border-radius": "2px",
   "multi-pill-max-width": "68%",
-  "multi-pill-font-size": defaults.globals.font.sizes.md,
-  "placeholder-color": defaults.contextuals.content.semantic.neutral.secondary,
+  "multi-pill-font-size": defaults.globals.font.sizes.sm,
+  "placeholder-color": defaults.contextuals.content.semantic.neutral.tertiary,
 });

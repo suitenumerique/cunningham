@@ -524,17 +524,18 @@ describe("<DateRangePicker/>", () => {
     await user.click(startGridCellButton);
     expectCalendarToBeOpen();
 
-    // Navigate to the next year.
-    const nextYearButton = screen.getByRole("button", {
-      name: "Next year",
+    // Navigate to the next year via dropdown.
+    const yearButton = screen.getByRole("combobox", {
+      name: "Select a year",
     });
-    await user.click(nextYearButton);
+    await user.click(yearButton);
+    await user.click(screen.getByRole("option", { name: "2024" }));
     expectCalendarToBeOpen();
 
-    // Select the end date.
-    const endGridCellButton = await screen.getByRole("button", {
+    // Select the end date (use findByRole to wait for grid re-render after dropdown).
+    const endGridCellButton = await screen.findByRole("button", {
       name: endDate,
-    })!;
+    });
     await user.click(endGridCellButton);
     expectCalendarToBeClosed();
 

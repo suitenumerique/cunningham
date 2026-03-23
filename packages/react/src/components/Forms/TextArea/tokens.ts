@@ -2,7 +2,7 @@ import { DefaultTokens } from "@gouvfr-lasuite/cunningham-tokens";
 
 export const tokens = (defaults: DefaultTokens) => ({
   "font-weight": defaults.globals.font.weights.regular,
-  "font-size": defaults.globals.font.sizes.md,
+  "font-size": defaults.globals.font.sizes.sm,
   "border-radius": "8px",
   "border-radius--hover": "2px",
   "border-radius--focus": "2px",
@@ -21,4 +21,5 @@ export const tokens = (defaults: DefaultTokens) => ({
   "value-color": defaults.contextuals.content.semantic.neutral.primary,
   "value-color--disabled":
     defaults.contextuals.content.semantic.neutral.secondary,
+  "placeholder-color": defaults.contextuals.content.semantic.neutral.tertiary,
 });

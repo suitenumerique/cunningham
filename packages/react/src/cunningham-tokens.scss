@@ -697,9 +697,9 @@ $themes: (
       'modal': (
         'background-color': #FFFFFF,
         'backdrop-color': #00000099,
-        'border-radius': 4px,
+        'border-radius': 8px,
         'border-color': #E1E2E5,
-        'box-shadow': 0px 1px 2px 0px #0C1A2B4D,
+        'box-shadow': #{0 6px 20px 0 rgba(0, 0, 18, 0.10)},
         'color': #252627,
         'title-font-weight': 600,
         'content-font-size': 0.875rem,
@@ -712,7 +712,7 @@ $themes: (
       ),
       'forms-textarea': (
         'font-weight': 400,
-        'font-size': 1rem,
+        'font-size': 0.875rem,
         'border-radius': 8px,
         'border-radius--hover': 2px,
         'border-radius--focus': 2px,
@@ -728,7 +728,8 @@ $themes: (
         'label-color--focus': #20467F,
         'background-color': #FFFFFF,
         'value-color': #252627,
-        'value-color--disabled': #5C5F63
+        'value-color--disabled': #5C5F63,
+        'placeholder-color': #686B6F
       ),
       'forms-switch': (
         'accent-color': #1167D4,
@@ -752,13 +753,13 @@ $themes: (
         'border-width--hover': 1px,
         'value-color': #252627,
         'value-color--disabled': #A7ACB2,
-        'font-size': 1rem,
+        'font-size': 0.875rem,
         'height': 3.5rem,
         'item-background-color--hover': #1B1C1D0D,
         'item-background-color--selected': #D5E4F7,
         'item-color': #252627,
         'item-color--disabled': #F7F8F880,
-        'item-font-size': 1rem,
+        'item-font-size': 0.875rem,
         'background-color': #FFFFFF,
         'menu-background-color': #FFFFFF,
         'label-color': #686B6F,
@@ -766,8 +767,8 @@ $themes: (
         'multi-pill-background-color': #F0F1F2,
         'multi-pill-border-radius': 2px,
         'multi-pill-max-width': 68%,
-        'multi-pill-font-size': 1rem,
-        'placeholder-color': #5C5F63
+        'multi-pill-font-size': 0.875rem,
+        'placeholder-color': #686B6F
       ),
       'forms-radio': (),
       'forms-labelledbox': (
@@ -776,11 +777,14 @@ $themes: (
         'label-color--small--disabled': #5C5F63,
         'label-color--big--disabled': #5C5F63,
         'classic-label-margin-bottom': 0.5rem,
-        'classic-label-font-size': 0.75rem
+        'classic-label-font-size': 0.875rem,
+        'classic-label-color': #252627,
+        'classic-label-font-weight': 500,
+        'classic-label-line-height': 1.125rem
       ),
       'forms-input': (
         'font-weight': 400,
-        'font-size': 1rem,
+        'font-size': 0.875rem,
         'border-radius': 8px,
         'border-radius--hover': 4px,
         'border-radius--focus': 4px,
@@ -844,18 +848,9 @@ $themes: (
         'border-width--hover': 1px,
         'value-color': #686B6F,
         'value-color--disabled': #A7ACB2,
-        'font-size': 1.125rem,
+        'font-size': 0.875rem,
         'height': 3.5rem,
-        'item-background-color--hover': #E1E2E5,
-        'item-background-color--selected': #EAF1FB,
-        'item-color': #252627,
-        'item-font-size': 1rem,
         'background-color': #FFFFFF,
-        'menu-background-color': #FFFFFF,
-        'range-selection-background-color': #EAF1FB,
-        'range-selection-background-color--disabled': #F0F1F2,
-        'grid-cell--border-color--today': #1167D4,
-        'grid-cell--color--today': #20467F,
         'label-color--focus': #20467F
       ),
       'forms-checkbox': (
@@ -875,8 +870,33 @@ $themes: (
         'checkmark-color': #F7F8F8F2,
         'size': 1.5rem
       ),
-      'button': (
+      'calendar': (
+        'background-color': #FFFFFF,
         'border-radius': 8px,
+        'padding': 8px,
+        'cell-size': 32px,
+        'cell-border-radius': 4px,
+        'cell-font-size': 0.75rem,
+        'header-font-size': 0.75rem,
+        'date-past-color': #A7ACB2,
+        'date-today-color': #686B6F,
+        'date-today-border-color': #A7ACB2,
+        'date-future-color': #5C5F63,
+        'date-selected-bg': #1167D4,
+        'date-selected-color': #EAF1FB,
+        'range-middle-bg': #EAF1FB,
+        'range-middle-color': #20467F,
+        'range-middle-bg--disabled': #F0F1F2,
+        'menu-background-color': #FFFFFF,
+        'menu-border-radius': 8px,
+        'menu-item-height': 32px,
+        'menu-item-font-size': 0.875rem,
+        'menu-item-color': #252627,
+        'menu-item-background-color--hover': #E1E2E5,
+        'menu-item-background-color--selected': #EAF1FB
+      ),
+      'button': (
+        'border-radius': 4px,
         'border-radius--active': 2px,
         'border-radius--focus': 4px,
         'medium-text-height': 36px,

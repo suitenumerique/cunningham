@@ -6,7 +6,7 @@ import {
 } from "@react-stately/datepicker";
 import { useDateRangePicker } from "@react-aria/datepicker";
 import { DateRange } from "react-aria";
-import { CalendarRange } from ":/components/Forms/DatePicker/Calendar";
+import { CalendarRange } from ":/components/Calendar";
 import DatePickerAux, {
   DatePickerAuxSubProps,
 } from ":/components/Forms/DatePicker/DatePickerAux";
