@@ -152,15 +152,50 @@ export const ThreeButtons: Story = {
   },
 };
 
-export const CenterButtons: Story = {
+export const LeftAndRightButtons: Story = {
   args: {
     size: ModalSize.MEDIUM,
-    actions: (
-      <>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="primary">Primary</Button>
-      </>
-    ),
+    leftActions: <Button variant="secondary">Secondary</Button>,
+    rightActions: <Button variant="primary">Primary</Button>,
+  },
+};
+
+export const WithSubtitle: Story = {
+  args: {
+    size: ModalSize.MEDIUM,
+    title: "Create a new project",
+    subtitle: "Fill in the details below to get started.",
+    children: "",
+    rightActions: <Button variant="primary">Create</Button>,
+  },
+};
+
+export const WithTitleIcon: Story = {
+  args: {
+    size: ModalSize.MEDIUM,
+    title: "Settings",
+    titleIcon: <span className="material-icons">settings</span>,
+    children: "Settings content goes here...",
+  },
+};
+
+export const WithTitleIconAndSubtitle: Story = {
+  args: {
+    size: ModalSize.MEDIUM,
+    title: "Delete item",
+    subtitle: "This action cannot be undone.",
+    titleIcon: <span className="material-icons">warning</span>,
+    children: "Are you sure you want to delete this item?",
+    leftActions: <Button variant="secondary">Cancel</Button>,
+    rightActions: <Button variant="primary">Delete</Button>,
+  },
+};
+
+export const SubtitleOnly: Story = {
+  args: {
+    size: ModalSize.MEDIUM,
+    subtitle: "A modal with only a subtitle and no title.",
+    children: "Content goes here...",
   },
 };
 
@@ -193,6 +228,21 @@ export const ExampleApplication: Story = {
 export const FullWithContent: Story = {
   args: {
     size: ModalSize.FULL,
+    leftActions: <Button variant="tertiary">Tertiary</Button>,
+    rightActions: (
+      <>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="primary">Primary</Button>
+      </>
+    ),
+    children: longLorem.text,
+  },
+};
+
+export const StickyFooterFull: Story = {
+  args: {
+    size: ModalSize.FULL,
+    stickyFooter: true,
     leftActions: <Button variant="tertiary">Tertiary</Button>,
     rightActions: (
       <>

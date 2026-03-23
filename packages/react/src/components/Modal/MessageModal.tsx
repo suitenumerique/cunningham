@@ -34,7 +34,7 @@ export const MessageModal = ({
         )
       }
       size={ModalSize.SMALL}
-      actions={
+      rightActions={
         <Button fullWidth={true} onClick={() => onDecide("ok")}>
           {t("components.modals.helpers.disclaimer.ok")}
         </Button>

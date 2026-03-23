@@ -3,6 +3,7 @@ import classNames from "classnames";
 import ReactModal from "react-modal";
 import { Button } from ":/components/Button";
 import { NOSCROLL_CLASS, useModals } from ":/components/Modal/ModalProvider";
+import { CloseIcon } from "./CloseIcon";
 
 export type ModalHandle = {};
 
@@ -48,7 +49,9 @@ export type ModalProps = PropsWithChildren & {
   rightActions?: React.ReactNode;
   actions?: React.ReactNode;
   title?: ReactNode;
+  subtitle?: ReactNode;
   titleIcon?: React.ReactNode;
+  stickyFooter?: boolean;
   hideCloseButton?: boolean;
   closeOnClickOutside?: boolean;
   closeOnEsc?: boolean;
@@ -100,7 +103,7 @@ export const ModalInner = ({ closeOnEsc = true, ...props }: ModalProps) => {
         {!props.hideCloseButton && !props.preventClose && (
           <div className="c__modal__close">
             <Button
-              icon={<span className="material-icons">close</span>}
+              icon={<CloseIcon />}
               variant="tertiary"
               color="neutral"
               size="small"
@@ -108,16 +111,22 @@ export const ModalInner = ({ closeOnEsc = true, ...props }: ModalProps) => {
             />
           </div>
         )}
-        {props.titleIcon && (
-          <div className="c__modal__title-icon">{props.titleIcon}</div>
+        {(props.titleIcon || props.title) && (
+          <div className="c__modal__title">
+            {props.titleIcon && (
+              <div className="c__modal__title-icon">{props.titleIcon}</div>
+            )}
+            {props.title}
+          </div>
         )}
-        {props.title && <div className="c__modal__title">{props.title}</div>}
+        {props.subtitle && (
+          <div className="c__modal__subtitle">{props.subtitle}</div>
+        )}
 
-        <div className="c__modal__content">
-          {props.children}
-        </div>
-        <ModalFooter {...props} />
+        <div className="c__modal__content">{props.children}</div>
+        {!props.stickyFooter && <ModalFooter {...props} />}
       </div>
+      {props.stickyFooter && <ModalFooter {...props} sticky />}
     </ReactModal>
   );
 };
@@ -126,7 +135,10 @@ const ModalFooter = ({
   leftActions,
   rightActions,
   actions,
-}: Pick<ModalProps, "leftActions" | "rightActions" | "actions">) => {
+  sticky,
+}: Pick<ModalProps, "leftActions" | "rightActions" | "actions"> & {
+  sticky?: boolean;
+}) => {
   if ((leftActions || rightActions) && actions) {
     throw new Error("Cannot use leftActions or rightActions with actions");
   }
@@ -138,15 +150,11 @@ const ModalFooter = ({
   return (
     <div
       className={classNames("c__modal__footer", {
-        "c__modal__footer--sided": leftActions || rightActions,
+        "c__modal__footer--sticky": sticky,
       })}
     >
-      {actions || (
-        <>
-          <div className="c__modal__footer__left">{leftActions}</div>
-          <div className="c__modal__footer__right">{rightActions}</div>
-        </>
-      )}
+      <div className="c__modal__footer__left">{actions || leftActions}</div>
+      <div className="c__modal__footer__right">{!actions && rightActions}</div>
     </div>
   );
 };
