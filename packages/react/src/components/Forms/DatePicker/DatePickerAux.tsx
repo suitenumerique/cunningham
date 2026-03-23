@@ -19,7 +19,7 @@ import { useCunningham } from ":/components/Provider";
 import {
   Calendar,
   CalendarRange,
-} from ":/components/Forms/DatePicker/Calendar";
+} from ":/components/Calendar";
 import { convertDateValueToString } from ":/components/Forms/DatePicker/utils";
 import type { FieldVariant } from ":/components/Forms/types";
 
