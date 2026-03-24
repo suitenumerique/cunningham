@@ -17,7 +17,7 @@ import {
   DeleteConfirmationModalProps,
 } from ":/components/Modal/DeleteConfirmationModal";
 import { randomString } from ":/utils";
-import { ModalProps, useModal } from ":/components/Modal/index";
+import { ModalDefaultVariantProps, useModal } from ":/components/Modal/index";
 import {
   ConfirmationModal,
   ConfirmationModalProps,
@@ -31,7 +31,10 @@ import {
 export const NOSCROLL_CLASS = "c__noscroll";
 
 export type Decision = string | null | undefined;
-export type DecisionModalProps = WithOptional<ModalProps, "size"> & {
+export type DecisionModalProps = WithOptional<
+  ModalDefaultVariantProps,
+  "size"
+> & {
   onDecide: (decision?: Decision) => void;
 };
 // TODO: I don't really like this "& any", but it's the only way I found to make it work for MessageModal.
