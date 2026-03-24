@@ -552,9 +552,9 @@
 	--c--components--toast--progress-bar-height: 3px;
 	--c--components--modal--background-color: var(--c--contextuals--background--surface--secondary);
 	--c--components--modal--backdrop-color: #00000099;
-	--c--components--modal--border-radius: 4px;
+	--c--components--modal--border-radius: 8px;
 	--c--components--modal--border-color: var(--c--contextuals--border--surface--primary);
-	--c--components--modal--box-shadow: 0px 1px 2px 0px #0C1A2B4D;
+	--c--components--modal--box-shadow: 0 6px 20px 0 rgba(0, 0, 18, 0.10);
 	--c--components--modal--color: var(--c--contextuals--content--semantic--neutral--primary);
 	--c--components--modal--title-font-weight: var(--c--globals--font--weights--bold);
 	--c--components--modal--content-font-size: var(--c--globals--font--sizes--sm);
@@ -728,7 +728,7 @@
 	--c--components--calendar--menu-item-color: var(--c--contextuals--content--semantic--neutral--primary);
 	--c--components--calendar--menu-item-background-color--hover: var(--c--contextuals--background--semantic--neutral--tertiary-hover);
 	--c--components--calendar--menu-item-background-color--selected: var(--c--contextuals--background--semantic--brand--tertiary);
-	--c--components--button--border-radius: 8px;
+	--c--components--button--border-radius: 4px;
 	--c--components--button--border-radius--active: 2px;
 	--c--components--button--border-radius--focus: 4px;
 	--c--components--button--medium-text-height: 36px;
