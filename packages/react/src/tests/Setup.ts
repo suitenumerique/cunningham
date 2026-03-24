@@ -3,6 +3,7 @@ import createFetchMock from "vitest-fetch-mock";
 import { vi } from "vitest";
 import "./AnimateMock";
 import "./HTMLDialogElementMock";
+import "./ResizeObserverMock";
 
 const fetchMocker = createFetchMock(vi);
 
