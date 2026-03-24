@@ -16,10 +16,7 @@ import { Popover } from ":/components/Popover";
 import { Field, FieldProps } from ":/components/Forms/Field";
 import { ClassicLabel } from ":/components/Forms/ClassicLabel";
 import { useCunningham } from ":/components/Provider";
-import {
-  Calendar,
-  CalendarRange,
-} from ":/components/Calendar";
+import { Calendar, CalendarRange } from ":/components/Calendar";
 import { convertDateValueToString } from ":/components/Forms/DatePicker/utils";
 import type { FieldVariant } from ":/components/Forms/types";
 
