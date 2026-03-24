@@ -2,7 +2,7 @@ import { DefaultTokens } from "@gouvfr-lasuite/cunningham-tokens";
 
 export const tokens = (defaults: DefaultTokens) => {
   return {
-    "border-radius": "8px",
+    "border-radius": "4px",
     "border-radius--active": "2px",
     "border-radius--focus": "4px",
     "medium-text-height": "36px",
