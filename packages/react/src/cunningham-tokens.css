@@ -557,6 +557,7 @@
 	--c--components--modal--box-shadow: 0 6px 20px 0 rgba(0, 0, 18, 0.10);
 	--c--components--modal--color: var(--c--contextuals--content--semantic--neutral--primary);
 	--c--components--modal--title-font-weight: var(--c--globals--font--weights--bold);
+	--c--components--modal--compact-title-font-size: var(--c--globals--font--sizes--sm);
 	--c--components--modal--content-font-size: var(--c--globals--font--sizes--sm);
 	--c--components--modal--content-font-weight: var(--c--globals--font--weights--regular);
 	--c--components--modal--content-color: var(--c--contextuals--content--semantic--neutral--primary);
@@ -564,6 +565,15 @@
 	--c--components--modal--width-medium: 600px;
 	--c--components--modal--width-large: 800px;
 	--c--components--modal--width-extra-large: 75%;
+	--c--components--modal--tab-sidebar-width: 200px;
+	--c--components--modal--tab-sidebar-background-color: var(--c--contextuals--background--surface--tertiary);
+	--c--components--modal--tab-item-height: 32px;
+	--c--components--modal--tab-item-border-radius: 4px;
+	--c--components--modal--tab-item-font-size: var(--c--globals--font--sizes--sm);
+	--c--components--modal--tab-item-font-weight: var(--c--globals--font--weights--medium);
+	--c--components--modal--tab-item-font-weight--active: var(--c--globals--font--weights--bold);
+	--c--components--modal--tab-item-active-background-color: rgba(24, 27, 36, 0.05);
+	--c--components--modal--tab-item-hover-background-color: rgba(24, 27, 36, 0.03);
 	--c--components--forms-textarea--font-weight: var(--c--globals--font--weights--regular);
 	--c--components--forms-textarea--font-size: var(--c--globals--font--sizes--sm);
 	--c--components--forms-textarea--border-radius: 8px;
