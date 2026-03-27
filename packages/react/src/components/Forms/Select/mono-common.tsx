@@ -118,7 +118,11 @@ export const SelectMonoAux = ({
                 downshiftReturn.selectItem(null);
                 e.stopPropagation();
               }}
-              icon={<span className="material-icons" aria-hidden="true">close</span>}
+              icon={
+                <span className="material-icons" aria-hidden="true">
+                  close
+                </span>
+              }
               type="button"
             />
             <div className="c__select__inner__actions__separator" />
