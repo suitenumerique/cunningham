@@ -3,7 +3,8 @@
   "private": false,
   "version": "4.3.0",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "license": "MIT",
   "main": "./dist/index.js",
@@ -35,7 +36,7 @@
     "build-theme": "cunningham -o src -g css,ts,js,scss",
     "preview": "vite preview",
     "test": "cross-env FORCE_COLOR=1 vitest run",
-    "test-ci": "cross-env VITEST_MIN_THREADS=1 cross-env VITEST_MAX_THREADS=3 cross-env FORCE_COLOR=1 vitest run --shard $(($CIRCLE_NODE_INDEX + 1))/$CIRCLE_NODE_TOTAL",
+    "test-ci": "cross-env VITEST_MIN_THREADS=1 cross-env VITEST_MAX_THREADS=3 cross-env FORCE_COLOR=1 vitest run --shard ${SHARD_INDEX:-1}/${SHARD_TOTAL:-1}",
     "test-watch": "vitest",
     "coverage": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
