@@ -29,7 +29,8 @@
     },
     "test-ci": {
       "env": [
-        "CIRCLE_*"
+        "SHARD_INDEX",
+        "SHARD_TOTAL"
       ],
       "outputs": [],
       "inputs": [
