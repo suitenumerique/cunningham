@@ -7,10 +7,6 @@
 - b6e2b6: remove tabindex from content modal
 - 5c715f: fix accessible name of dropdown toggle button
 - 8a5c13: hide decorative icon from screen reader
-- add tabs modal variant 
-- add new calendar component
-- add fixed modal footer 
-
 
 ## 4.2.0
 
