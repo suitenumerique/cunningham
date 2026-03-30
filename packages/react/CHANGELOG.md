@@ -2,15 +2,16 @@
 
 ## [unreleased]
 
+## 4.3.0
+
 ### Minor Changes
 
-- b6e2b6: remove tabindex from content modal
-- 5c715f: fix accessible name of dropdown toggle button
-- 8a5c13: hide decorative icon from screen reader
-- add tabs modal variant 
-- add new calendar component
-- add fixed modal footer 
-
+- b6e2b66: remove tabindex from content modal
+- 5c715fd: fix accessible name of dropdown toggle button
+- 1f28aeb: hide decorative icon from screen reader
+- e230b55: add tabs modal variant
+- b243a3f: add new calendar component
+- 732c13c: add fixed modal footer
 
 ## 4.2.0
 
