@@ -1,10 +1,4 @@
-import React, {
-  MutableRefObject,
-  RefAttributes,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { RefAttributes, useMemo, useRef, useState } from "react";
 import {
   CalendarDate,
   CalendarIdentifier,
@@ -35,14 +29,10 @@ import {
   UseSelectStateChange,
 } from "downshift";
 import classNames from "classnames";
-import {
-  CalendarProps as ReactAriaCalendarProps,
-  RangeCalendarProps,
-} from "react-aria";
-
+import { CalendarProps, RangeCalendarProps } from "react-aria";
 import { range } from ":/utils";
 import { Button } from ":/components/Button";
-import { CalendarGrid } from ":/components/Calendar/CalendarGrid";
+import { CalendarGrid } from ":/components/Forms/DatePicker/CalendarGrid";
 import { useCunningham } from ":/components/Provider";
 
 // todo to be factorized with the select component
@@ -88,44 +78,17 @@ const DropdownValues = ({ options, downShift }: DropdownValuesProps) => (
             })}
           >
             <span>{item.label}</span>
-            {downShift.selectedItem?.label === item.label && (
-              <span className="material-icons c__calendar__menu__item__check">
-                check
-              </span>
-            )}
           </li>
         ))}
     </ul>
   </div>
 );
 
-export type CalendarProps = ReactAriaCalendarProps<DateValue> & {
-  onOk?: (value: DateValue | null) => void;
-  onCancel?: () => void;
-  onReset?: () => void;
-  hideFooter?: boolean;
-  className?: string;
-};
-
-export type CalendarRangeProps = RangeCalendarProps<DateValue> & {
-  onOk?: () => void;
-  onCancel?: () => void;
-  onReset?: () => void;
-  hideFooter?: boolean;
-  className?: string;
-};
-
 type CalendarAuxProps = CalendarAria &
   RefAttributes<HTMLDivElement> & {
     minYear?: number;
     maxYear?: number;
     state: RangeCalendarState | CalendarState;
-    onOk?: (value: DateValue | null) => void;
-    onCancel?: () => void;
-    onReset?: () => void;
-    hideFooter?: boolean;
-    className?: string;
-    dropdownOpenRef?: MutableRefObject<boolean>;
   };
 
 const CalendarAux = ({
@@ -135,13 +98,7 @@ const CalendarAux = ({
   prevButtonProps,
   nextButtonProps,
   calendarProps,
-  onOk,
-  onCancel,
-  onReset,
-  hideFooter,
-  className,
   ref,
-  dropdownOpenRef,
 }: CalendarAuxProps) => {
   const { t } = useCunningham();
 
@@ -152,7 +109,8 @@ const CalendarAux = ({
     });
   };
 
-  const monthFormatter = useTimeZoneFormatter({ month: "long" });
+  const monthItemsFormatter = useTimeZoneFormatter({ month: "long" });
+  const selectedMonthItemFormatter = useTimeZoneFormatter({ month: "short" });
   const yearItemsFormatter = useTimeZoneFormatter({ year: "numeric" });
   const [showGrid, setShowGrid] = useState(true);
 
@@ -165,7 +123,7 @@ const CalendarAux = ({
       const date = state.focusedDate.set({ month: monthNumber });
       return {
         value: monthNumber,
-        label: monthFormatter.format(date.toDate(state.timeZone)),
+        label: monthItemsFormatter.format(date.toDate(state.timeZone)),
         disabled:
           (!!state.minValue && state.minValue.month > monthNumber) ||
           (!!state.maxValue && state.maxValue.month < monthNumber),
@@ -196,7 +154,7 @@ const CalendarAux = ({
           (!!state.maxValue && state.maxValue.year < yearNumber),
       };
     });
-  }, [state.focusedDate.year, state.timeZone, state.maxValue, state.minValue]);
+  }, [state.focusedDate, state.timeZone, state.maxValue, state.minValue]);
 
   const useDownshiftSelect = (
     key: string,
@@ -239,13 +197,6 @@ const CalendarAux = ({
   const downshiftMonth = useDownshiftSelect("month", monthItems);
   const downshiftYear = useDownshiftSelect("year", yearItems);
 
-  // Sync dropdown open state to the ref so the proxy ref in CalendarRange
-  // can hide ref.current from react-spectrum's handlers while a dropdown is open.
-  if (dropdownOpenRef) {
-    dropdownOpenRef.current =
-      downshiftMonth.isOpen || downshiftYear.isOpen;
-  }
-
   // isDisabled, onPress and onFocusChange props don't exist on the <Button /> component.
   // remove them to avoid any warning.
   const {
@@ -281,61 +232,34 @@ const CalendarAux = ({
     ),
   });
 
-  const showFooter = !hideFooter && (onOk || onCancel || onReset);
-
   return (
-    <div className={classNames("c__calendar", className)}>
+    <div className="c__calendar">
       <div
-        // The dropdown menus (DropdownValues) must be inside this ref'd div so that
-        // react-spectrum's useRangeCalendar pointerup handler sees focus as staying
-        // within the calendar when a dropdown is opened.
+        // We need to remove the id from the calendar when the dropdowns are open to avoid having the following bug:
+        // 1 - Open the calendar
+        // 2 - Select a start date
+        // 3 - Click on the dropdown to select another year
+        // 4 - BUG: The calendar closes abruptly.
         //
-        // The ref is always stable here (no conditional detach). To prevent
-        // react-spectrum from calling selectFocusedDate() on blur/pointerup when
-        // a dropdown is open, CalendarRange passes a proxy ref to useRangeCalendar
-        // whose .current returns null while dropdownOpenRef.current is true.
+        // This way caused by this internal call from Spectrum: https://github.com/adobe/react-spectrum/blob/74cac946a8e6c62cd111d062c58626f774372b91/packages/%40react-aria/calendar/src/useRangeCalendar.ts#L52-L60
         //
-        // See: https://github.com/adobe/react-spectrum/blob/74cac946a8e6c62cd111d062c58626f774372b91/packages/%40react-aria/calendar/src/useRangeCalendar.ts#L52-L72
-        ref={ref}
+        // So instead we decided to remove the id of the calendar when the dropdowns are open and add it back when
+        // the dropdowns are closed in order to make this condition fail: https://github.com/adobe/react-spectrum/blob/74cac946a8e6c62cd111d062c58626f774372b91/packages/%40react-aria/calendar/src/useRangeCalendar.ts#L55
+        // This way the referenced element will never be found.
+        ref={!downshiftMonth.isOpen && !downshiftYear.isOpen ? ref : null}
         {...calendarProps}
-        className="c__calendar__wrapper c__calendar__wrapper--opened"
+        id={calendarProps.id}
+        className={classNames("c__calendar__wrapper", {
+          "c__calendar__wrapper--opened":
+            !downshiftMonth.isOpen && !downshiftYear.isOpen,
+        })}
       >
         <div className="c__calendar__wrapper__header">
-          <div className="c__calendar__wrapper__header__selects">
-            <Button
-              className="c__calendar__wrapper__header__selects__dropdown"
-              color="neutral"
-              variant="bordered"
-              size="nano"
-              iconPosition="right"
-              icon={<span className="material-icons">arrow_drop_down</span>}
-              type="button"
-              {...getToggleButtonProps("month", monthItems, downshiftMonth)}
-            >
-              {monthFormatter.format(
-                state.focusedDate.toDate(state.timeZone),
-              )}
-            </Button>
-            <Button
-              className="c__calendar__wrapper__header__selects__dropdown"
-              color="neutral"
-              variant="bordered"
-              size="nano"
-              iconPosition="right"
-              icon={<span className="material-icons">arrow_drop_down</span>}
-              type="button"
-              {...getToggleButtonProps("year", yearItems, downshiftYear)}
-            >
-              {yearItemsFormatter.format(
-                state.focusedDate.toDate(state.timeZone),
-              )}
-            </Button>
-          </div>
-          <div className="c__calendar__wrapper__header__nav">
+          <div className="c__calendar__wrapper__header__actions">
             <Button
               color="neutral"
               variant="tertiary"
-              size="nano"
+              size="small"
               icon={<span className="material-icons">navigate_before</span>}
               {...{
                 ...prevButtonOtherProps,
@@ -348,9 +272,23 @@ const CalendarAux = ({
               type="button"
             />
             <Button
+              className="c__calendar__wrapper__header__actions__dropdown"
               color="neutral"
               variant="tertiary"
-              size="nano"
+              size="small"
+              iconPosition="right"
+              icon={<span className="material-icons">arrow_drop_down</span>}
+              type="button"
+              {...getToggleButtonProps("month", monthItems, downshiftMonth)}
+            >
+              {selectedMonthItemFormatter.format(
+                state.focusedDate.toDate(state.timeZone),
+              )}
+            </Button>
+            <Button
+              color="neutral"
+              variant="tertiary"
+              size="small"
               icon={<span className="material-icons">navigate_next</span>}
               type="button"
               {...{
@@ -363,68 +301,64 @@ const CalendarAux = ({
               onClick={() => state.focusNextSection()}
             />
           </div>
-        </div>
-        <CalendarGrid state={state} showBody={showGrid} />
-        {showFooter && (
-          <div className="c__calendar__wrapper__footer">
-            <div className="c__calendar__wrapper__footer__left">
-              {onReset && (
-                <Button
-                  color="brand"
-                  variant="tertiary"
-                  size="nano"
-                  onClick={onReset}
-                  type="button"
-                >
-                  {t("components.calendar.reset")}
-                </Button>
+          <div className="c__calendar__wrapper__header__actions">
+            <Button
+              color="neutral"
+              variant="tertiary"
+              size="small"
+              icon={<span className="material-icons">navigate_before</span>}
+              onClick={() => state.focusPreviousSection(true)}
+              disabled={
+                !!state.minValue &&
+                state.minValue.year > state.focusedDate.add({ years: -1 }).year
+              }
+              aria-label={t(
+                "components.forms.date_picker.previous_year_button_aria_label",
               )}
-            </div>
-            <div className="c__calendar__wrapper__footer__right">
-              {onCancel && (
-                <Button
-                  color="brand"
-                  variant="bordered"
-                  size="nano"
-                  onClick={onCancel}
-                  type="button"
-                >
-                  {t("components.calendar.cancel")}
-                </Button>
+              type="button"
+            />
+            <Button
+              className="c__calendar__wrapper__header__actions__dropdown"
+              color="neutral"
+              variant="tertiary"
+              size="small"
+              iconPosition="right"
+              icon={<span className="material-icons">arrow_drop_down</span>}
+              type="button"
+              {...getToggleButtonProps("year", yearItems, downshiftYear)}
+            >
+              {yearItemsFormatter.format(
+                state.focusedDate.toDate(state.timeZone),
               )}
-              {onOk && (
-                <Button
-                  color="brand"
-                  variant="primary"
-                  size="nano"
-                  onClick={() => {
-                    const value =
-                      "value" in state ? (state as CalendarState).value : null;
-                    onOk(value);
-                  }}
-                  type="button"
-                >
-                  {t("components.calendar.ok")}
-                </Button>
+            </Button>
+            <Button
+              color="neutral"
+              variant="tertiary"
+              size="small"
+              icon={<span className="material-icons">navigate_next</span>}
+              onClick={() => state.focusNextSection(true)}
+              disabled={
+                !!state.maxValue &&
+                state.maxValue.year < state.focusedDate.add({ years: 1 }).year
+              }
+              aria-label={t(
+                "components.forms.date_picker.next_year_button_aria_label",
               )}
-            </div>
+              type="button"
+            />
           </div>
+        </div>
+        {!downshiftMonth.isOpen && !downshiftYear.isOpen && showGrid && (
+          <CalendarGrid state={state} />
         )}
-        <DropdownValues options={monthItems} downShift={downshiftMonth} />
-        <DropdownValues options={yearItems} downShift={downshiftYear} />
       </div>
+      <DropdownValues options={monthItems} downShift={downshiftMonth} />
+      <DropdownValues options={yearItems} downShift={downshiftYear} />
     </div>
   );
 };
 
-export const Calendar = ({
-  onOk,
-  onCancel,
-  onReset,
-  hideFooter,
-  className,
-  ...props
-}: CalendarProps) => {
+export const Calendar = (props: CalendarProps<DateValue>) => {
   const { locale } = useLocale();
   const ref = useRef<HTMLDivElement>(null);
   const state = useCalendarState({
@@ -433,66 +367,17 @@ export const Calendar = ({
     createCalendar,
   });
   const calendarProps = useCalendar(props, state);
-  return (
-    <CalendarAux
-      {...calendarProps}
-      state={state}
-      ref={ref}
-      onOk={onOk}
-      onCancel={onCancel}
-      onReset={onReset}
-      hideFooter={hideFooter}
-      className={className}
-    />
-  );
+  return <CalendarAux {...calendarProps} state={state} ref={ref} />;
 };
 
-export const CalendarRange = ({
-  onOk,
-  onCancel,
-  onReset,
-  hideFooter,
-  className,
-  ...props
-}: CalendarRangeProps) => {
+export const CalendarRange = (props: RangeCalendarProps<DateValue>) => {
   const { locale } = useLocale();
   const ref = useRef<HTMLDivElement>(null);
-  const dropdownOpenRef = useRef(false);
-
-  // Proxy ref passed to useRangeCalendar: returns null while a month/year
-  // dropdown is open so react-spectrum's onBlur and pointerup handlers skip
-  // the selectFocusedDate() call that would otherwise close the calendar.
-  // The real DOM ref stays permanently attached, avoiding the re-render flash
-  // that the previous approach (toggling ref between element and null) caused.
-  const spectrumRef = useMemo(
-    () => ({
-      get current(): HTMLDivElement | null {
-        return dropdownOpenRef.current ? null : ref.current;
-      },
-      set current(el: HTMLDivElement | null) {
-        ref.current = el;
-      },
-    }),
-    [],
-  );
-
   const state = useRangeCalendarState({
     ...props,
     locale,
     createCalendar,
   });
-  const calendarProps = useRangeCalendar(props, state, spectrumRef);
-  return (
-    <CalendarAux
-      {...calendarProps}
-      state={state}
-      ref={ref}
-      dropdownOpenRef={dropdownOpenRef}
-      onOk={onOk}
-      onCancel={onCancel}
-      onReset={onReset}
-      hideFooter={hideFooter}
-      className={className}
-    />
-  );
+  const calendarProps = useRangeCalendar(props, state, ref);
+  return <CalendarAux {...calendarProps} state={state} ref={ref} />;
 };

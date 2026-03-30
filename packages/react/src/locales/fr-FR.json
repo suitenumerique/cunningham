@@ -55,11 +55,6 @@
         "month_select_button_aria_label": "Sélectionner un mois"
       }
     },
-    "calendar": {
-      "reset": "Réinitialiser",
-      "cancel": "Annuler",
-      "ok": "OK"
-    },
     "modals": {
       "helpers": {
         "delete_confirmation": {

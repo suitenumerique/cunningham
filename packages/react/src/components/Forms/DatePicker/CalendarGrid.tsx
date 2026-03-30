@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { useLocale } from "@react-aria/i18n";
+import { useDateFormatter, useLocale } from "@react-aria/i18n";
 import {
   endOfMonth,
   getWeeksInMonth,
@@ -8,20 +8,17 @@ import {
 } from "@internationalized/date";
 import { useCalendarGrid } from "react-aria";
 import { CalendarState, RangeCalendarState } from "@react-stately/calendar";
-import classNames from "classnames";
-import { CalendarCell } from ":/components/Calendar/CalendarCell";
+import { CalendarCell } from ":/components/Forms/DatePicker/CalendarCell";
 import { range } from ":/utils";
 
 interface CalendarGridProps {
   state: CalendarState | RangeCalendarState;
   defaultDaysInWeek?: number;
-  showBody?: boolean;
 }
 
 export const CalendarGrid = ({
   state,
   defaultDaysInWeek = 7,
-  showBody = true,
 }: CalendarGridProps) => {
   const { locale } = useLocale();
 
@@ -35,17 +32,18 @@ export const CalendarGrid = ({
     state,
   );
 
+  const shortDayFormatter = useDateFormatter({
+    weekday: "short",
+    timeZone: state.timeZone,
+  });
+
   const weekDays = useMemo(() => {
-    const formatter = new Intl.DateTimeFormat(locale, {
-      weekday: "short",
-      timeZone: state.timeZone,
-    });
     const weekStart = startOfWeek(today(state.timeZone), locale);
     return range(0, defaultDaysInWeek - 1).map((index) => {
       const dateDay = weekStart.add({ days: index }).toDate(state.timeZone);
-      return formatter.format(dateDay);
+      return shortDayFormatter.format(dateDay);
     });
-  }, [locale, state.timeZone]);
+  }, [locale, state.timeZone, shortDayFormatter]);
 
   return (
     <table {...gridProps} className="c__calendar__wrapper__grid">
@@ -56,11 +54,7 @@ export const CalendarGrid = ({
           ))}
         </tr>
       </thead>
-      <tbody
-        className={classNames({
-          "c__calendar__wrapper__grid--hidden": !showBody,
-        })}
-      >
+      <tbody>
         {range(0, weeksInMonth - 1).map((weekIndex) => (
           <tr key={weekIndex} className="c__calendar__wrapper__grid__week-row">
             {state

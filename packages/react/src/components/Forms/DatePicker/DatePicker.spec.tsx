@@ -837,7 +837,7 @@ describe("<DatePicker/>", () => {
 
     // Focus previous month.
     await user.click(previousMonthButton);
-    expectFocusedMonthToBeEqual("April");
+    expectFocusedMonthToBeEqual("Apr");
 
     // Get back to the default focused month.
     await user.click(nextMonthButton);
@@ -845,10 +845,10 @@ describe("<DatePicker/>", () => {
 
     // Focus next month.
     await user.click(nextMonthButton);
-    expectFocusedMonthToBeEqual("June");
+    expectFocusedMonthToBeEqual("Jun");
   });
 
-  it("changes focused year via dropdown", async () => {
+  it("clicks next and previous focused year", async () => {
     const user = userEvent.setup();
     render(
       <CunninghamProvider>
@@ -865,17 +865,23 @@ describe("<DatePicker/>", () => {
     // Focused year of the calendar grid should be the one from the default value.
     expectFocusedYearToBeEqual("2023");
 
-    // Use year dropdown to navigate to 2022.
-    const yearButton = screen.getByRole("combobox", {
-      name: "Select a year",
+    const previousYearButton = screen.getByRole("button", {
+      name: "Previous year",
     });
-    await user.click(yearButton);
-    await user.click(screen.getByRole("option", { name: "2022" }));
+    const nextYearButton = screen.getByRole("button", {
+      name: "Next year",
+    });
+
+    // Focus previous year.
+    await user.click(previousYearButton);
     expectFocusedYearToBeEqual("2022");
 
-    // Use year dropdown to navigate to 2024.
-    await user.click(yearButton);
-    await user.click(screen.getByRole("option", { name: "2024" }));
+    // Get back to the default focused month.
+    await user.click(nextYearButton);
+    expectFocusedYearToBeEqual("2023");
+
+    // Focus next year.
+    await user.click(nextYearButton);
     expectFocusedYearToBeEqual("2024");
   });
 
@@ -909,7 +915,7 @@ describe("<DatePicker/>", () => {
     expect(nextMonthButton).toBeDisabled();
   });
 
-  it("renders disabled year options in dropdown when constrained", async () => {
+  it("renders disabled next and previous year", async () => {
     const user = userEvent.setup();
     render(
       <CunninghamProvider>
@@ -926,19 +932,17 @@ describe("<DatePicker/>", () => {
     const toggleButton = (await screen.findAllByRole("button"))![1];
     await user.click(toggleButton);
 
-    // Year dropdown should show 2023 as selected, with other years disabled.
-    const yearButton = screen.getByRole("combobox", {
-      name: "Select a year",
+    // minValue doesn't allow to navigate to previous year.
+    const previousYearButton = screen.getByRole("button", {
+      name: "Previous year",
     });
-    await user.click(yearButton);
+    expect(previousYearButton).toBeDisabled();
 
-    // 2022 should be disabled since minValue is in 2023.
-    const option2022 = screen.getByRole("option", { name: "2022" });
-    expect(option2022.classList.contains("c__calendar__menu__item--disabled")).toBe(true);
-
-    // 2024 should be disabled since maxValue is in 2023.
-    const option2024 = screen.getByRole("option", { name: "2024" });
-    expect(option2024.classList.contains("c__calendar__menu__item--disabled")).toBe(true);
+    // maxValue doesn't allow to navigate to next year.
+    const nextYearButton = screen.getByRole("button", {
+      name: "Next year",
+    });
+    expect(nextYearButton).toBeDisabled();
   });
 
   it("renders partially disabled next and previous month", async () => {
@@ -1087,7 +1091,7 @@ describe("<DatePicker/>", () => {
 
     // Make sure focused month has properly updated.
     focusedMonth = monthDropdown.textContent?.replace("arrow_drop_down", "");
-    expect(focusedMonth).eq("August");
+    expect(focusedMonth).eq("Aug");
   });
 
   it("selects a focused year", async () => {
@@ -1196,7 +1200,7 @@ describe("<DatePicker/>", () => {
     // default value is the cell of the calendar grid.
     // Thus, navigating one cell up, changes the focused month.
     await user.keyboard("{ArrowUp}");
-    expectFocusedMonthToBeEqual("April");
+    expectFocusedMonthToBeEqual("Apr");
 
     // Reopen the calendar menu to reset the focused month.
     await user.click(toggleButton);
@@ -1205,7 +1209,7 @@ describe("<DatePicker/>", () => {
     expectFocusedMonthToBeEqual("May");
 
     await user.keyboard("{ArrowLeft}");
-    expectFocusedMonthToBeEqual("April");
+    expectFocusedMonthToBeEqual("Apr");
   });
 
   it("navigate next focused month with keyboard", async () => {
@@ -1224,7 +1228,7 @@ describe("<DatePicker/>", () => {
     await user.click(toggleButton);
 
     await user.keyboard("{ArrowDown}");
-    expectFocusedMonthToBeEqual("June");
+    expectFocusedMonthToBeEqual("Jun");
 
     // Reopen the calendar menu to reset the focused month.
     await user.click(toggleButton);
@@ -1236,7 +1240,7 @@ describe("<DatePicker/>", () => {
     // default value is the last cell of the calendar grid.
     // Thus, navigating one cell right, changes the focused month.
     await user.keyboard("{ArrowRight}");
-    expectFocusedMonthToBeEqual("June");
+    expectFocusedMonthToBeEqual("Jun");
   });
 
   it("uses the locale props calendar system", async () => {
