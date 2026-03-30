@@ -209,53 +209,6 @@ This modal can be used to display a message to the user. It is possible to use m
 <Canvas of={PreBuiltStories.ErrorModal} story={{inline: false}}/>
 <Canvas of={PreBuiltStories.WarningModal} story={{inline: false}}/>
 
-## Tab variant
-
-The Modal component supports a `tab` variant that displays a sidebar navigation with multiple content panels. This is useful for settings pages or multi-step forms.
-
-<Canvas of={Stories.TabVariant} story={{inline: false}}/>
-
-<Source
-  language='tsx'
-  dark
-  format={false}
-  code={`
-import { CunninghamProvider, Button, Modal, ModalSize, ModalTab, useModal } from "@gouvfr-lasuite/cunningham-react";
-
-const tabs: ModalTab[] = [
-  { id: "tab1", label: "Tab 1", title: "Tab 1", subtitle: "Subtitle", content: <div>Tab 1 content</div> },
-  { id: "tab2", label: "Tab 2", title: "Tab 2", content: <div>Tab 2 content</div> },
-];
-
-const App = () => {
-  const modal = useModal();
-  return (
-    <CunninghamProvider>
-      <Button onClick={modal.open}>Open Modal</Button>
-      <Modal variant="tab" size={ModalSize.MEDIUM} sidebarTitle="Settings" tabs={tabs} {...modal} />
-    </CunninghamProvider>
-  );
-};
-  `}/>
-
-### With actions
-
-You can add footer actions to the tab variant.
-
-<Canvas of={Stories.TabVariantWithActions} story={{inline: false}}/>
-
-### Sticky footer
-
-Use the `stickyFooter` prop to keep the footer visible while the content scrolls.
-
-<Canvas of={Stories.TabVariantStickyFooter} story={{inline: false}}/>
-
-### Controlled tabs
-
-You can control the active tab externally using `activeTab` and `onTabChange`.
-
-<Canvas of={Stories.TabVariantControlled} story={{inline: false}}/>
-
 ## Props
 
 These are the props of `Modal`.
