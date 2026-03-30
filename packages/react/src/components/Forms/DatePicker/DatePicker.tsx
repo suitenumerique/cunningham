@@ -8,7 +8,7 @@ import { useDatePicker } from "@react-aria/datepicker";
 import DatePickerAux, {
   DatePickerAuxSubProps,
 } from ":/components/Forms/DatePicker/DatePickerAux";
-import { Calendar } from ":/components/Calendar";
+import { Calendar } from ":/components/Forms/DatePicker/Calendar";
 import DateFieldBox from ":/components/Forms/DatePicker/DateField";
 import {
   convertDateValueToString,

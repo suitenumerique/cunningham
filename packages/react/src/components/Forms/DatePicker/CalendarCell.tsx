@@ -15,8 +15,6 @@ interface CalendarCellProps {
   date: CalendarDate;
 }
 
-const preventDefaultHandler = (e: React.KeyboardEvent) => e.preventDefault();
-
 const isRangeCalendar = (object: any): object is RangeCalendarState => {
   return Boolean(object?.highlightedRange);
 };
@@ -87,8 +85,8 @@ export const CalendarCell = ({ state, date }: CalendarCellProps) => {
           // The keyboard's ENTER event triggers the button twice.
           // We could prevent this behavior using their headless ui
           // button component.
-          onKeyDown={preventDefaultHandler}
-          onKeyUp={preventDefaultHandler}
+          onKeyDown={(e) => e.preventDefault()}
+          onKeyUp={(e) => e.preventDefault()}
           ref={ref}
         >
           {formattedDate}
