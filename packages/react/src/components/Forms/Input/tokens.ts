@@ -2,7 +2,7 @@ import { DefaultTokens } from "@gouvfr-lasuite/cunningham-tokens";
 
 export const tokens = (defaults: DefaultTokens) => ({
   "font-weight": defaults.globals.font.weights.regular,
-  "font-size": defaults.globals.font.sizes.sm,
+  "font-size": defaults.globals.font.sizes.md,
   "border-radius": "8px",
   "border-radius--hover": "4px",
   "border-radius--focus": "4px",
