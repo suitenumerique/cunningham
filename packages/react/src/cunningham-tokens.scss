@@ -697,9 +697,9 @@ $themes: (
       'modal': (
         'background-color': #FFFFFF,
         'backdrop-color': #00000099,
-        'border-radius': 8px,
+        'border-radius': 4px,
         'border-color': #E1E2E5,
-        'box-shadow': #{0 6px 20px 0 rgba(0, 0, 18, 0.10)},
+        'box-shadow': 0px 1px 2px 0px #0C1A2B4D,
         'color': #252627,
         'title-font-weight': 600,
         'content-font-size': 0.875rem,
@@ -896,7 +896,7 @@ $themes: (
         'menu-item-background-color--selected': #EAF1FB
       ),
       'button': (
-        'border-radius': 4px,
+        'border-radius': 8px,
         'border-radius--active': 2px,
         'border-radius--focus': 4px,
         'medium-text-height': 36px,

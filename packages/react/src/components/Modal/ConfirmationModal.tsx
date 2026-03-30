@@ -17,11 +17,10 @@ export const ConfirmationModal = ({
     <Modal
       title={title ?? t("components.modals.helpers.confirmation.title")}
       size={ModalSize.SMALL}
-      rightActions={
+      actions={
         <>
           <Button
-            variant="bordered"
-            color="neutral"
+            variant="secondary"
             fullWidth={true}
             onClick={() => onDecide(null)}
           >

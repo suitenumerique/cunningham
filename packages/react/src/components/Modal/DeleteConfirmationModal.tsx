@@ -20,11 +20,10 @@ export const DeleteConfirmationModal = ({
         <span className="material-icons  delete-confirmation-icon">delete</span>
       }
       size={ModalSize.SMALL}
-      rightActions={
+      actions={
         <>
           <Button
             variant="secondary"
-            color="neutral"
             fullWidth={true}
             onClick={() => onDecide(null)}
           >
