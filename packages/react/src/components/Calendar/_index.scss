@@ -80,17 +80,19 @@
             }
 
             &--end {
-              background: linear-gradient(
-                to right,
-                var(--c--components--calendar--range-middle-bg) 50%,
-                transparent 50%
+              border-top-right-radius: var(
+                --c--components--calendar--cell-border-radius
+              );
+              border-bottom-right-radius: var(
+                --c--components--calendar--cell-border-radius
               );
             }
             &--start {
-              background: linear-gradient(
-                to left,
-                var(--c--components--calendar--range-middle-bg) 50%,
-                transparent 50%
+              border-top-left-radius: var(
+                --c--components--calendar--cell-border-radius
+              );
+              border-bottom-left-radius: var(
+                --c--components--calendar--cell-border-radius
               );
             }
             &--disabled {

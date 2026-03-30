@@ -934,15 +934,11 @@ describe("<DatePicker/>", () => {
 
     // 2022 should be disabled since minValue is in 2023.
     const option2022 = screen.getByRole("option", { name: "2022" });
-    expect(
-      option2022.classList.contains("c__calendar__menu__item--disabled"),
-    ).toBe(true);
+    expect(option2022.classList.contains("c__calendar__menu__item--disabled")).toBe(true);
 
     // 2024 should be disabled since maxValue is in 2023.
     const option2024 = screen.getByRole("option", { name: "2024" });
-    expect(
-      option2024.classList.contains("c__calendar__menu__item--disabled"),
-    ).toBe(true);
+    expect(option2024.classList.contains("c__calendar__menu__item--disabled")).toBe(true);
   });
 
   it("renders partially disabled next and previous month", async () => {

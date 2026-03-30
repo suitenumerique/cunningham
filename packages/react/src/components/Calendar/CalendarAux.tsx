@@ -131,7 +131,7 @@ type CalendarAuxProps = CalendarAria &
 const CalendarAux = ({
   state,
   minYear = 1900, // in gregorian calendar.
-  maxYear = 2100, // in gregorian calendar.
+  maxYear = 2050, // in gregorian calendar.
   prevButtonProps,
   nextButtonProps,
   calendarProps,
@@ -242,7 +242,8 @@ const CalendarAux = ({
   // Sync dropdown open state to the ref so the proxy ref in CalendarRange
   // can hide ref.current from react-spectrum's handlers while a dropdown is open.
   if (dropdownOpenRef) {
-    dropdownOpenRef.current = downshiftMonth.isOpen || downshiftYear.isOpen;
+    dropdownOpenRef.current =
+      downshiftMonth.isOpen || downshiftYear.isOpen;
   }
 
   // isDisabled, onPress and onFocusChange props don't exist on the <Button /> component.
@@ -311,7 +312,9 @@ const CalendarAux = ({
               type="button"
               {...getToggleButtonProps("month", monthItems, downshiftMonth)}
             >
-              {monthFormatter.format(state.focusedDate.toDate(state.timeZone))}
+              {monthFormatter.format(
+                state.focusedDate.toDate(state.timeZone),
+              )}
             </Button>
             <Button
               className="c__calendar__wrapper__header__selects__dropdown"
