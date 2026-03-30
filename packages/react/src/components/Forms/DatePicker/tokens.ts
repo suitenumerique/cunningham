@@ -16,14 +16,14 @@ export const tokens = (defaults: DefaultTokens) => ({
   "value-color": defaults.contextuals.content.semantic.neutral.tertiary,
   "value-color--disabled":
     defaults.contextuals.content.semantic.disabled.primary,
-  "font-size": defaults.globals.font.sizes.sm,
+  "font-size": defaults.globals.font.sizes.lg,
   height: "3.5rem",
   "item-background-color--hover":
     defaults.contextuals.background.semantic.neutral["tertiary-hover"],
   "item-background-color--selected":
     defaults.contextuals.background.semantic.brand.tertiary,
   "item-color": defaults.contextuals.content.semantic.neutral.primary,
-  "item-font-size": defaults.globals.font.sizes.sm,
+  "item-font-size": defaults.globals.font.sizes.md,
   "background-color": defaults.contextuals.background.surface.primary,
   "menu-background-color": defaults.contextuals.background.surface.primary,
   "range-selection-background-color":

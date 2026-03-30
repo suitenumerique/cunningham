@@ -7,14 +7,8 @@
   &__label {
     display: block;
     font-size: var(--c--components--forms-labelledbox--classic-label-font-size);
-    font-weight: var(--c--components--forms-labelledbox--classic-label-font-weight);
-    font-family: var(--c--globals--font--families--base);
-    font-style: normal;
-    line-height: var(--c--components--forms-labelledbox--classic-label-line-height);
-    color: var(--c--components--forms-labelledbox--classic-label-color);
+    color: var(--c--components--forms-labelledbox--label-color--small);
     margin-bottom: var(--c--components--forms-labelledbox--classic-label-margin-bottom);
-    overflow: hidden;
-    text-overflow: ellipsis;
 
     &--disabled {
       color: var(--c--components--forms-labelledbox--label-color--small--disabled);
@@ -50,7 +44,7 @@
         var(--c--globals--transitions--ease-out),
       box-shadow var(--c--globals--transitions--duration)
         var(--c--globals--transitions--ease-out);
-    padding: 0 0.5rem;
+    padding: 0 0.75rem;
     gap: 1rem;
     box-sizing: border-box;
     height: var(--c--components--forms-datepicker--height);
@@ -97,7 +91,7 @@
     }
 
     &__value {
-      display: block;
+      display: flex;
       font-size: var(--c--components--forms-datepicker--font-size);
       color: var(--c--components--forms-datepicker--value-color);
       overflow: hidden;

@@ -26,10 +26,10 @@ const DateSegmentInput = ({
   previousSegment,
   state,
 }: DateSegmentProps) => {
-  const ref = useRef<HTMLSpanElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const { segmentProps } = useDateSegment(currentSegment, state, ref);
   return (
-    <span
+    <div
       ref={ref}
       {...segmentProps}
       className={classNames("c__date-picker__inner__value__segment", {
@@ -39,7 +39,7 @@ const DateSegmentInput = ({
       })}
     >
       {currentSegment.text?.toUpperCase()}
-    </span>
+    </div>
   );
 };
 
