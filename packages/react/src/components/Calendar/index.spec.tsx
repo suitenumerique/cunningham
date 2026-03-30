@@ -30,7 +30,11 @@ describe("<Calendar/>", () => {
   it("renders with footer when callbacks are provided", () => {
     render(
       <CunninghamProvider>
-        <Calendar onOk={vi.fn()} onCancel={vi.fn()} onReset={vi.fn()} />
+        <Calendar
+          onOk={vi.fn()}
+          onCancel={vi.fn()}
+          onReset={vi.fn()}
+        />
       </CunninghamProvider>,
     );
     expect(screen.getByText("Reset")).toBeDefined();
@@ -166,7 +170,11 @@ describe("<CalendarRange/>", () => {
   it("renders with footer when callbacks are provided", () => {
     render(
       <CunninghamProvider>
-        <CalendarRange onOk={vi.fn()} onCancel={vi.fn()} onReset={vi.fn()} />
+        <CalendarRange
+          onOk={vi.fn()}
+          onCancel={vi.fn()}
+          onReset={vi.fn()}
+        />
       </CunninghamProvider>,
     );
     expect(screen.getByText("Reset")).toBeDefined();
