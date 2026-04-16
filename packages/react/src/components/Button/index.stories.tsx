@@ -12,9 +12,11 @@ type Story = StoryObj<typeof Button>;
 
 type AllButtonsProps = ButtonProps & {
   color: ButtonProps["color"];
+  asLink?: boolean;
 };
 
-const AllButtons = ({ color = "brand" }: AllButtonsProps) => {
+const AllButtons = ({ color = "brand", asLink = false }: AllButtonsProps) => {
+  const href = asLink ? "#" : undefined;
   return (
     <div
       style={{
@@ -34,23 +36,23 @@ const AllButtons = ({ color = "brand" }: AllButtonsProps) => {
         }}
       >
         <h4 className={`clr-content-semantic-${color}-primary`}>Primary</h4>
-        <Button {...Primary.args} color={color} />
-        <Button {...PrimaryDisabled.args} color={color} />
+        <Button {...Primary.args} color={color} href={href} />
+        <Button {...PrimaryDisabled.args} color={color} href={href} />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         <h4 className={`clr-content-semantic-${color}-primary`}>Secondary</h4>
-        <Button {...Secondary.args} color={color} />
-        <Button {...SecondaryDisabled.args} color={color} />
+        <Button {...Secondary.args} color={color} href={href} />
+        <Button {...SecondaryDisabled.args} color={color} href={href} />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         <h4 className={`clr-content-semantic-${color}-primary`}>Tertiary</h4>
-        <Button {...BrandTertiary.args} color={color} />
-        <Button {...TertiaryDisabled.args} color={color} />
+        <Button {...BrandTertiary.args} color={color} href={href} />
+        <Button {...TertiaryDisabled.args} color={color} href={href} />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         <h4 className={`clr-content-semantic-${color}-primary`}>Bordered</h4>
-        <Button {...Bordered.args} color={color} />
-        <Button {...BrandBorderedDisabled.args} color={color} />
+        <Button {...Bordered.args} color={color} href={href} />
+        <Button {...BrandBorderedDisabled.args} color={color} href={href} />
       </div>
     </div>
   );
@@ -226,12 +228,7 @@ export const IconOnly: Story = {
 };
 
 export const AsLink: Story = {
-  args: {
-    children: "Go to fun-mooc.fr",
-    icon: <span className="material-icons">link</span>,
-    variant: "primary",
-    href: "https://www.fun-mooc.fr/",
-    target: "_blank",
-    rel: "noopener noreferrer",
+  render: () => {
+    return <AllButtons color="brand" asLink />;
   },
 };

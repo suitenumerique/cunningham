@@ -60,16 +60,18 @@ export const Button = ({
   if (fullWidth) {
     classes.push("c__button--full-width");
   }
-  if (props.href && props.disabled) {
-    classes.push("c__button--disabled");
-  }
   const iconElement = <span className="c__button__icon">{icon}</span>;
+  const isDisabledLink = !!props.href && !!props.disabled;
   const tagName = props.href ? "a" : "button";
   return createElement(
     tagName,
     {
       className: classes.join(" "),
       ...props,
+      ...(isDisabledLink && {
+        "aria-disabled": true,
+        onClick: (e: React.MouseEvent) => e.preventDefault(),
+      }),
       ref,
     },
     <>
