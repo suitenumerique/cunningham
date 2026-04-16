@@ -66,14 +66,28 @@ describe("<Button/>", () => {
     expect(handleClick).not.toHaveBeenCalled();
   });
 
-  it("renders disabled link", async () => {
+  it("renders disabled link with aria-disabled and preserves href", async () => {
     render(
       <Button href="https://perdu.com" disabled={true}>
         Test button link
       </Button>,
     );
     const button = screen.getByRole("link", { name: "Test button link" });
-    expect(button.classList).toContain("c__button--disabled");
+    expect(button).toHaveAttribute("aria-disabled", "true");
+    expect(button).toHaveAttribute("href", "https://perdu.com");
+  });
+
+  it("does not call onClick when click occurs on a disabled link", async () => {
+    const user = userEvent.setup();
+    const handleClick = vi.fn();
+    render(
+      <Button href="https://perdu.com" disabled={true} onClick={handleClick}>
+        Test button link
+      </Button>,
+    );
+    const button = screen.getByRole("link", { name: "Test button link" });
+    await act(async () => user.click(button));
+    expect(handleClick).not.toHaveBeenCalled();
   });
 
   it("renders as link when href is used", () => {
