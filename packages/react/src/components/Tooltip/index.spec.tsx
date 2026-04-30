@@ -116,6 +116,24 @@ describe("<Tooltip />", () => {
     await screen.findByRole("heading", { name: "Title" });
     await screen.findByText("Description");
   });
+  it("closes with Escape while visible", async () => {
+    render(
+      <Tooltip content="Hi there" closeDelay={0}>
+        <Button size="nano" variant="tertiary">
+          ⬅️
+        </Button>
+      </Tooltip>,
+    );
+
+    const button = screen.getByRole("button");
+    const user = userEvent.setup();
+    fireEvent.mouseMove(document.body);
+    await user.hover(button);
+    expect(await screen.findByText("Hi there")).toBeInTheDocument();
+
+    fireEvent.keyDown(document, { key: "Escape" });
+    await waitForElementToBeRemoved(screen.queryByText("Hi there"));
+  });
   it("renders with className", async () => {
     render(
       <Tooltip
