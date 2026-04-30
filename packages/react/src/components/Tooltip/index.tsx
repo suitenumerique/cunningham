@@ -3,6 +3,7 @@ import React, {
   ReactElement,
   ReactNode,
   RefObject,
+  useEffect,
 } from "react";
 import { OverlayArrow } from "react-aria-components";
 import {
@@ -71,6 +72,20 @@ export const Tooltip = ({
   const arrowProps = {
     placement: overlayPosition.placement,
   };
+
+  // WCAG 1.4.13 : Escape must dismiss the tooltip regardless of pointer position
+  useEffect(() => {
+    if (!state.isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        state.close();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [state, state.isOpen]);
 
   const showTooltip = state.isOpen || isExiting;
 
