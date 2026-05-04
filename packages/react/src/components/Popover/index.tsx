@@ -12,6 +12,7 @@ export type PopoverProps = PropsWithChildren & {
   parentRef: RefObject<HTMLDivElement | null>;
   onClickOutside: () => void;
   borderless?: boolean;
+  "aria-label"?: string;
 };
 
 export const Popover = ({
@@ -19,6 +20,7 @@ export const Popover = ({
   children,
   onClickOutside,
   borderless = false,
+  "aria-label": ariaLabel,
 }: PopoverProps) => {
   const popoverRef = useRef<HTMLDivElement>(null);
   useHandleClickOutside(parentRef, onClickOutside);
@@ -68,6 +70,7 @@ export const Popover = ({
         top: topPosition,
       }}
       role="dialog"
+      aria-label={ariaLabel}
     >
       {children}
     </div>

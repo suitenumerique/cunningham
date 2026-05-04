@@ -281,6 +281,9 @@ const DatePickerAux = ({
               parentRef={pickerRef}
               onClickOutside={pickerState.close}
               borderless
+              aria-label={t(
+                "components.forms.date_picker.calendar_popover_aria_label",
+              )}
             >
               {calendar}
             </Popover>
