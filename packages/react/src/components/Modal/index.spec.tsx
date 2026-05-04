@@ -69,6 +69,63 @@ describe("<Modal/>", () => {
     expect(screen.getByText("Modal Content")).toBeInTheDocument();
     expect(app).toHaveAttribute("aria-hidden", "true");
   });
+  it("has aria-labelledby pointing to the title heading", async () => {
+    const Wrapper = () => {
+      const modal = useModal({ isOpenDefault: true });
+      return (
+        <CunninghamProvider>
+          <Modal size={ModalSize.SMALL} title="My Dialog Title" {...modal}>
+            <div>Modal Content</div>
+          </Modal>
+        </CunninghamProvider>
+      );
+    };
+    render(<Wrapper />);
+
+    const dialog = await screen.findByRole("dialog");
+    const heading = screen.getByRole("heading", { name: "My Dialog Title" });
+    expect(heading.tagName).toBe("H2");
+    expect(dialog).toHaveAttribute("aria-labelledby", heading.id);
+  });
+  it("has aria-describedby pointing to the subtitle", async () => {
+    const Wrapper = () => {
+      const modal = useModal({ isOpenDefault: true });
+      return (
+        <CunninghamProvider>
+          <Modal
+            size={ModalSize.SMALL}
+            title="Title"
+            subtitle="Description text"
+            {...modal}
+          >
+            <div>Content</div>
+          </Modal>
+        </CunninghamProvider>
+      );
+    };
+    render(<Wrapper />);
+
+    const dialog = await screen.findByRole("dialog");
+    const subtitle = screen.getByText("Description text");
+    expect(dialog).toHaveAttribute("aria-describedby", subtitle.id);
+  });
+  it("falls back to aria-label when there is no visible title", async () => {
+    const Wrapper = () => {
+      const modal = useModal({ isOpenDefault: true });
+      return (
+        <CunninghamProvider>
+          <Modal size={ModalSize.SMALL} aria-label="Custom label" {...modal}>
+            <div>Content</div>
+          </Modal>
+        </CunninghamProvider>
+      );
+    };
+    render(<Wrapper />);
+
+    const dialog = await screen.findByRole("dialog");
+    expect(dialog).toHaveAttribute("aria-label", "Custom label");
+    expect(dialog).not.toHaveAttribute("aria-labelledby");
+  });
   it("use modalParentSelector to change the modal portal", async () => {
     const Wrapper = () => {
       const modal = useModal();
@@ -128,7 +185,7 @@ describe("<Modal/>", () => {
     expect(screen.getByText("Modal Content")).toBeInTheDocument();
 
     const closeButton = screen.getByRole("button", {
-      name: "close",
+      name: "Close",
     });
     await user.click(closeButton);
     expect(screen.queryByText("Modal Content")).not.toBeInTheDocument();
@@ -155,7 +212,7 @@ describe("<Modal/>", () => {
     expect(screen.getByText("Modal Content")).toBeInTheDocument();
 
     const closeButton = screen.queryByRole("button", {
-      name: "close",
+      name: "Close",
     });
     expect(closeButton).not.toBeInTheDocument();
   });
@@ -284,7 +341,7 @@ describe("<Modal/>", () => {
     expect(screen.getByText("Modal Content")).toBeInTheDocument();
 
     const closeButton = screen.queryByRole("button", {
-      name: "close",
+      name: "Close",
     });
     expect(closeButton).not.toBeInTheDocument();
   });
@@ -357,7 +414,7 @@ describe("<Modal/>", () => {
 
     // Close the modal.
     const closeButton = screen.getByRole("button", {
-      name: "close",
+      name: "Close",
     });
     await user.click(closeButton);
 
@@ -436,7 +493,7 @@ describe("<Modal/>", () => {
 
     // Close the modal.
     const closeButton = screen.getByRole("button", {
-      name: "close",
+      name: "Close",
     });
     await user.click(closeButton);
 
@@ -522,7 +579,7 @@ describe("<Modal/>", () => {
 
     // Close the modal.
     const closeButton = screen.getByRole("button", {
-      name: "close",
+      name: "Close",
     });
     await user.click(closeButton);
 
@@ -556,7 +613,7 @@ describe("<Modal/>", () => {
     expect(document.body.classList.contains(NOSCROLL_CLASS)).toBeTruthy();
 
     const closeButton = screen.getByRole("button", {
-      name: "close",
+      name: "Close",
     });
     await user.click(closeButton);
     expect(document.body.classList.contains(NOSCROLL_CLASS)).toBeFalsy();
@@ -602,7 +659,7 @@ describe("<Modal/>", () => {
     expect(document.body.classList.contains(NOSCROLL_CLASS)).toBeTruthy();
 
     const closeButtons = screen.getAllByRole("button", {
-      name: "close",
+      name: "Close",
     });
     expect(closeButtons).toHaveLength(3);
 
@@ -811,6 +868,12 @@ describe("<Modal variant='tab' />", () => {
     // Other tabs are not selected
     const secondTab = screen.getByRole("tab", { name: "Privacy" });
     expect(secondTab).toHaveAttribute("aria-selected", "false");
+
+    // Dialog is labelled by the sidebar title heading
+    const dialog = screen.getByRole("dialog");
+    const sidebarHeading = screen.getByRole("heading", { name: "Settings" });
+    expect(sidebarHeading.tagName).toBe("H2");
+    expect(dialog).toHaveAttribute("aria-labelledby", sidebarHeading.id);
   });
 
   it("closes the tab modal when clicking the close button", async () => {

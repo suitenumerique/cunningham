@@ -52,7 +52,8 @@
         "previous_month_button_aria_label": "Previous month",
         "previous_year_button_aria_label": "Previous year",
         "year_select_button_aria_label": "Select a year",
-        "month_select_button_aria_label": "Select a month"
+        "month_select_button_aria_label": "Select a month",
+        "calendar_popover_aria_label": "Choose a date"
       }
     },
     "calendar": {
@@ -61,6 +62,8 @@
       "ok": "OK"
     },
     "modals": {
+      "close_button_aria_label": "Close",
+      "back_to_tabs_aria_label": "Back to tabs",
       "helpers": {
         "delete_confirmation": {
           "title": "Are you sure?",
