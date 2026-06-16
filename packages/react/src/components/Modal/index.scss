@@ -472,15 +472,16 @@
           padding: var(--c--globals--spacings--sm);
         }
 
-        .c__modal__subtitle {
-          display: none;
-        }
-
         &__header {
           .c__modal__title {
             margin-bottom: 0;
             padding-right: 0;
           }
+
+        }
+
+        .c__modal__subtitle {
+          margin-top: var(--c--globals--spacings--2xs);
         }
 
         &__back {
