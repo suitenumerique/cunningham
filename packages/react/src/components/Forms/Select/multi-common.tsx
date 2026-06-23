@@ -107,7 +107,6 @@ export const SelectMultiAux = ({ children, ...props }: SelectMultiAuxProps) => {
           variant="tertiary"
           color="neutral"
           size="nano"
-          aria-label={t("components.forms.select.toggle_button_aria_label")}
           className="c__select__inner__actions__open"
           icon={
             <span
@@ -121,6 +120,8 @@ export const SelectMultiAux = ({ children, ...props }: SelectMultiAuxProps) => {
           }
           disabled={props.disabled}
           type="button"
+          aria-hidden={true}
+          tabIndex={-1}
         />
       </div>
       <div className="c__select__inner__value">

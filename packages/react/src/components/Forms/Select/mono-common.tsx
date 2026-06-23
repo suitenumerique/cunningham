@@ -133,7 +133,6 @@ export const SelectMonoAux = ({
           variant="tertiary"
           color="neutral"
           size="nano"
-          aria-label={t("components.forms.select.toggle_button_aria_label")}
           className="c__select__inner__actions__open"
           icon={
             <span
@@ -148,6 +147,8 @@ export const SelectMonoAux = ({
           disabled={disabled}
           type="button"
           {...downshiftReturn.toggleButtonProps}
+          aria-hidden={true}
+          tabIndex={-1}
         />
       </div>
     </div>
