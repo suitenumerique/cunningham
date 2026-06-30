@@ -1,5 +1,12 @@
 # @gouvfr-lasuite/cunningham-react
 
+## 4.3.1
+
+### Patch Changes
+
+- 89a91e6: Fix disabled state for button rendered as link
+- 1252536: Modal tab - Do not hide tab subtitle on small viewports
+
 ## [unreleased]
 
 ## 4.3.0
@@ -513,7 +520,9 @@
 - 4ebbf16: Add package
 - 4ebbf16: Add component's tokens handling
 
-[unreleased]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-react@4.2.0...main
+[unreleased]: https://github.com/suitenumerique/cunningham/compare/@gouvfr-lasuite/cunningham-react@4.3.1...main
+[4.3.1]: https://github.com/suitenumerique/cunningham/compare/@gouvfr-lasuite/cunningham-react@4.3.0...@gouvfr-lasuite/cunningham-react@4.3.1
+[4.3.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-react@4.2.0...@gouvfr-lasuite/cunningham-react@4.3.0
 [4.2.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-react@4.1.0...@openfun/cunningham-react@4.2.0
 [4.1.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-react@4.0.0...@openfun/cunningham-react@4.1.0
 [4.0.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-react@3.2.3...@openfun/cunningham-react@4.0.0
