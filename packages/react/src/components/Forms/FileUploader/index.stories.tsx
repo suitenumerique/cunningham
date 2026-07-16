@@ -74,6 +74,14 @@ export const MonoUploading = {
   },
 };
 
+export const MonoUploadingCustomText = {
+  args: {
+    text: "JPG, PNG or GIF - Max file size 2MB",
+    state: "uploading",
+    uploadingBigText: "Sending your file …",
+  },
+};
+
 export const MonoCustomIcons = {
   args: {
     text: "JPG, PNG or GIF - Max file size 2MB",

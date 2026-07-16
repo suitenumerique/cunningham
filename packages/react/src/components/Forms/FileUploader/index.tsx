@@ -17,6 +17,7 @@ export interface FileUploaderProps
   animateIcon?: boolean;
   name?: string;
   bigText?: string;
+  uploadingBigText?: string;
   onFilesChange?: (event: { target: { value: File[] } }) => void;
   // This is only here for storybook. It cannot be used in real conditions.
   fakeDefaultFiles?: File[];

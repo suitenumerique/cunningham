@@ -31,6 +31,7 @@ export const DropZone = ({
   uploadingIcon,
   text,
   bigText,
+  uploadingBigText,
   files,
   onFilesChange,
   children,
@@ -76,7 +77,7 @@ export const DropZone = ({
 
   const renderCaption = () => {
     if (state === "uploading") {
-      return t("components.forms.file_uploader.uploading");
+      return uploadingBigText ?? t("components.forms.file_uploader.uploading");
     }
     if (bigText) {
       return bigText;
