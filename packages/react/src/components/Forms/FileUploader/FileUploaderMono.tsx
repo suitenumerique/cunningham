@@ -35,7 +35,7 @@ export const FileUploaderMono = ({
       ];
     }
     return [props.icon, true];
-  }, [file, hoverDelete]);
+  }, [file, hoverDelete, props.fileSelectedIcon]);
 
   const deleteFile = (e: React.MouseEvent<HTMLElement>) => {
     setFile(undefined);
