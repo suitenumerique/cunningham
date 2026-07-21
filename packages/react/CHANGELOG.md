@@ -1,5 +1,13 @@
 # @gouvfr-lasuite/cunningham-react
 
+## 4.4.1
+
+### Patch Changes
+
+- 78d7e58: Rebuild tokens
+- Updated dependencies [78d7e58]
+  - @gouvfr-lasuite/cunningham-tokens@3.2.0
+
 ## 4.4.0
 
 ### Minor Changes
@@ -530,7 +538,8 @@
 - 4ebbf16: Add package
 - 4ebbf16: Add component's tokens handling
 
-[unreleased]: https://github.com/suitenumerique/cunningham/compare/@gouvfr-lasuite/cunningham-react@4.4.0...main
+[unreleased]: https://github.com/suitenumerique/cunningham/compare/@gouvfr-lasuite/cunningham-react@4.4.1...main
+[4.4.1]: https://github.com/suitenumerique/cunningham/compare/@gouvfr-lasuite/cunningham-react@4.4.0...@gouvfr-lasuite/cunningham-react@4.4.1
 [4.4.0]: https://github.com/suitenumerique/cunningham/compare/@gouvfr-lasuite/cunningham-react@4.3.1...@gouvfr-lasuite/cunningham-react@4.4.0
 [4.3.1]: https://github.com/suitenumerique/cunningham/compare/@gouvfr-lasuite/cunningham-react@4.3.0...@gouvfr-lasuite/cunningham-react@4.3.1
 [4.3.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-react@4.2.0...@gouvfr-lasuite/cunningham-react@4.3.0

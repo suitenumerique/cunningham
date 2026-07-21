@@ -1,5 +1,11 @@
 # @gouvfr-lasuite/cunningham-tokens
 
+## 3.2.0
+
+### Minor Changes
+
+- 78d7e58: Add missing overlay tokens
+
 ## 3.1.0
 
 ### Minor Changes
@@ -113,8 +119,8 @@
 - 4ebbf16: Add utility classes
 - 4ebbf16: Add official design tokens
 
-[unreleased]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@3.1.0...main
-[3.1.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@3.0.0...@openfun/cunningham-tokens@3.1.0
+[unreleased]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@3.2.0...main
+[3.1.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@3.1.0...@openfun/cunningham-tokens@3.2.0
 [3.0.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@2.2.0...@openfun/cunningham-tokens@3.0.0
 [2.2.0]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@2.1.1...@openfun/cunningham-tokens@2.2.0
 [2.1.1]: https://github.com/suitenumerique/cunningham/compare/@openfun/cunningham-tokens@2.1.0...@openfun/cunningham-tokens@2.1.1
