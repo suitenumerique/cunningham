@@ -424,7 +424,9 @@ $themes: (
         'semantic': (
           'overlay': (
             'primary': #1B1C1D0D,
-            'primary-hover': #1B1C1D1A
+            'primary-hover': #1B1C1D1A,
+            'on-surface': #F7F8F8A6,
+            'transparent': #F7F8F800
           ),
           'contextual': (
             'primary': #1B1C1D0D,
@@ -549,7 +551,8 @@ $themes: (
             'primary': #F7F8F8F2
           ),
           'overlay': (
-            'primary': #F7F8F8F2
+            'primary': #F7F8F8F2,
+            'secondary': #F7F8F8CC
           ),
           'brand': (
             'primary': #20467F,
@@ -1364,7 +1367,9 @@ $themes: (
           ),
           'overlay': (
             'primary': #F7F8F80D,
-            'primary-hover': #F7F8F81A
+            'primary-hover': #F7F8F81A,
+            'on-surface': #1B1C1DA6,
+            'transparent': #1B1C1D00
           ),
           'brand': (
             'primary': #1167D4,
@@ -1485,7 +1490,8 @@ $themes: (
             'primary': #1B1C1DD9
           ),
           'overlay': (
-            'primary': #1B1C1DD9
+            'primary': #1B1C1DD9,
+            'secondary': #1B1C1DB2
           ),
           'brand': (
             'primary': #EAF1FB,

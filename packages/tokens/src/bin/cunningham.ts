@@ -451,6 +451,8 @@ export const contextualDefaultTokens = {
       overlay: {
         primary: "ref(globals.colors.black-050)",
         "primary-hover": "ref(globals.colors.black-100)",
+        "on-surface": "ref(globals.colors.white-650)",
+        transparent: "ref(globals.colors.white-000)",
       },
       contextual: {
         primary: "ref(globals.colors.black-050)",
@@ -576,6 +578,7 @@ export const contextualDefaultTokens = {
       },
       overlay: {
         primary: "ref(globals.colors.white-950)",
+        secondary: "ref(globals.colors.white-800)",
       },
       brand: {
         primary: "ref(globals.colors.brand-700)",
@@ -717,6 +720,8 @@ export const contextualDarkTokens = {
       overlay: {
         primary: "ref(globals.colors.white-050)",
         "primary-hover": "ref(globals.colors.white-100)",
+        "on-surface": "ref(globals.colors.black-650)",
+        transparent: "ref(globals.colors.black-000)",
       },
       brand: {
         primary: "ref(globals.colors.brand-550)",
@@ -838,6 +843,7 @@ export const contextualDarkTokens = {
       },
       overlay: {
         primary: "ref(globals.colors.black-850)",
+        secondary: "ref(globals.colors.black-700)",
       },
       brand: {
         primary: "ref(globals.colors.brand-050)",
