@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import { Button } from ":/components/Button";
+import { useCunningham } from ":/components/Provider";
 import { CloseIcon } from "./CloseIcon";
 import { ChevronRightIcon } from "./ChevronRightIcon";
 import { ChevronLeftIcon } from "./ChevronLeftIcon";
@@ -9,8 +10,10 @@ import { ModalTabVariantProps } from "./index";
 
 export const ModalTabLayout = ({
   showCloseButton,
+  titleId,
   ...props
-}: ModalTabVariantProps & { showCloseButton: boolean }) => {
+}: ModalTabVariantProps & { showCloseButton: boolean; titleId: string }) => {
+  const { t } = useCunningham();
   const [internalActiveTab, setInternalActiveTab] = useState(
     props.defaultActiveTab ?? props.tabs[0]?.id,
   );
@@ -44,7 +47,7 @@ export const ModalTabLayout = ({
 
   const activeTabId = props.activeTab ?? internalActiveTab;
   const currentTab =
-    props.tabs.find((t) => t.id === activeTabId) ?? props.tabs[0];
+    props.tabs.find((tab) => tab.id === activeTabId) ?? props.tabs[0];
 
   const handleTabChange = (tabId: string) => {
     if (props.activeTab === undefined) {
@@ -67,9 +70,9 @@ export const ModalTabLayout = ({
       <div className="c__modal__tab-sidebar">
         <div className="c__modal__tab-sidebar__header">
           {props.sidebarTitle && (
-            <div className="c__modal__tab-sidebar__title">
+            <h2 id={titleId} className="c__modal__tab-sidebar__title">
               {props.sidebarTitle}
-            </div>
+            </h2>
           )}
           {showCloseButton && (
             <div className="c__modal__tab-sidebar__close">
@@ -78,7 +81,7 @@ export const ModalTabLayout = ({
                 variant="tertiary"
                 color="neutral"
                 size="small"
-                aria-label="close"
+                aria-label={t("components.modals.close_button_aria_label")}
                 onClick={props.onClose}
               />
             </div>
@@ -122,13 +125,13 @@ export const ModalTabLayout = ({
               type="button"
               className="c__modal__tab-content__back"
               onClick={handleBackToSidebar}
-              aria-label="Back to tabs"
+              aria-label={t("components.modals.back_to_tabs_aria_label")}
             >
               <ChevronLeftIcon />
             </button>
             <div className="c__modal__tab-content__title-group">
               {currentTab?.title && (
-                <div className="c__modal__title">{currentTab.title}</div>
+                <h2 className="c__modal__title">{currentTab.title}</h2>
               )}
             </div>
             {showCloseButton && (
@@ -138,7 +141,7 @@ export const ModalTabLayout = ({
                   variant="tertiary"
                   color="neutral"
                   size="small"
-                  aria-label="close"
+                  aria-label={t("components.modals.close_button_aria_label")}
                   onClick={props.onClose}
                 />
               </div>

@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode, useEffect } from "react";
+import React, { PropsWithChildren, ReactNode, useEffect, useId } from "react";
 import classNames from "classnames";
 import ReactModal from "react-modal";
 import { NOSCROLL_CLASS, useModals } from ":/components/Modal/ModalProvider";
@@ -121,6 +121,9 @@ export const Modal = (props: ModalProps) => {
 
 export const ModalInner = (props: ModalProps) => {
   const { modalParentSelector } = useModals();
+  const id = useId();
+  const titleId = `${id}-modal-title`;
+  const subtitleId = `${id}-modal-subtitle`;
   const showCloseButton = !props.hideCloseButton && !props.preventClose;
   const closeOnEsc = props.closeOnEsc ?? true;
   const variant = props.variant ?? "default";
@@ -129,11 +132,23 @@ export const ModalInner = (props: ModalProps) => {
     return null;
   }
 
-  const contentLabel =
-    props["aria-label"] ||
-    (variant === "tab"
-      ? (props as ModalTabVariantProps).sidebarTitle?.toString()
-      : (props as ModalDefaultVariantProps).title?.toString());
+  const hasVisibleTitle =
+    variant === "tab"
+      ? !!(props as ModalTabVariantProps).sidebarTitle
+      : !!(props as ModalDefaultVariantProps).title;
+
+  const hasSubtitle =
+    variant === "default" && !!(props as ModalDefaultVariantProps).subtitle;
+
+  const ariaProps: Record<string, string> = {};
+  if (hasVisibleTitle) {
+    ariaProps.labelledby = titleId;
+  }
+  if (hasSubtitle) {
+    ariaProps.describedby = subtitleId;
+  }
+
+  const contentLabel = !hasVisibleTitle ? props["aria-label"] : undefined;
 
   const constraintStyle: React.CSSProperties = {};
   if (props.constraints?.minHeight !== undefined)
@@ -161,16 +176,20 @@ export const ModalInner = (props: ModalProps) => {
       shouldCloseOnEsc={closeOnEsc}
       bodyOpenClassName={classNames("c__modals--opened", NOSCROLL_CLASS)}
       contentLabel={contentLabel}
+      aria={ariaProps}
     >
       {variant === "tab" ? (
         <ModalTabLayout
           {...(props as ModalTabVariantProps)}
           showCloseButton={showCloseButton}
+          titleId={titleId}
         />
       ) : (
         <ModalDefaultLayout
           {...(props as ModalDefaultVariantProps)}
           showCloseButton={showCloseButton}
+          titleId={titleId}
+          subtitleId={subtitleId}
         />
       )}
     </ReactModal>
